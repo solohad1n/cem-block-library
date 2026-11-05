@@ -1,0 +1,326 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style></head><body><title>Библиотека блоков ЦЭМ v2</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap">
+<style>
+/* Раскладка: рабочий стол согласования — оглавление слева, карточки блоков справа; язык бренда ЦЭМ (Manrope, фирменный синий). */
+:root {
+  --bg: #f6f7fb; --surface: #ffffff; --surface-2: #f2f4f8; --fg: #262626; --fg-2: #5f6372; --line: #e2e6f0;
+  --accent: #607ed8; --accent-strong: #3c549e; --accent-soft: #e8edfb;
+  --ok: #2b8a57; --ok-soft: #e3f3ea; --warn: #b8640f; --warn-soft: #fbeedd; --bad: #c4362f; --bad-soft: #fbe5e3; --info: #6a55c9; --info-soft: #efeafd;
+  --font: "Manrope", "Segoe UI", system-ui, sans-serif; --mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  --shadow: 0 10px 28px rgba(60, 84, 158, .10);
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #12141b; --surface: #1b1e27; --surface-2: #232734; --fg: #eceef4; --fg-2: #a6abbb; --line: #2f3443;
+  --accent: #8ea4f0; --accent-strong: #b6c4f7; --accent-soft: #252d48;
+  --ok: #62c58f; --ok-soft: #173326; --warn: #eda55c; --warn-soft: #3a2a17; --bad: #f08a83; --bad-soft: #3d1d1b; --info: #b3a2f5; --info-soft: #2a2546;
+  --shadow: 0 10px 28px rgba(0, 0, 0, .35); color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #12141b; --surface: #1b1e27; --surface-2: #232734; --fg: #eceef4; --fg-2: #a6abbb; --line: #2f3443;
+  --accent: #8ea4f0; --accent-strong: #b6c4f7; --accent-soft: #252d48;
+  --ok: #62c58f; --ok-soft: #173326; --warn: #eda55c; --warn-soft: #3a2a17; --bad: #f08a83; --bad-soft: #3d1d1b; --info: #b3a2f5; --info-soft: #2a2546;
+  --shadow: 0 10px 28px rgba(0, 0, 0, .35); color-scheme: dark; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 15px/1.55 var(--font); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+a { color: var(--accent); }
+h1, h2, h3, h4 { margin: 0; line-height: 1.2; letter-spacing: -0.02em; text-wrap: balance; }
+code, .mono { font: 12.5px/1.5 var(--mono); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.wrap { max-width: 1360px; margin: 0 auto; padding-block: 28px 90px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.top { display: grid; gap: 12px; margin-bottom: 22px; }
+.eyebrow { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+h1 { font-size: clamp(28px, 4vw, 40px); font-weight: 800; }
+.lede { max-width: 78ch; margin: 0; color: var(--fg-2); }
+.summary { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.pill { display: inline-flex; align-items: center; gap: 6px; padding: 3px 11px; border-radius: 99px; font-size: 13px; font-weight: 600; background: var(--surface); border: 1px solid var(--line); max-width: 100%; overflow-wrap: anywhere; }
+.pill b { font-variant-numeric: tabular-nums; }
+.pill--ok { background: var(--ok-soft); color: var(--ok); border-color: transparent; }
+.pill--warn { background: var(--warn-soft); color: var(--warn); border-color: transparent; }
+.pill--bad { background: var(--bad-soft); color: var(--bad); border-color: transparent; }
+.pill--info { background: var(--info-soft); color: var(--info); border-color: transparent; }
+nav.tabs { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; display: flex; gap: 4px; overflow-x: auto; padding: 8px 0; margin-bottom: 20px; background: var(--bg); border-bottom: 1px solid var(--line); }
+nav.tabs a { flex: none; padding: 8px 14px; border-radius: 9px; color: var(--fg-2); font-weight: 600; text-decoration: none; }
+nav.tabs a[aria-current="page"] { background: var(--surface); color: var(--fg); box-shadow: var(--shadow); }
+.layout { display: grid; gap: 22px; grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 1040px) { .layout { grid-template-columns: 240px minmax(0, 1fr); } }
+.toc { display: none; }
+@media (min-width: 1040px) { .toc { display: block; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 72px); align-self: start; max-height: calc(100vh - 100px); overflow: auto; } }
+.toc a { display: flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 8px; color: var(--fg); text-decoration: none; font-size: 13.5px; }
+.toc a:hover { background: var(--surface); }
+.toc .tid { color: var(--fg-2); font: 11.5px var(--mono); margin-left: auto; }
+.dot { width: 9px; height: 9px; border-radius: 50%; flex: none; background: var(--line); }
+.dot.ok { background: var(--ok); } .dot.fix { background: var(--warn); }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 20px; }
+.block { scroll-margin-top: 80px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; margin-bottom: 24px; min-width: 0; }
+.block > * { min-width: 0; }
+.block__head { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: baseline; }
+.block__title { font-size: 22px; font-weight: 700; }
+.block__id { font: 13px var(--mono); color: var(--accent-strong); background: var(--accent-soft); padding: 1px 8px; border-radius: 6px; }
+.purpose { margin: 0; color: var(--fg-2); max-width: 90ch; }
+.status { font-size: 12px; font-weight: 700; padding: 2px 9px; border-radius: 99px; }
+.status--ready { background: var(--ok-soft); color: var(--ok); }
+.status--draft { background: var(--warn-soft); color: var(--warn); }
+.status--deprecated { background: var(--bad-soft); color: var(--bad); }
+.seg { display: inline-flex; flex-wrap: wrap; gap: 2px; padding: 3px; border-radius: 9px; background: var(--surface-2); max-width: 100%; }
+.seg button { border: 0; background: transparent; color: var(--fg-2); font: 600 13px var(--font); padding: 5px 11px; border-radius: 7px; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--surface); color: var(--fg); box-shadow: 0 1px 3px rgba(0,0,0,.12); }
+.compare { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); align-items: start; }
+.compare--wide { grid-template-columns: minmax(0, 1fr); }
+.shot { margin: 0; min-width: 0; }
+.shot figcaption { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 6px; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--fg-2); }
+.frame { border: 1px solid var(--line); border-radius: 8px; overflow: auto; max-height: 680px; background: #fff; }
+.frame img { display: block; width: 100%; height: auto; }
+.overlay { position: relative; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: #fff; }
+.overlay img { display: block; width: 100%; height: auto; }
+.overlay img + img { position: absolute; inset: 0; }
+.ovctl { display: flex; align-items: center; gap: 10px; font-size: 13px; }
+.ovctl input { width: 200px; max-width: 50vw; }
+.verify { display: flex; flex-wrap: wrap; gap: 8px; font-size: 13px; color: var(--fg-2); }
+details.spec { border-top: 1px solid var(--line); padding-top: 10px; }
+details.spec > summary { cursor: pointer; font-weight: 700; color: var(--fg); }
+.spec-grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); margin-top: 12px; }
+.spec-grid h4 { font-size: 12px; text-transform: uppercase; letter-spacing: .07em; color: var(--fg-2); margin-bottom: 6px; }
+.spec-grid ul { margin: 0; padding-left: 18px; } .spec-grid li { margin: 3px 0; }
+.scroll-x { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+th, td { text-align: left; vertical-align: top; padding: 7px 9px; border-bottom: 1px solid var(--line); }
+th { color: var(--fg-2); font-size: 12px; text-transform: uppercase; letter-spacing: .05em; font-weight: 600; }
+.issues { display: grid; gap: 8px; }
+.issue { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 10px; padding: 10px 12px; border-radius: 10px; background: var(--surface-2); font-size: 13.5px; }
+.issue .iid { font: 700 12px var(--mono); padding: 2px 7px; border-radius: 6px; height: fit-content; }
+.issue--Q .iid { background: var(--warn-soft); color: var(--warn); }
+.issue--F .iid { background: var(--info-soft); color: var(--info); }
+.issue--I .iid { background: var(--ok-soft); color: var(--ok); }
+.issue .meta { grid-column: 2; color: var(--fg-2); font-size: 12.5px; }
+.review { display: grid; gap: 10px; padding: 12px; border-radius: 10px; background: var(--surface-2); }
+.review__row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.btn { border: 1px solid var(--line); background: var(--surface); color: var(--fg); font: 600 13.5px var(--font); padding: 7px 14px; border-radius: 9px; cursor: pointer; }
+.btn:hover { border-color: var(--accent); }
+.btn--ok[aria-pressed="true"] { background: var(--ok); border-color: transparent; color: #fff; }
+.btn--fix[aria-pressed="true"] { background: var(--warn); border-color: transparent; color: #fff; }
+.btn:disabled { opacity: .5; cursor: default; }
+textarea { width: 100%; min-height: 60px; resize: vertical; font: 14px var(--font); color: var(--fg); background: var(--surface); border: 1px solid var(--line); border-radius: 9px; padding: 8px 10px; }
+.note { font-size: 12.5px; color: var(--fg-2); }
+.banner { padding: 10px 12px; border-radius: 10px; background: var(--warn-soft); color: var(--warn); font-size: 13.5px; }
+.stage { position: relative; height: 78vh; overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: var(--surface-2); }
+.stage iframe { position: absolute; top: 0; left: 0; border: 0; background: #fff; transform-origin: 0 0; }
+.guide { display: grid; gap: 16px; max-width: 900px; }
+.guide h2 { font-size: 22px; } .guide h3 { font-size: 17px; margin-top: 6px; }
+.guide p, .guide li { max-width: 78ch; }
+.guide pre { margin: 0; padding: 14px; border-radius: 10px; background: var(--surface-2); overflow-x: auto; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font: 600 12px var(--mono); padding: 2px 8px; border-radius: 6px; background: var(--surface-2); color: var(--fg-2); }
+.swatches { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+.sw { border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--surface); font-size: 12px; }
+.sw i { display: block; height: 52px; }
+.sw div { padding: 6px 8px; } .sw b { display: block; font: 600 12px var(--mono); }
+.grid-comp { display: grid; gap: 16px; }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div class="eyebrow">ЦЭМ · главная · библиотека v2</div>
+    <h1>Библиотека блоков и компонентов</h1>
+    <p class="lede">Каждый блок главной показан рядом с кадрами Маши (Figma 3272:4597 — 1440, 3272:5376 — 375) и в новой вёрстке на тех же ширинах, с полной спецификацией: состав, параметры, состояния, поведение, адаптив, ограничения текста и картинок. Отметьте по каждому блоку «Согласовано» или «Нужны правки»: отметки видят все, у кого открыта страница. Та же библиотека — на странице «Библиотека блоков» в Figma-файле ЦЭМ.</p>
+    <div class="summary" id="summary"></div>
+  </header>
+  <nav class="tabs" aria-label="Разделы">
+    <a href="#blocks" data-tab="blocks">Блоки</a>
+    <a href="#components" data-tab="components">Компоненты</a>
+    <a href="#foundations" data-tab="foundations">Основы</a>
+    <a href="#live" data-tab="live">Живая страница</a>
+    <a href="#questions" data-tab="questions">Вопросы</a>
+    <a href="#guide" data-tab="guide">Как пользоваться</a>
+  </nav>
+
+  <section id="p-blocks" data-panel="blocks">
+    <div class="banner" id="store-off" hidden>Отметки сейчас не сохраняются: страница открыта без входа или без права записи. Замечания можно оставить комментарием к странице.</div>
+    <div class="layout"><aside class="toc" id="toc" aria-label="Блоки"></aside><div id="blocks"></div></div>
+  </section>
+  <section id="p-components" data-panel="components" hidden><div class="grid-comp" id="components"></div></section>
+  <section id="p-foundations" data-panel="foundations" hidden><div class="grid-comp" id="foundations"></div></section>
+  <section id="p-live" data-panel="live" hidden>
+    <div class="review__row" style="margin-bottom:12px">
+      <div class="seg" id="live-w" role="group" aria-label="Ширина окна">
+        <button type="button" data-w="375" aria-pressed="false">375</button><button type="button" data-w="768" aria-pressed="false">768</button><button type="button" data-w="1050" aria-pressed="false">1050 · планшет</button><button type="button" data-w="1280" aria-pressed="false">1280</button><button type="button" data-w="1440" aria-pressed="true">1440</button><button type="button" data-w="1920" aria-pressed="false">1920</button>
+      </div>
+      <div class="seg" id="live-page" role="group" aria-label="Страница">
+        <button type="button" data-p="site/index.html" aria-pressed="true">Главная</button><button type="button" data-p="site/components.html" aria-pressed="false">Витрина компонентов</button>
+      </div>
+    </div>
+    <div class="stage" id="stage"><iframe id="live" title="Вёрстка ЦЭМ" loading="lazy"></iframe></div>
+    <p class="note">Окно масштабируется под экран. Наведение, фокус (Tab), слайдеры, вкладки, формы и окна — живые.</p>
+  </section>
+  <section id="p-questions" data-panel="questions" hidden><div class="grid-comp" id="questions"></div></section>
+  <section id="p-guide" data-panel="guide" hidden><div class="guide card" id="guide"></div></section>
+</div>
+
+<script>
+(async () => {
+  const $ = (s, r = document) => r.querySelector(s);
+  const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+  let data;
+  try { data = await (await fetch('data.json')).json(); } catch (e) { $('#blocks').textContent = 'Не удалось загрузить данные библиотеки.'; return; }
+  const issuesById = Object.fromEntries(data.issues.map(i => [i.id, i]));
+  const reviews = {};
+
+  /* ---------- вкладки (по #hash) ---------- */
+  const tabs = ['blocks', 'components', 'foundations', 'live', 'questions', 'guide'];
+  function route() {
+    const h = location.hash.slice(1);
+    let tab = tabs.includes(h) ? h : 'blocks';
+    if (!tabs.includes(h) && h && document.getElementById('b-' + h)) tab = 'blocks';
+    document.querySelectorAll('[data-panel]').forEach(p => { p.hidden = p.dataset.panel !== tab; });
+    document.querySelectorAll('nav.tabs a').forEach(a => a.setAttribute('aria-current', a.dataset.tab === tab ? 'page' : 'false'));
+    if (tab === 'live') loadLive();
+    if (tab === 'blocks' && h && h !== 'blocks') document.getElementById('b-' + h)?.scrollIntoView();
+  }
+  addEventListener('hashchange', route);
+
+  /* ---------- сводка ---------- */
+  function summary() {
+    const st = data.blocks.reduce((a, b) => (a[b.status] = (a[b.status] || 0) + 1, a), {});
+    const ok = Object.values(reviews).filter(r => r.status === 'ok').length, fix = Object.values(reviews).filter(r => r.status === 'fix').length;
+    const q = data.issues.filter(i => i.type === 'Q').length, f = data.issues.filter(i => i.type === 'F').length;
+    $('#summary').innerHTML = `<span class="pill">Блоков <b>${data.blocks.length}</b></span><span class="pill">Компонентов <b>${data.components.length}</b></span>
+      <span class="pill pill--ok">Готовы <b>${st.ready || 0}</b></span>${st.draft ? `<span class="pill pill--warn">Черновик <b>${st.draft}</b></span>` : ''}${st.deprecated ? `<span class="pill pill--bad">Устарели <b>${st.deprecated}</b></span>` : ''}
+      <span class="pill pill--ok">Согласовано <b>${ok}</b></span><span class="pill pill--warn">Нужны правки <b>${fix}</b></span>
+      <span class="pill pill--warn">Вопросов <b>${q}</b></span><span class="pill pill--info">Несогласованностей Figma <b>${f}</b></span>
+      <span class="pill">Сборка ${esc(data.built)}</span>`;
+    document.querySelectorAll('[data-dot]').forEach(d => { const r = reviews[d.dataset.dot]; d.className = 'dot' + (r?.status === 'ok' ? ' ok' : r?.status === 'fix' ? ' fix' : ''); });
+  }
+
+  /* ---------- блоки ---------- */
+  const list = (arr, f) => arr && arr.length ? `<ul>${arr.map(f).join('')}</ul>` : '<p class="note">—</p>';
+  const issueHtml = id => { const i = issuesById[id]; if (!i) return `<div class="issue"><span class="iid">${esc(id)}</span><span>—</span></div>`;
+    return `<div class="issue issue--${i.type}"><span class="iid">${esc(i.id)}</span><span>${esc(i.text)}</span>${i.proposal || i.to ? `<span class="meta">${i.to ? 'Кому: ' + esc(i.to) + '. ' : ''}${i.proposal ? 'Сейчас: ' + esc(i.proposal) : ''}</span>` : ''}</div>`; };
+  function blockHtml(b) {
+    const views = Object.keys(b.shots);
+    const s = b.spec;
+    const params = s.params?.length ? `<div class="scroll-x"><table><thead><tr><th>Параметр</th><th>Тип</th><th>Обяз.</th><th>Пример</th><th>Ограничение</th></tr></thead><tbody>${s.params.map(p => `<tr><td><code>${esc(p.name)}</code></td><td>${esc(p.type)}</td><td>${p.required ? 'да' : 'нет'}</td><td>${esc(p.example)}</td><td>${esc(p.limit)}</td></tr>`).join('')}</tbody></table></div>` : '<p class="note">—</p>';
+    const resp = s.responsive ? `<ul>${Object.entries(s.responsive).map(([k, v]) => `<li><b>${esc(k)}:</b> ${esc(v)}</li>`).join('')}</ul>` : '';
+    const ids = [...(s.questions || []), ...(s.figmaIssues || []), ...(s.intentional || [])];
+    const verify = b.verify ? Object.entries(b.verify).map(([k, v]) => `<span class="pill">${esc(k)}: ${esc(typeof v === 'object' ? (v.diffPct != null ? v.diffPct + ' %' : '') + (v.size ? ' · ' + v.size : '') : v)}</span>`).join('') : '';
+    return `<article class="card block" id="b-${b.id}">
+      <div class="block__head"><span class="dot" data-dot="${b.id}"></span><h2 class="block__title">${esc(s.title)}</h2><span class="block__id">${esc(b.id)}</span><span class="status status--${s.status}">${({ ready: 'готов', draft: 'черновик', deprecated: 'устарел' })[s.status] || esc(s.status)}</span></div>
+      <p class="purpose">${esc(s.purpose)}</p>
+      <div class="review__row"><div class="seg" role="group" aria-label="Ширина">${views.map((v, i) => `<button type="button" data-view="${v}" aria-pressed="${i === 0}">${v}${b.shots[v].fig ? '' : ' · предложение'}</button>`).join('')}</div>
+        <div class="seg" role="group" aria-label="Вид"><button type="button" data-mode="side" aria-pressed="true">Рядом</button><button type="button" data-mode="over" aria-pressed="false">Наложение</button></div></div>
+      <div class="compare" data-compare></div>
+      <div class="verify">${verify}</div>
+      <details class="spec"><summary>Спецификация: состав, параметры, состояния, поведение, адаптив</summary>
+        <div class="spec-grid">
+          <div><h4>Состав</h4>${list(s.composition, c => `<li><code>${esc(c.part)}</code> — ${esc(c.what)}${c.component ? ` <span class="chip">${esc(c.component)}</span>` : ''}</li>`)}</div>
+          <div><h4>Варианты и состояния</h4>${list([...(s.variants || []).map(v => `${v.name}: ${v.values}${v.how ? ' (' + v.how + ')' : ''}`), ...(s.states || []).map(x => `${x.element}: ${x.states}`)], x => `<li>${esc(x)}</li>`)}</div>
+          <div><h4>Поведение</h4>${list(s.behavior, x => `<li>${esc(x)}</li>`)}</div>
+          <div><h4>Адаптивность</h4>${resp}</div>
+          <div><h4>Текст и изображения</h4>${list([...(s.content?.text || []), ...(s.content?.images || [])], x => `<li>${esc(x)}</li>`)}</div>
+          <div><h4>Доступность</h4>${list(s.a11y, x => `<li>${esc(x)}</li>`)}</div>
+        </div>
+        <h4 style="margin:14px 0 6px;font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--fg-2)">Параметры</h4>${params}
+        <p class="note">Figma: 1440 — ${esc((s.figma?.['1440']?.nodes || []).join(', ') || '—')}; 375 — ${esc((s.figma?.['375']?.nodes || []).join(', ') || '—')}. Код: <code>src/blocks/${esc(b.id)}/</code></p>
+      </details>
+      ${ids.length ? `<details class="spec"><summary>Вопросы и несогласованности (${ids.length})</summary><div class="issues" style="margin-top:10px">${ids.map(issueHtml).join('')}</div></details>` : ''}
+      <div class="review" data-review="${b.id}">
+        <div class="review__row"><button class="btn btn--ok" type="button" data-set="ok" aria-pressed="false">Согласовано</button><button class="btn btn--fix" type="button" data-set="fix" aria-pressed="false">Нужны правки</button><span class="note" data-meta></span></div>
+        <label class="note" for="c-${b.id}">Что поправить</label><textarea id="c-${b.id}" data-comment placeholder="Например: отступ под заголовком меньше, как в макете"></textarea>
+        <div class="review__row"><button class="btn" type="button" data-save>Сохранить комментарий</button><span class="note" data-saved></span></div>
+      </div>
+    </article>`;
+  }
+  function renderCompare(card, b, view, mode) {
+    const sh = b.shots[view], box = card.querySelector('[data-compare]');
+    box.classList.toggle('compare--wide', +view >= 1050 || mode === 'over');
+    if (mode === 'over' && sh.fig) {
+      box.innerHTML = `<div><div class="ovctl"><label for="ov-${b.id}">Figma</label><input id="ov-${b.id}" type="range" min="0" max="100" value="50"><span>Вёрстка</span></div>
+        <div class="overlay"><img src="${sh.fig}" alt="Figma ${view}" loading="lazy"><img src="${sh.web}" alt="Вёрстка ${view}" style="opacity:.5" loading="lazy"></div></div>`;
+      box.querySelector('input').addEventListener('input', e => { box.querySelectorAll('.overlay img')[1].style.opacity = e.target.value / 100; });
+      return;
+    }
+    box.innerHTML = (sh.fig ? `<figure class="shot"><figcaption><span>Figma · ${view}</span></figcaption><div class="frame"><img src="${sh.fig}" alt="Макет ${view}" loading="lazy"></div></figure>` : '') +
+      `<figure class="shot"><figcaption><span>Вёрстка · ${view}</span><span>${sh.fig ? '' : 'макета нет — предложение'}</span></figcaption><div class="frame"><img src="${sh.web}" alt="Вёрстка ${view}" loading="lazy"></div></figure>`;
+  }
+  const toc = $('#toc'), host = $('#blocks');
+  toc.innerHTML = data.blocks.map(b => `<a href="#${b.id}"><span class="dot" data-dot="${b.id}"></span>${esc(b.spec.title)}<span class="tid">${esc(b.id)}</span></a>`).join('');
+  host.innerHTML = data.blocks.map(blockHtml).join('');
+  data.blocks.forEach(b => {
+    const card = document.getElementById('b-' + b.id); let view = Object.keys(b.shots)[0], mode = 'side';
+    card.querySelectorAll('[data-view]').forEach(x => x.addEventListener('click', () => { view = x.dataset.view; card.querySelectorAll('[data-view]').forEach(y => y.setAttribute('aria-pressed', y === x)); renderCompare(card, b, view, mode); }));
+    card.querySelectorAll('[data-mode]').forEach(x => x.addEventListener('click', () => { mode = x.dataset.mode; card.querySelectorAll('[data-mode]').forEach(y => y.setAttribute('aria-pressed', y === x)); renderCompare(card, b, view, mode); }));
+    renderCompare(card, b, view, mode);
+  });
+
+  /* ---------- компоненты ---------- */
+  $('#components').innerHTML = `<div class="card"><p class="lede" style="margin:0">Базовые компоненты, из которых собраны блоки. У каждого — разметка, свойства, все состояния с источником (кит Маши или ПРЕДЛОЖЕНИЕ с вопросом) и поведение. Живые примеры — во вкладке «Живая страница» → «Витрина компонентов». В Figma: страница «Библиотека блоков», раздел «02 · Компоненты» — те же имена и свойства.</p></div>` +
+    data.components.map(c => `<article class="card" id="c-${c.id}" style="display:grid;gap:10px">
+      <div class="block__head"><h2 class="block__title">${esc(c.title)}</h2><span class="block__id">${esc(c.id)}</span><span class="status status--${c.status}">готов</span><span class="note">src/components/${esc(c.file)} · Figma: ${esc(c.library)}</span></div>
+      <pre class="mono" style="margin:0;padding:10px;border-radius:8px;background:var(--surface-2);overflow-x:auto;white-space:pre-wrap">${esc(c.markup)}</pre>
+      ${c.props?.length ? `<div class="scroll-x"><table><thead><tr><th>Свойство</th><th>Значения</th><th>Как задать</th></tr></thead><tbody>${c.props.map(p => `<tr><td><code>${esc(p.name)}</code></td><td>${esc(p.values)}</td><td>${esc(p.how)}</td></tr>`).join('')}</tbody></table></div>` : ''}
+      ${c.sizes ? `<div class="scroll-x"><table><thead><tr><th>Размер</th><th>Рамка</th><th>Текст</th><th>Где</th></tr></thead><tbody>${c.sizes.map(p => `<tr><td><code>${esc(p.size)}</code></td><td>${esc(p.box)}</td><td>${esc(p.text)}</td><td>${esc(p.where)}</td></tr>`).join('')}</tbody></table></div>` : ''}
+      ${c.states?.length ? `<div class="scroll-x"><table><thead><tr><th>Состояние</th><th>Вид (включая обводку)</th><th>Источник</th></tr></thead><tbody>${c.states.map(p => `<tr><td><code>${esc(p.state)}</code></td><td>${esc(p.look)}</td><td>${/ПРЕДЛОЖЕНИЕ/.test(p.source) ? `<span class="status status--draft">${esc(p.source)}</span>` : esc(p.source)}</td></tr>`).join('')}</tbody></table></div>` : ''}
+      ${c.behavior?.length ? `<ul style="margin:0;padding-left:18px">${c.behavior.map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}
+    </article>`).join('');
+
+  /* ---------- основы ---------- */
+  $('#foundations').innerHTML = `<div class="card"><h2 style="font-size:20px;margin-bottom:10px">Цвета</h2><div class="swatches">${data.tokens.colors.map(t => `<div class="sw"><i style="background:${esc(t.hex)}"></i><div><b>--${esc(t.name)}</b>${esc(t.hex)}<br><span class="note">${esc(t.note)}</span></div></div>`).join('')}</div>
+     <h2 style="font-size:20px;margin:20px 0 10px">Градиенты</h2><div class="swatches">${data.tokens.grads.map(t => `<div class="sw"><i style="background:${esc(t.css)}"></i><div><b>--${esc(t.name)}</b><span class="note">${esc(t.note)}</span></div></div>`).join('')}</div></div>
+     <div class="card"><h2 style="font-size:20px;margin-bottom:6px">Текстовые роли</h2><p class="note" style="margin:0 0 10px">В коде — класс <code>.t-…</code>, размер между 375 и 1440 меняется плавно. В Figma — стили «cem/role/… · 1440» и «… · 375».</p>
+     <div class="scroll-x"><table><thead><tr><th>Роль</th><th>375</th><th>1440</th><th>Где</th></tr></thead><tbody>${data.roles.map(r => `<tr><td><code>.${esc(r.id)}</code></td><td class="mono">${esc(r.m)}</td><td class="mono">${esc(r.d)}</td><td>${esc(r.note)}</td></tr>`).join('')}</tbody></table></div></div>
+     <div class="card"><h2 style="font-size:20px;margin-bottom:6px">Ширины</h2><ul><li><b>375–1049</b> — mobile, одна колонка; размеры растут плавно от значений 375.</li><li><b>1050–1279</b> — планшет: макета нет, раскладка — предложение (Q-01).</li><li><b>1280+</b> — desktop: левая колонка 102 · контент · правая колонка 339; на 1440 — ровно макет.</li><li><b>шире 1440</b> — страница на всю ширину, размеры как на 1440 (решение 28.10).</li></ul></div>`;
+
+  /* ---------- вопросы ---------- */
+  const groups = {};
+  data.issues.forEach(i => { const k = i.type === 'Q' ? 'Вопросы: ' + (i.to || '—') : i.type === 'F' ? 'Несогласованности в Figma' : 'Намеренные отличия'; (groups[k] = groups[k] || []).push(i); });
+  const order = Object.keys(groups).sort((a, b) => (a.startsWith('Вопросы') ? 0 : a.startsWith('Несогл') ? 1 : 2) - (b.startsWith('Вопросы') ? 0 : b.startsWith('Несогл') ? 1 : 2) || a.localeCompare(b));
+  $('#questions').innerHTML = `<div class="card"><p class="lede" style="margin:0">Чего нет в макете или что в нём противоречит само себе. В вёрстке на месте каждого вопроса — помеченное предложение; после ответа его меняют в компоненте или блоке. Q — вопрос, F — несогласованность в Figma, I — намеренное отличие.</p></div>` +
+    order.map(k => `<div class="card"><h2 style="font-size:19px;margin-bottom:10px">${esc(k)} <span class="pill">${groups[k].length}</span></h2><div class="issues">${groups[k].map(i => issueHtml(i.id).replace('</div>', `${i.blocks?.length ? `<span class="meta">Блоки: ${i.blocks.map(x => `<a href="#${esc(x)}">${esc(x)}</a>`).join(', ')}</span>` : ''}</div>`)).join('')}</div></div>`).join('');
+
+  /* ---------- инструкция ---------- */
+  $('#guide').innerHTML = data.guideHtml;
+
+  /* ---------- живая страница ---------- */
+  let liveW = 1440, livePage = 'site/index.html', liveLoaded = '';
+  function fit() { const st = $('#stage'), f = $('#live'); const sc = Math.min(1, st.clientWidth / liveW); f.style.width = liveW + 'px'; f.style.height = (st.clientHeight / sc) + 'px'; f.style.transform = `scale(${sc})`; }
+  function loadLive() { const f = $('#live'); if (liveLoaded !== livePage) { f.src = livePage; liveLoaded = livePage; } fit(); }
+  $('#live-w').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; liveW = +b.dataset.w; $('#live-w').querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b)); fit(); });
+  $('#live-page').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; livePage = b.dataset.p; $('#live-page').querySelectorAll('button').forEach(x => x.setAttribute('aria-pressed', x === b)); loadLive(); });
+  addEventListener('resize', () => { if (!$('#p-live').hidden) fit(); });
+
+  /* ---------- отметки согласования (общие, db) ---------- */
+  function paintReview(id) {
+    const r = reviews[id] || {}, box = document.querySelector(`[data-review="${id}"]`); if (!box) return;
+    box.querySelectorAll('[data-set]').forEach(b => b.setAttribute('aria-pressed', b.dataset.set === r.status));
+    const ta = box.querySelector('[data-comment]'); if (document.activeElement !== ta) ta.value = r.comment || '';
+    box.querySelector('[data-meta]').textContent = r.at ? `${r.status === 'ok' ? 'Согласовано' : r.status === 'fix' ? 'Нужны правки' : 'Комментарий'} · ${new Date(r.at).toLocaleString('ru-RU', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' })}${r.byName ? ' · ' + r.byName : ''}` : '';
+  }
+  summary(); route();
+  const db = window.claude?.use ? await window.claude.use('db').catch(() => null) : null;
+  const user = db ? await window.claude.use('user').catch(() => null) : null;
+  if (!db) { $('#store-off').hidden = false; document.querySelectorAll('.review .btn').forEach(b => b.disabled = true); return; }
+  const col = db.collection('reviews');
+  const timer = setTimeout(() => { $('#store-off').hidden = false; }, 10000);
+  col.onSnapshot(async snap => {
+    clearTimeout(timer);
+    const docs = snap.docs || snap;
+    const ids = new Set();
+    for (const d of docs) { const v = d.data ? d.data() : d; reviews[d.id] = v; if (v.by) ids.add(v.by); }
+    if (user && ids.size) { try { const ps = await user.profiles([...ids]); Object.values(reviews).forEach(r => { r.byName = ps?.[r.by]?.name || ''; }); } catch (e) {} }
+    data.blocks.forEach(b => paintReview(b.id)); summary();
+  }, () => { $('#store-off').hidden = false; });
+  async function save(id, patch) {
+    const me = user ? await user.id().catch(() => null) : null;
+    const next = { ...(reviews[id] || {}), ...patch, at: Date.now(), by: me };
+    delete next.byName;
+    try { await col.doc(id).set(next); return true; } catch (e) { $('#store-off').hidden = false; return false; }
+  }
+  document.querySelectorAll('[data-review]').forEach(box => {
+    const id = box.dataset.review;
+    box.querySelectorAll('[data-set]').forEach(b => b.addEventListener('click', () => save(id, { status: reviews[id]?.status === b.dataset.set ? '' : b.dataset.set, comment: box.querySelector('[data-comment]').value })));
+    box.querySelector('[data-save]').addEventListener('click', async () => { const ok = await save(id, { comment: box.querySelector('[data-comment]').value }); box.querySelector('[data-saved]').textContent = ok ? 'Сохранено' : 'Не сохранилось'; });
+  });
+})();
+</script>
+</body></html>

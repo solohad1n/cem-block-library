@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Компоненты ЦЭМ — витрина</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Витрина компонентов: только для просмотра, на сайт не попадает. Состояния показаны «как есть»:
+       наведение — наведите курсор; фокус — Tab; ошибки/открытые состояния включены атрибутами. */
+    body { background: #f6f7fb; }
+    .sb { max-width: 1200px; margin: 0 auto; padding: 32px 20px 80px; display: grid; gap: 28px; }
+    .sb h1 { font: 800 28px/1.2 Manrope, sans-serif; }
+    .sb section { background: #fff; border-radius: 12px; padding: 24px; display: grid; gap: 16px; }
+    .sb h2 { font: 700 20px/1.2 Manrope, sans-serif; }
+    .sb code { font: 13px/1.4 ui-monospace, Menlo, monospace; color: #3c549e; }
+    .sb .row { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; }
+    .sb .cap { font: 500 12px/1.3 Manrope, sans-serif; color: #919191; display: block; margin-top: 6px; }
+    .sb .cell { display: flex; flex-direction: column; align-items: flex-start; }
+    .sb .narrow { width: 467px; max-width: 100%; }
+    .sb .grey { background: #f2f4f8; padding: 16px; border-radius: 8px; }
+    .sb > *, .sb section > *, .sb .cell { min-width: 0; max-width: 100%; }
+    .sb h2 code { overflow-wrap: anywhere; }
+    .sb section { overflow-x: auto; }
+  </style>
+</head>
+<body>
+<div class="sb">
+  <h1>Компоненты ЦЭМ</h1>
+
+  <section id="btn"><h2>btn — кнопка <code>.btn .btn--primary|soft|dark .btn--xl|l|m|s|f</code></h2>
+    <div class="row">
+      <span class="cell"><a class="btn btn--primary btn--xl" href="#btn">Записаться на приём</a><span class="cap">xl · default</span></span>
+      <span class="cell"><a class="btn btn--primary btn--l" href="#btn">Смотреть все центры</a><span class="cap">l</span></span>
+      <span class="cell"><button class="btn btn--primary btn--m" type="button">Документация</button><span class="cap">m</span></span>
+      <span class="cell"><button class="btn btn--primary btn--s" type="button">Записаться в клинику</button><span class="cap">s</span></span>
+      <span class="cell"><button class="btn btn--primary btn--f" type="button">Отправить сообщение</button><span class="cap">f</span></span>
+    </div>
+    <div class="row">
+      <span class="cell"><button class="btn btn--primary btn--m" type="button" disabled>Документация</button><span class="cap">disabled (ПРЕДЛОЖЕНИЕ)</span></span>
+      <span class="cell"><button class="btn btn--primary btn--m" type="button" aria-busy="true">Документация</button><span class="cap">loading (ПРЕДЛОЖЕНИЕ)</span></span>
+      <span class="cell"><button class="btn btn--soft btn--m" type="button">Голосовой помощник Док</button><span class="cap">soft</span></span>
+      <span class="cell"><button class="btn btn--dark btn--m" type="button">Отправить сообщение</button><span class="cap">dark</span></span>
+    </div>
+  </section>
+
+  <section id="arrow-btn"><h2>arrow-btn — круглая стрелка <code>.arrow-btn .arrow-btn--prev|next [.arrow-btn--outline]</code></h2>
+    <div class="row">
+      <span class="cell"><button class="arrow-btn arrow-btn--prev" type="button" aria-label="Назад" disabled><svg class="icon"><use href="assets/icons/sprite.svg#i-chevron-left"/></svg></button><span class="cap">disabled</span></span>
+      <span class="cell"><button class="arrow-btn arrow-btn--next" type="button" aria-label="Вперёд"><svg class="icon"><use href="assets/icons/sprite.svg#i-chevron-right"/></svg></button><span class="cap">default / hover</span></span>
+      <span class="cell"><button class="arrow-btn arrow-btn--outline arrow-btn--prev" type="button" aria-label="Назад"><svg class="icon"><use href="assets/icons/sprite.svg#i-chev-sm-left"/></svg></button><span class="cap">outline</span></span>
+      <span class="cell"><button class="arrow-btn arrow-btn--outline arrow-btn--next" type="button" aria-label="Вперёд" disabled><svg class="icon"><use href="assets/icons/sprite.svg#i-chev-sm-right"/></svg></button><span class="cap">outline · disabled</span></span>
+      <span class="cell"><span class="chevron-btn"><svg class="icon"><use href="assets/icons/sprite.svg#i-faq-chevron"/></svg></span><span class="cap">chevron-btn</span></span>
+      <span class="cell"><span class="chevron-btn" aria-expanded="true"><svg class="icon"><use href="assets/icons/sprite.svg#i-faq-chevron"/></svg></span><span class="cap">chevron-btn · открыто</span></span>
+    </div>
+  </section>
+
+  <section id="links"><h2>link · link-arrow · list-link · card-link</h2>
+    <div class="row">
+      <span class="cell"><a class="link" href="#links">/ Все подкасты</a><span class="cap">link</span></span>
+      <span class="cell"><a class="link link--l" href="#links">Изучить Центр</a><span class="cap">link--l</span></span>
+      <span class="cell"><a class="link link--muted" href="#links">Персональных данных</a><span class="cap">link--muted</span></span>
+      <span class="cell" style="width:252px"><a class="link-arrow" href="#links"><span>Изучить центр</span><svg class="icon"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></a><span class="cap">link-arrow</span></span>
+      <span class="cell"><a class="link-arrow link-arrow--compact" href="#links"><span>Читать</span><svg class="icon"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></a><span class="cap">link-arrow--compact</span></span>
+    </div>
+    <div class="row grey">
+      <span class="cell" style="width:278px"><a class="list-link" href="#links"><span class="list-link__num">01</span><span class="list-link__text clamp-2">Акушерство и гинекология</span><svg class="icon list-link__arrow"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></a><span class="cap">list-link</span></span>
+      <span class="cell" style="width:289px"><a class="card-link" href="#links"><span class="card-link__text">Многопрофильный центр</span><svg class="icon"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></a><span class="cap">card-link</span></span>
+      <span class="cell" style="width:289px"><a class="card-link is-active" href="#links"><span class="card-link__text">Офтальмологический центр</span><svg class="icon"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></a><span class="cap">card-link · hover/текущая</span></span>
+    </div>
+  </section>
+
+  <section id="form"><h2>field · select · checkbox</h2>
+    <form class="row grey" data-js="form" onsubmit="return false">
+      <label class="field narrow"><input class="field__input" type="text" placeholder="Ваше имя*" required><span class="field__error"></span></label>
+      <label class="field narrow is-invalid"><input class="field__input" type="tel" placeholder="Телефон*" required aria-invalid="true"><span class="field__error">Заполните поле</span></label>
+      <label class="field narrow"><input class="field__input" type="text" value="Анна Иванова"><span class="field__error"></span></label>
+      <label class="field narrow"><input class="field__input" type="text" placeholder="Неактивно" disabled><span class="field__error"></span></label>
+      <label class="field field--area narrow"><textarea class="field__input" placeholder="Вопрос или предложение"></textarea><span class="field__error"></span></label>
+      <div class="select narrow" data-js="select" id="sb-select">
+        <button class="select__toggle" type="button" aria-haspopup="listbox"><span class="select__value">Выберите направление</span><svg class="icon"><use href="assets/icons/sprite.svg#i-chevron-down"/></svg></button>
+        <div class="select__panel" hidden><input class="select__search" type="search" placeholder="Поиск" aria-label="Поиск направления">
+          <ul class="select__list" role="listbox"><li role="option">Акушерство и гинекология</li><li role="option">Аллергология</li><li role="option">Гастроэнтерология</li><li role="option">Генетика</li><li role="option">Дерматология</li><li role="option">Кардиология</li></ul></div>
+        <input type="hidden" name="direction"></div>
+      <label class="checkbox"><input type="checkbox"><span class="checkbox__box"></span><span class="checkbox__text">Соглашаюсь на обработку <a class="link link--muted" href="#form">Персональных данных</a></span></label>
+      <label class="checkbox is-invalid"><input type="checkbox"><span class="checkbox__box"></span><span class="checkbox__text">Ошибка: не отмечено</span></label>
+    </form>
+  </section>
+
+  <section id="ui"><h2>tag · segmented · dots</h2>
+    <div class="row">
+      <a class="tag" href="#ui">#репродукция</a><span class="tag tag--green">#стоматология</span><span class="tag tag--blue">#аптека</span>
+      <a class="tag tag--peach tag--l" href="#ui">#ковид</a><a class="tag tag--lilac tag--l" href="#ui">#аневризма</a><a class="tag tag--olive tag--l" href="#ui">#подагра</a>
+    </div>
+    <div class="row grey">
+      <div class="segmented" role="tablist" data-js="tabs"><button class="segmented__item" role="tab" aria-selected="true" aria-controls="sb-p1">Взрослым</button><button class="segmented__item" role="tab" aria-selected="false" aria-controls="sb-p2">Детям</button></div>
+      <span id="sb-p1" role="tabpanel">Список для взрослых</span><span id="sb-p2" role="tabpanel" hidden>Список для детей</span>
+    </div>
+  </section>
+
+  <section id="slider"><h2>slider — лента <code>.slider</code> (стрелки ≥ 1280, точки &lt; 1280)</h2>
+    <div class="row"><button class="arrow-btn arrow-btn--prev" type="button" data-slider-prev="sb-slider" aria-label="Назад"><svg class="icon"><use href="assets/icons/sprite.svg#i-chevron-left"/></svg></button><button class="arrow-btn arrow-btn--next" type="button" data-slider-next="sb-slider" aria-label="Вперёд"><svg class="icon"><use href="assets/icons/sprite.svg#i-chevron-right"/></svg></button></div>
+    <div class="slider" id="sb-slider" data-js="slider" aria-label="Пример ленты" style="--slide-w: 289px; --slider-gap: 15px">
+      <div class="slider__track">
+        <div class="slider__slide"><a class="media-card" href="#slider"><img class="media-card__img" src="assets/img/article-dentistry-640.webp" alt="" width="289" height="180"><span class="media-card__row"><span class="media-card__text clamp-2">Современная стоматология: проблемы детских зубов</span><svg class="icon"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></span></a></div>
+        <div class="slider__slide"><a class="media-card" href="#slider"><img class="media-card__img" src="assets/img/article-cystitis-640.webp" alt="" width="289" height="180"><span class="media-card__row"><span class="media-card__text clamp-2">«Я привыкла»: правда о циститах и недержании мочи</span><svg class="icon"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></span></a></div>
+        <div class="slider__slide"><a class="media-card" href="#slider"><img class="media-card__img" src="assets/img/article-dentistry-640.webp" alt="" width="289" height="180"><span class="media-card__row"><span class="media-card__text clamp-2">Современная стоматология: проблемы детских зубов</span><svg class="icon"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></span></a></div>
+        <div class="slider__slide"><a class="media-card" href="#slider"><img class="media-card__img" src="assets/img/article-cystitis-640.webp" alt="" width="289" height="180"><span class="media-card__row"><span class="media-card__text clamp-2">«Я привыкла»: правда о циститах и недержании мочи</span><svg class="icon"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></span></a></div>
+        <div class="slider__slide"><a class="media-card" href="#slider"><img class="media-card__img" src="assets/img/article-dentistry-640.webp" alt="" width="289" height="180"><span class="media-card__row"><span class="media-card__text clamp-2">Современная стоматология: проблемы детских зубов</span><svg class="icon"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></span></a></div>
+      </div>
+      <div class="dots slider__dots" data-slider-dots></div>
+    </div>
+  </section>
+</div>
+<script src="main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,1446 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Центр экспертной медицины</title>
+  <meta name="description" content="Один из крупнейших частных медицинских центров Санкт-Петербурга">
+  <link rel="preload" href="assets/fonts/manrope-cyrillic-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="header" data-block="header" id="top">
+  <a class="header__logo" href="/" aria-label="Центр экспертной медицины — на главную">
+    <span class="header__logo-mark"><svg class="header__logo-letters" aria-hidden="true"><use href="assets/icons/sprite.svg#i-logo-letters"/></svg></span>
+    <svg class="header__logo-name" aria-hidden="true"><use href="assets/icons/sprite.svg#i-logo-name"/></svg>
+  </a>
+
+  <div class="header__main">
+    <nav class="header__nav" aria-label="Основное меню">
+      <ul class="header__menu">
+        <li class="header__item" data-js="dropdown">
+          <button class="header__link t-nav" type="button" aria-expanded="false" aria-controls="header-sub-about">О центре<svg class="icon header__chevron" aria-hidden="true"><use href="assets/icons/sprite.svg#i-chevron-down"/></svg></button>
+          <ul class="header__sub" id="header-sub-about" hidden>
+            <li><a class="header__sublink t-nav" href="#">История центра</a></li>
+            <li><a class="header__sublink t-nav" href="#">Написать руководству</a></li>
+            <li><a class="header__sublink t-nav" href="#">Команда</a></li>
+          </ul>
+        </li>
+        <li class="header__item" data-js="dropdown">
+          <button class="header__link t-nav" type="button" aria-expanded="false" aria-controls="header-sub-services">Сервисы<svg class="icon header__chevron" aria-hidden="true"><use href="assets/icons/sprite.svg#i-chevron-down"/></svg></button>
+          <ul class="header__sub" id="header-sub-services" hidden>
+            <li><a class="header__sublink t-nav" href="#">Аптека «Медис»</a></li>
+            <li><a class="header__sublink t-nav" href="#">Салон оптики</a></li>
+            <li><a class="header__sublink t-nav" href="#">Личный кабинет</a></li>
+          </ul>
+        </li>
+        <li class="header__item" data-js="dropdown">
+          <button class="header__link t-nav" type="button" aria-expanded="false" aria-controls="header-sub-directions">Направления<svg class="icon header__chevron" aria-hidden="true"><use href="assets/icons/sprite.svg#i-chevron-down"/></svg></button>
+          <ul class="header__sub" id="header-sub-directions" hidden>
+            <li><a class="header__sublink t-nav" href="#">Взрослым</a></li>
+            <li><a class="header__sublink t-nav" href="#">Детям</a></li>
+            <li><a class="header__sublink t-nav" href="#">Диагностика</a></li>
+            <li><a class="header__sublink t-nav" href="#">Анализы</a></li>
+            <li><a class="header__sublink t-nav" href="#">Операции</a></li>
+          </ul>
+        </li>
+        <li class="header__item" data-js="dropdown">
+          <button class="header__link t-nav" type="button" aria-expanded="false" aria-controls="header-sub-centers">Центры компетенций<svg class="icon header__chevron" aria-hidden="true"><use href="assets/icons/sprite.svg#i-chevron-down"/></svg></button>
+          <ul class="header__sub" id="header-sub-centers" hidden>
+            <li><a class="header__sublink t-nav" href="#">Многопрофильный центр</a></li>
+            <li><a class="header__sublink t-nav" href="#">Офтальмологический центр</a></li>
+            <li><a class="header__sublink t-nav" href="#">Центр гинекологии</a></li>
+            <li><a class="header__sublink t-nav" href="#">Стоматологический центр</a></li>
+            <li><a class="header__sublink t-nav" href="#">Хирургический центр</a></li>
+            <li><a class="header__sublink t-nav" href="#">Косметология</a></li>
+          </ul>
+        </li>
+        <li class="header__item"><a class="header__link t-nav" href="#">Второе мнение</a></li>
+        <li class="header__item" data-js="dropdown">
+          <button class="header__link t-nav" type="button" aria-expanded="false" aria-controls="header-sub-media">Медиа<svg class="icon header__chevron" aria-hidden="true"><use href="assets/icons/sprite.svg#i-chevron-down"/></svg></button>
+          <ul class="header__sub" id="header-sub-media" hidden>
+            <li><a class="header__sublink t-nav" href="#">Подкасты</a></li>
+            <li><a class="header__sublink t-nav" href="#">Статьи</a></li>
+            <li><a class="header__sublink t-nav" href="#">Новости</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <ul class="header__tags" aria-label="Популярные темы">
+      <li><a class="tag header__tag" href="#">#репродукция</a></li>
+      <li><a class="tag header__tag" href="#">#стоматология</a></li>
+      <li><a class="tag header__tag" href="#">#атлас_здоровья</a></li>
+    </ul>
+  </div>
+
+  <div class="header__contacts">
+    <div class="header__pair">
+      <a class="header__pair-main t-phone" href="tel:88009876754">8&nbsp;800&nbsp;987&nbsp;67&nbsp;54</a>
+      <button class="header__pair-sub" type="button" data-sheet-open="call-sheet">Заказать звонок</button>
+    </div>
+    <button class="header__pair header__pair--booking" type="button" data-sheet-open="booking-sheet">
+      <span class="header__pair-main t-phone">Записаться</span>
+      <span class="header__pair-sub">На приём в ЦЭМ</span>
+    </button>
+  </div>
+
+  <div class="header__mobile">
+    <div class="header__call">
+      <button class="header__call-sub" type="button" data-sheet-open="call-sheet">Заказать звонок</button>
+      <a class="header__call-phone t-phone" href="tel:88009876754">8&nbsp;800&nbsp;987&nbsp;67&nbsp;54</a>
+    </div>
+    <a class="header__round" href="tel:88009876754" aria-label="Позвонить: 8 800 987 67 54"><svg class="icon header__round-phone" aria-hidden="true"><use href="assets/icons/sprite.svg#i-phone"/></svg></a>
+    <button class="header__round" type="button" data-sheet-open="menu-sheet" aria-haspopup="dialog" aria-expanded="false" aria-label="Открыть меню"><svg class="icon header__round-menu" aria-hidden="true"><use href="assets/icons/sprite.svg#i-menu"/></svg></button>
+  </div>
+</header>
+  <div class="page">
+    <nav class="rail" data-block="rail" aria-label="Быстрые ссылки">
+  <div class="rail__inner">
+    <div class="rail__top">
+      <button class="rail__search" type="button" data-sheet-open="search-sheet" aria-haspopup="dialog" aria-expanded="false" aria-label="Поиск по сайту"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-search"/></svg></button>
+      <ul class="rail__links">
+        <li><a class="rail__link t-nav" href="#promos">Акции</a></li>
+        <li><a class="rail__link t-nav" href="#">Отзывы</a></li>
+        <li><a class="rail__link t-nav" href="#contacts">Контакты</a></li>
+      </ul>
+    </div>
+    <ul class="rail__socials" aria-label="Мы в соцсетях">
+      <li><a class="rail__social" href="#" aria-label="3D-тур по центру"><svg class="icon rail__ic-3d" aria-hidden="true"><use href="assets/icons/sprite.svg#i-soc-3d"/></svg></a></li>
+      <li><a class="rail__social" href="#" aria-label="ВКонтакте"><svg class="icon rail__ic-vk" aria-hidden="true"><use href="assets/icons/sprite.svg#i-soc-vk"/></svg></a></li>
+      <li><a class="rail__social" href="#" aria-label="Rutube"><svg class="icon rail__ic-rutube" aria-hidden="true"><use href="assets/icons/sprite.svg#i-soc-rutube"/></svg></a></li>
+      <li><a class="rail__social" href="#" aria-label="VK Видео"><svg class="icon rail__ic-vkvideo" aria-hidden="true"><use href="assets/icons/sprite.svg#i-soc-vkvideo"/></svg></a></li>
+      <li><a class="rail__social" href="#" aria-label="MAX"><img class="rail__ic-max" src="assets/img/social-max.png" alt="" width="18" height="18" loading="lazy"></a></li>
+    </ul>
+  </div>
+</nav>
+    <main class="page__main" id="main">
+      <div class="row row--split">
+        <div class="row__main">
+          <section class="hero" data-block="hero" aria-labelledby="hero-title">
+  <div class="hero__media">
+    <picture>
+      <source media="(min-width: 1050px)" srcset="assets/img/hero-desktop-453.webp 453w, assets/img/hero-desktop-906.webp 906w, assets/img/hero-desktop-1359.webp 1359w" sizes="(min-width: 1280px) 46vw, 50vw">
+      <img class="hero__img" src="assets/img/hero-mobile-375.webp" srcset="assets/img/hero-mobile-375.webp 375w, assets/img/hero-mobile-750.webp 750w, assets/img/hero-mobile-1125.webp 1125w" sizes="100vw" width="375" height="374" alt="Здание Центра экспертной медицины" fetchpriority="high">
+    </picture>
+    <button class="hero__play" type="button" data-sheet-open="video-sheet" aria-label="Смотреть видео о центре">
+      <svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-play"/></svg>
+    </button>
+  </div>
+  <div class="hero__body">
+    <h1 class="hero__title t-display" id="hero-title">Центр экспертной медицины</h1>
+    <p class="hero__lead t-lead">Один из крупнейших частных медицинских центров <br class="only-desktop">Санкт-Петербурга, площадь 8610&nbsp;м2</p>
+    <a class="btn btn--primary btn--xl hero__cta" href="#booking" data-sheet-open="booking-sheet">Записаться на приём</a>
+  </div>
+</section>
+          <section class="directions" data-block="directions" aria-labelledby="dir-title">
+  <h2 class="visually-hidden" id="dir-title">Направления, диагностика, анализы и операции</h2>
+  <div class="directions__grid" data-directions>
+    <div class="directions__item" data-dir-item style="--tile: var(--g-stat-xl); --icon-bg: var(--g-tile-peach)">
+      <button class="directions__tab directions__tab--therapy" type="button" id="dir-tab-0" aria-controls="dir-p-0" aria-expanded="false">
+        <span class="directions__icon"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-dir-therapy"/></svg></span>
+        <span class="directions__label">Направления</span>
+        <svg class="icon directions__chev" aria-hidden="true"><use href="assets/icons/sprite.svg#i-chevron-down"/></svg>
+      </button>
+      <div class="directions__panel" id="dir-p-0" aria-labelledby="dir-tab-0" hidden>
+        <div class="segmented directions__seg" role="tablist" aria-label="Для кого" data-js="tabs">
+          <button class="segmented__item" type="button" role="tab" aria-selected="true" aria-controls="dir-0-adult" id="dir-0-adult-tab">Взрослым</button>
+          <button class="segmented__item" type="button" role="tab" aria-selected="false" aria-controls="dir-0-kids" id="dir-0-kids-tab">Детям</button>
+        </div>
+        <div class="directions__list-wrap" role="tabpanel" id="dir-0-adult" aria-labelledby="dir-0-adult-tab">
+          <ul class="directions__list" style="--rows: 7">
+            <li><a class="list-link" href="#"><span class="list-link__num">01</span><span class="list-link__text clamp-2">Акушерство и гинекология</span><svg class="icon list-link__arrow" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></a></li>
+            <li><a class="list-link" href="#"><span class="list-link__num">02</span><span class="list-link__text clamp-2">Аллергология</span><svg class="icon list-link__arrow" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></a></li>
+            <li><a class="list-link" href="#"><span class="list-link__num">03</span><span class="list-link__text clamp-2">Гастроэнтерология</span><svg class="icon list-link__arrow" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></a></li>
+            <li><a class="list-link" href="#"><span class="list-link__num">04</span><span class="list-link__text clamp-2">Генетика</span><svg class="icon list-link__arrow" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></a></li>
+            <li><a class="list-link" href="#"><span class="list-link__num">05</span><span class="list-link__text clamp-2">Дерматология</span><svg class="icon list-link__arrow" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></a></li>
+            <li><a class="list-link" href="#"><span class="list-link__num">19</span><span class="list-link__text clamp-2">Терапия</span><svg class="icon list-link__arrow" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></a></li>
+            <li><a class="list-link" href="#"><span class="list-link__num">22</span><span class="list-link__text clamp-2">Флебология</span><svg class="icon list-link__arrow" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></a></li>
+            <li><a class="list-link" href="#"><span class="list-link__num">07</span><span class="list-link__text clamp-2">Кардиология</span><svg class="icon list-link__arrow" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></a></li>
+            <li><a class="list-link" href="#"><span class="list-link__num">08</span><span class="list-link__text clamp-2">Логопедия</span><svg class="icon list-link__arrow" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></a></li>
+            <li><a class="list-link" href="#"><span class="list-link__num">09</span><span class="list-link__text clamp-2">Маммология</span><svg class="icon list-link__arrow" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></a></li>
+            <li><a class="list-link" href="#"><span class="list-link__num">10</span><span class="list-link__text clamp-2">Неврология</span><svg class="icon list-link__arrow" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></a></li>
+            <li><a class="list-link" href="#"><span class="list-link__num">11</span><span class="list-link__text clamp-2">Нейропсихология</span><svg class="icon list-link__arrow" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></a></li>
+            <li><a class="list-link" href="#"><span class="list-link__num">20</span><span class="list-link__text clamp-2">Травматология</span><svg class="icon list-link__arrow" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></a></li>
+            <li><a class="list-link" href="#"><span class="list-link__num">23</span><span class="list-link__text clamp-2">Хирургия</span><svg class="icon list-link__arrow" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></a></li>
+            <li><a class="list-link" href="#"><span class="list-link__num">13</span><span class="list-link__text clamp-2">Офтальмология</span><svg class="icon list-link__arrow" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></a></li>
+            <li><a class="list-link" href="#"><span class="list-link__num">14</span><span class="list-link__text clamp-2">Педиатрия</span><svg class="icon list-link__arrow" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></a></li>
+            <li><a class="list-link" href="#"><span class="list-link__num">15</span><span class="list-link__text clamp-2">Проктология</span><svg class="icon list-link__arrow" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></a></li>
+            <li><a class="list-link" href="#"><span class="list-link__num">16</span><span class="list-link__text clamp-2">Психология</span><svg class="icon list-link__arrow" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></a></li>
+            <li><a class="list-link" href="#"><span class="list-link__num">17</span><span class="list-link__text clamp-2">Психотерапия</span><svg class="icon list-link__arrow" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></a></li>
+            <li><a class="list-link" href="#"><span class="list-link__num">21</span><span class="list-link__text clamp-2">Урология</span><svg class="icon list-link__arrow" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></a></li>
+          </ul>
+        </div>
+        <div class="directions__list-wrap" role="tabpanel" id="dir-0-kids" aria-labelledby="dir-0-kids-tab" hidden>
+          <p class="directions__stub t-body">Список направлений для детей готовится.</p><!-- ЗАГЛУШКА: в макете нет списка «Детям», Q-directions-3 -->
+        </div>
+      </div>
+    </div>
+    <div class="directions__item" data-dir-item style="--tile: var(--g-tile-violet); --icon-bg: var(--g-tile-violet)">
+      <button class="directions__tab directions__tab--diagnostics" type="button" id="dir-tab-1" aria-controls="dir-p-1" aria-expanded="false">
+        <span class="directions__icon"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-dir-diagnostics"/></svg></span>
+        <span class="directions__label">Диагностика</span>
+        <svg class="icon directions__chev" aria-hidden="true"><use href="assets/icons/sprite.svg#i-chevron-down"/></svg>
+      </button>
+      <div class="directions__panel" id="dir-p-1" aria-labelledby="dir-tab-1" hidden>
+        <p class="directions__stub t-body">Раздел «Диагностика» готовится.</p><!-- ЗАГЛУШКА: содержимое вкладки в макете не нарисовано, Q-directions-1 -->
+      </div>
+    </div>
+    <div class="directions__item" data-dir-item style="--tile: var(--g-tile-aqua); --icon-bg: var(--g-tile-aqua)">
+      <button class="directions__tab directions__tab--tests" type="button" id="dir-tab-2" aria-controls="dir-p-2" aria-expanded="false">
+        <span class="directions__icon"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-dir-tests"/></svg></span>
+        <span class="directions__label">Анализы</span>
+        <svg class="icon directions__chev" aria-hidden="true"><use href="assets/icons/sprite.svg#i-chevron-down"/></svg>
+      </button>
+      <div class="directions__panel" id="dir-p-2" aria-labelledby="dir-tab-2" hidden>
+        <p class="directions__stub t-body">Раздел «Анализы» готовится.</p><!-- ЗАГЛУШКА: содержимое вкладки в макете не нарисовано, Q-directions-1 -->
+      </div>
+    </div>
+    <div class="directions__item" data-dir-item style="--tile: var(--g-tile-orchid); --icon-bg: var(--g-tile-orchid)">
+      <button class="directions__tab directions__tab--surgery" type="button" id="dir-tab-3" aria-controls="dir-p-3" aria-expanded="false">
+        <span class="directions__icon"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-dir-surgery"/></svg></span>
+        <span class="directions__label">Операции</span>
+        <svg class="icon directions__chev" aria-hidden="true"><use href="assets/icons/sprite.svg#i-chevron-down"/></svg>
+      </button>
+      <div class="directions__panel" id="dir-p-3" aria-labelledby="dir-tab-3" hidden>
+        <p class="directions__stub t-body">Раздел «Операции» готовится.</p><!-- ЗАГЛУШКА: содержимое вкладки в макете не нарисовано, Q-directions-1 -->
+      </div>
+    </div>
+  </div>
+</section>
+          <section class="infra-intro" data-block="infra-intro" aria-labelledby="infra-intro-title">
+  <p class="infra-intro__overline t-overline">Инфраструктура<br class="only-narrow"> центра</p>
+  <h2 class="infra-intro__statement t-statement" id="infra-intro-title"><span class="infra-intro__accent">ЦЭМ – один из крупнейших частных медицинских</span> <span class="infra-intro__ghost">центров <span class="infra-intro__nowrap">Санкт-Петербурга</span></span></h2>
+  <ul class="infra-intro__stats">
+    <li class="infra-intro__stat"><span class="infra-intro__val t-stat">5   этажей</span></li>
+    <li class="infra-intro__stat infra-intro__stat--xl">
+      <span class="infra-intro__ico"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-expand"/></svg></span>
+      <span class="infra-intro__val t-stat-xl">8160 м<sup class="infra-intro__sup">2</sup></span>
+    </li>
+    <li class="infra-intro__stat"><span class="infra-intro__val t-stat">12   клиник</span></li>
+  </ul>
+</section>
+        </div>
+        <aside class="row__aside">
+          <section class="podcasts media-feed" data-block="podcasts" aria-labelledby="podcasts-title">
+  <div class="section-head media-feed__head">
+    <h2 class="section-head__title t-h2" id="podcasts-title">Подкаст центра</h2>
+    <a class="section-head__link link" href="#podcasts"><span class="only-desktop">/ Все подкасты</span><span class="only-mobile">/ Слушать подкасты</span></a>
+  </div>
+  <div class="slider slider--bleed media-feed__slider" id="podcasts-slider" data-js="slider" aria-roledescription="карусель" aria-label="Подкаст центра">
+    <ul class="slider__track media-feed__list" tabindex="-1">
+      <li class="slider__slide media-feed__item">
+        <a class="media-card" href="#podcast-1">
+          <img class="media-card__img" src="assets/img/article-dentistry-320.webp" srcset="assets/img/article-dentistry-320.webp 320w, assets/img/article-dentistry-640.webp 640w" sizes="(min-width: 1280px) 289px, 304px" alt="" width="289" height="180" loading="lazy">
+          <span class="media-card__row"><span class="media-card__text clamp-2">Современная стоматология: проблемы детских зубов</span>
+            <svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></span>
+        </a>
+      </li>
+      <li class="slider__slide media-feed__item">
+        <a class="media-card" href="#podcast-2">
+          <img class="media-card__img" src="assets/img/article-cystitis-320.webp" srcset="assets/img/article-cystitis-320.webp 320w, assets/img/article-cystitis-640.webp 640w" sizes="(min-width: 1280px) 289px, 304px" alt="" width="289" height="180" loading="lazy">
+          <span class="media-card__row"><span class="media-card__text clamp-2">«Я привыкла»: правда о циститах и недержании мочи</span>
+            <svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></span>
+        </a>
+      </li>
+    </ul>
+    <div class="dots slider__dots" data-slider-dots></div>
+  </div>
+</section>
+          <section class="centers-list" data-block="centers-list" aria-labelledby="centers-list-title">
+  <h2 class="centers-list__title t-h2" id="centers-list-title">Центры компетенций</h2>
+  <ul class="centers-list__items">
+    <li><a class="card-link centers-list__card" href="#"><span class="card-link__text clamp-2">Многопрофильный центр</span><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></a></li>
+    <li><a class="card-link centers-list__card" href="#"><span class="card-link__text clamp-2">Офтальмологический центр</span><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></a></li>
+    <li><a class="card-link centers-list__card" href="#"><span class="card-link__text clamp-2">Центр гинекологии</span><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></a></li>
+    <li><a class="card-link centers-list__card" href="#"><span class="card-link__text clamp-2">Стоматологический центр</span><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></a></li>
+    <li><a class="card-link centers-list__card" href="#"><span class="card-link__text clamp-2">Хирургический центр</span><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></a></li>
+    <li><a class="card-link centers-list__card" href="#"><span class="card-link__text clamp-2">Косметология</span><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></a></li>
+  </ul>
+  <a class="btn btn--primary btn--block centers-list__all" href="#">Смотреть все центры</a>
+</section>
+          <section class="about-card" data-block="about-card" aria-labelledby="about-card-title">
+  <h2 class="about-card__title t-title-xl" id="about-card-title">Подробнее про<br> «Центр Экспертной<br>Медицины»</h2>
+  <a class="link link--l about-card__link" href="#">Изучить Центр</a>
+</section>
+        </aside>
+      </div>
+      <div class="row row--wide">
+        <section class="infra" data-block="infra" aria-label="Объекты инфраструктуры центра" data-js="tabs">
+  <div class="infra__inner">
+    <ul class="infra__tabs" role="tablist" aria-orientation="vertical" aria-label="Объекты инфраструктуры">
+      <li role="presentation"><button class="infra__tab t-label-l" type="button" role="tab" id="infra-tab-0" aria-controls="infra-slide-0" aria-selected="true"><span class="infra__num">01</span><span class="infra__tab-text clamp-2">Центр МРТ</span></button></li>
+      <li role="presentation"><button class="infra__tab t-label-l" type="button" role="tab" id="infra-tab-1" aria-controls="infra-slide-1" aria-selected="false"><span class="infra__num">02</span><span class="infra__tab-text clamp-2">Центр забора анализов</span></button></li>
+      <li role="presentation"><button class="infra__tab t-label-l" type="button" role="tab" id="infra-tab-2" aria-controls="infra-slide-2" aria-selected="false"><span class="infra__num">03</span><span class="infra__tab-text clamp-2">Многопрофильные клиники</span></button></li>
+      <li role="presentation"><button class="infra__tab t-label-l" type="button" role="tab" id="infra-tab-3" aria-controls="infra-slide-3" aria-selected="false"><span class="infra__num">04</span><span class="infra__tab-text clamp-2">Специализированные клиники</span></button></li>
+      <li role="presentation"><button class="infra__tab t-label-l" type="button" role="tab" id="infra-tab-4" aria-controls="infra-slide-4" aria-selected="false"><span class="infra__num">05</span><span class="infra__tab-text clamp-2">Дополнительные сервисы</span></button></li>
+      <li role="presentation"><button class="infra__tab t-label-l" type="button" role="tab" id="infra-tab-5" aria-controls="infra-slide-5" aria-selected="false"><span class="infra__num">06</span><span class="infra__tab-text clamp-2">Комнаты матери и ребенка</span></button></li>
+      <li role="presentation"><button class="infra__tab t-label-l" type="button" role="tab" id="infra-tab-6" aria-controls="infra-slide-6" aria-selected="false"><span class="infra__num">07</span><span class="infra__tab-text clamp-2">Парковочные места</span></button></li>
+      <li role="presentation"><button class="infra__tab t-label-l" type="button" role="tab" id="infra-tab-7" aria-controls="infra-slide-7" aria-selected="false"><span class="infra__num">08</span><span class="infra__tab-text clamp-2">Зоны отдыха</span></button></li>
+      <li role="presentation"><button class="infra__tab t-label-l" type="button" role="tab" id="infra-tab-8" aria-controls="infra-slide-8" aria-selected="false"><span class="infra__num">09</span><span class="infra__tab-text clamp-2">Точки кофе и чая</span></button></li>
+      <li role="presentation"><button class="infra__tab t-label-l" type="button" role="tab" id="infra-tab-9" aria-controls="infra-slide-9" aria-selected="false"><span class="infra__num">10</span><span class="infra__tab-text clamp-2">Места для посадки в кафе</span></button></li>
+      <li role="presentation"><button class="infra__tab t-label-l" type="button" role="tab" id="infra-tab-10" aria-controls="infra-slide-10" aria-selected="false"><span class="infra__num">11</span><span class="infra__tab-text clamp-2">Детские зоны</span></button></li>
+    </ul>
+    <div class="slider infra__slider" id="infra-slider" data-js="slider" aria-roledescription="карусель" aria-label="Инфраструктура центра">
+      <div class="slider__track infra__track" tabindex="-1">
+        <div class="slider__slide infra__slide" role="tabpanel" id="infra-slide-0" aria-labelledby="infra-tab-0">
+          <img class="infra__img" src="assets/img/mri-960.webp" srcset="assets/img/mri-480.webp 480w, assets/img/mri-960.webp 960w, assets/img/mri-1254.webp 1254w" sizes="(min-width: 1440px) 831px, (min-width: 1050px) 60vw, 100vw" width="1254" height="1254" alt="Центр МРТ" loading="lazy">
+          <div class="infra__caption">
+            <span class="infra__big t-slide-num" aria-hidden="true">1</span>
+            <div class="infra__caption-body">
+              <h3 class="infra__name t-slide-title clamp-2">Центр МРТ</h3>
+              <p class="infra__text t-slide-text clamp-3">Здесь давайте напишем <br>еще какой-нибудь текст</p>
+            </div>
+          </div>
+        </div>
+        <div class="slider__slide infra__slide" role="tabpanel" id="infra-slide-1" aria-labelledby="infra-tab-1" hidden>
+          <img class="infra__img" src="assets/img/mri-960.webp" srcset="assets/img/mri-480.webp 480w, assets/img/mri-960.webp 960w, assets/img/mri-1254.webp 1254w" sizes="(min-width: 1440px) 831px, (min-width: 1050px) 60vw, 100vw" width="1254" height="1254" alt="Центр забора анализов" loading="lazy"><!-- ЗАГЛУШКА: фото слайда нет в макете, Q-infra-1 -->
+          <div class="infra__caption">
+            <span class="infra__big t-slide-num" aria-hidden="true">2</span>
+            <div class="infra__caption-body">
+              <h3 class="infra__name t-slide-title clamp-2">Центр забора анализов</h3>
+              <p class="infra__text t-slide-text clamp-3">Здесь давайте напишем <br>еще какой-нибудь текст</p><!-- ЗАГЛУШКА: текст слайда нет в макете, Q-infra-1 -->
+            </div>
+          </div>
+        </div>
+        <div class="slider__slide infra__slide" role="tabpanel" id="infra-slide-2" aria-labelledby="infra-tab-2" hidden>
+          <img class="infra__img" src="assets/img/mri-960.webp" srcset="assets/img/mri-480.webp 480w, assets/img/mri-960.webp 960w, assets/img/mri-1254.webp 1254w" sizes="(min-width: 1440px) 831px, (min-width: 1050px) 60vw, 100vw" width="1254" height="1254" alt="Многопрофильные клиники" loading="lazy"><!-- ЗАГЛУШКА: фото слайда нет в макете, Q-infra-1 -->
+          <div class="infra__caption">
+            <span class="infra__big t-slide-num" aria-hidden="true">3</span>
+            <div class="infra__caption-body">
+              <h3 class="infra__name t-slide-title clamp-2">Многопрофильные клиники</h3>
+              <p class="infra__text t-slide-text clamp-3">Здесь давайте напишем <br>еще какой-нибудь текст</p><!-- ЗАГЛУШКА: текст слайда нет в макете, Q-infra-1 -->
+            </div>
+          </div>
+        </div>
+        <div class="slider__slide infra__slide" role="tabpanel" id="infra-slide-3" aria-labelledby="infra-tab-3" hidden>
+          <img class="infra__img" src="assets/img/mri-960.webp" srcset="assets/img/mri-480.webp 480w, assets/img/mri-960.webp 960w, assets/img/mri-1254.webp 1254w" sizes="(min-width: 1440px) 831px, (min-width: 1050px) 60vw, 100vw" width="1254" height="1254" alt="Специализированные клиники" loading="lazy"><!-- ЗАГЛУШКА: фото слайда нет в макете, Q-infra-1 -->
+          <div class="infra__caption">
+            <span class="infra__big t-slide-num" aria-hidden="true">4</span>
+            <div class="infra__caption-body">
+              <h3 class="infra__name t-slide-title clamp-2">Специализированные клиники</h3>
+              <p class="infra__text t-slide-text clamp-3">Здесь давайте напишем <br>еще какой-нибудь текст</p><!-- ЗАГЛУШКА: текст слайда нет в макете, Q-infra-1 -->
+            </div>
+          </div>
+        </div>
+        <div class="slider__slide infra__slide" role="tabpanel" id="infra-slide-4" aria-labelledby="infra-tab-4" hidden>
+          <img class="infra__img" src="assets/img/mri-960.webp" srcset="assets/img/mri-480.webp 480w, assets/img/mri-960.webp 960w, assets/img/mri-1254.webp 1254w" sizes="(min-width: 1440px) 831px, (min-width: 1050px) 60vw, 100vw" width="1254" height="1254" alt="Дополнительные сервисы" loading="lazy"><!-- ЗАГЛУШКА: фото слайда нет в макете, Q-infra-1 -->
+          <div class="infra__caption">
+            <span class="infra__big t-slide-num" aria-hidden="true">5</span>
+            <div class="infra__caption-body">
+              <h3 class="infra__name t-slide-title clamp-2">Дополнительные сервисы</h3>
+              <p class="infra__text t-slide-text clamp-3">Здесь давайте напишем <br>еще какой-нибудь текст</p><!-- ЗАГЛУШКА: текст слайда нет в макете, Q-infra-1 -->
+            </div>
+          </div>
+        </div>
+        <div class="slider__slide infra__slide" role="tabpanel" id="infra-slide-5" aria-labelledby="infra-tab-5" hidden>
+          <img class="infra__img" src="assets/img/mri-960.webp" srcset="assets/img/mri-480.webp 480w, assets/img/mri-960.webp 960w, assets/img/mri-1254.webp 1254w" sizes="(min-width: 1440px) 831px, (min-width: 1050px) 60vw, 100vw" width="1254" height="1254" alt="Комнаты матери и ребенка" loading="lazy"><!-- ЗАГЛУШКА: фото слайда нет в макете, Q-infra-1 -->
+          <div class="infra__caption">
+            <span class="infra__big t-slide-num" aria-hidden="true">6</span>
+            <div class="infra__caption-body">
+              <h3 class="infra__name t-slide-title clamp-2">Комнаты матери и ребенка</h3>
+              <p class="infra__text t-slide-text clamp-3">Здесь давайте напишем <br>еще какой-нибудь текст</p><!-- ЗАГЛУШКА: текст слайда нет в макете, Q-infra-1 -->
+            </div>
+          </div>
+        </div>
+        <div class="slider__slide infra__slide" role="tabpanel" id="infra-slide-6" aria-labelledby="infra-tab-6" hidden>
+          <img class="infra__img" src="assets/img/mri-960.webp" srcset="assets/img/mri-480.webp 480w, assets/img/mri-960.webp 960w, assets/img/mri-1254.webp 1254w" sizes="(min-width: 1440px) 831px, (min-width: 1050px) 60vw, 100vw" width="1254" height="1254" alt="Парковочные места" loading="lazy"><!-- ЗАГЛУШКА: фото слайда нет в макете, Q-infra-1 -->
+          <div class="infra__caption">
+            <span class="infra__big t-slide-num" aria-hidden="true">7</span>
+            <div class="infra__caption-body">
+              <h3 class="infra__name t-slide-title clamp-2">Парковочные места</h3>
+              <p class="infra__text t-slide-text clamp-3">Здесь давайте напишем <br>еще какой-нибудь текст</p><!-- ЗАГЛУШКА: текст слайда нет в макете, Q-infra-1 -->
+            </div>
+          </div>
+        </div>
+        <div class="slider__slide infra__slide" role="tabpanel" id="infra-slide-7" aria-labelledby="infra-tab-7" hidden>
+          <img class="infra__img" src="assets/img/mri-960.webp" srcset="assets/img/mri-480.webp 480w, assets/img/mri-960.webp 960w, assets/img/mri-1254.webp 1254w" sizes="(min-width: 1440px) 831px, (min-width: 1050px) 60vw, 100vw" width="1254" height="1254" alt="Зоны отдыха" loading="lazy"><!-- ЗАГЛУШКА: фото слайда нет в макете, Q-infra-1 -->
+          <div class="infra__caption">
+            <span class="infra__big t-slide-num" aria-hidden="true">8</span>
+            <div class="infra__caption-body">
+              <h3 class="infra__name t-slide-title clamp-2">Зоны отдыха</h3>
+              <p class="infra__text t-slide-text clamp-3">Здесь давайте напишем <br>еще какой-нибудь текст</p><!-- ЗАГЛУШКА: текст слайда нет в макете, Q-infra-1 -->
+            </div>
+          </div>
+        </div>
+        <div class="slider__slide infra__slide" role="tabpanel" id="infra-slide-8" aria-labelledby="infra-tab-8" hidden>
+          <img class="infra__img" src="assets/img/mri-960.webp" srcset="assets/img/mri-480.webp 480w, assets/img/mri-960.webp 960w, assets/img/mri-1254.webp 1254w" sizes="(min-width: 1440px) 831px, (min-width: 1050px) 60vw, 100vw" width="1254" height="1254" alt="Точки кофе и чая" loading="lazy"><!-- ЗАГЛУШКА: фото слайда нет в макете, Q-infra-1 -->
+          <div class="infra__caption">
+            <span class="infra__big t-slide-num" aria-hidden="true">9</span>
+            <div class="infra__caption-body">
+              <h3 class="infra__name t-slide-title clamp-2">Точки кофе и чая</h3>
+              <p class="infra__text t-slide-text clamp-3">Здесь давайте напишем <br>еще какой-нибудь текст</p><!-- ЗАГЛУШКА: текст слайда нет в макете, Q-infra-1 -->
+            </div>
+          </div>
+        </div>
+        <div class="slider__slide infra__slide" role="tabpanel" id="infra-slide-9" aria-labelledby="infra-tab-9" hidden>
+          <img class="infra__img" src="assets/img/mri-960.webp" srcset="assets/img/mri-480.webp 480w, assets/img/mri-960.webp 960w, assets/img/mri-1254.webp 1254w" sizes="(min-width: 1440px) 831px, (min-width: 1050px) 60vw, 100vw" width="1254" height="1254" alt="Места для посадки в кафе" loading="lazy"><!-- ЗАГЛУШКА: фото слайда нет в макете, Q-infra-1 -->
+          <div class="infra__caption">
+            <span class="infra__big t-slide-num" aria-hidden="true">10</span>
+            <div class="infra__caption-body">
+              <h3 class="infra__name t-slide-title clamp-2">Места для посадки в кафе</h3>
+              <p class="infra__text t-slide-text clamp-3">Здесь давайте напишем <br>еще какой-нибудь текст</p><!-- ЗАГЛУШКА: текст слайда нет в макете, Q-infra-1 -->
+            </div>
+          </div>
+        </div>
+        <div class="slider__slide infra__slide" role="tabpanel" id="infra-slide-10" aria-labelledby="infra-tab-10" hidden>
+          <img class="infra__img" src="assets/img/mri-960.webp" srcset="assets/img/mri-480.webp 480w, assets/img/mri-960.webp 960w, assets/img/mri-1254.webp 1254w" sizes="(min-width: 1440px) 831px, (min-width: 1050px) 60vw, 100vw" width="1254" height="1254" alt="Детские зоны" loading="lazy"><!-- ЗАГЛУШКА: фото слайда нет в макете, Q-infra-1 -->
+          <div class="infra__caption">
+            <span class="infra__big t-slide-num" aria-hidden="true">11</span>
+            <div class="infra__caption-body">
+              <h3 class="infra__name t-slide-title clamp-2">Детские зоны</h3>
+              <p class="infra__text t-slide-text clamp-3">Здесь давайте напишем <br>еще какой-нибудь текст</p><!-- ЗАГЛУШКА: текст слайда нет в макете, Q-infra-1 -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="dots slider__dots infra__dots" data-slider-dots></div>
+    </div>
+  </div>
+</section>
+      </div>
+      <div class="row row--split">
+        <div class="row__main">
+          <section class="features" data-block="features" aria-labelledby="features-title">
+  <h2 class="features__title t-h1" id="features-title">Чем мы <br class="only-narrow">отличаемся?</h2>
+  <div class="slider features__slider" id="features-slider" data-js="slider" aria-roledescription="карусель" aria-label="Чем мы отличаемся">
+    <ul class="slider__track features__list" tabindex="-1">
+      <li class="slider__slide features__item">
+        <picture>
+          <source media="(min-width: 1050px)" srcset="assets/img/feature-speed-252.webp 252w, assets/img/feature-speed-504.webp 504w" sizes="247px">
+          <img class="features__img" src="assets/img/feature-clinics-266.webp" srcset="assets/img/feature-clinics-266.webp 266w, assets/img/feature-clinics-532.webp 532w" sizes="266px" alt="" width="266" height="202" loading="lazy">
+        </picture>
+        <h3 class="features__name t-h2 clamp-1">Скорость и время</h3>
+        <p class="features__text t-body clamp-3">Мы ценим ваше время. Обращение в ЦЭМ позволяет сократить время от первого приема до лечения в 3 раза</p>
+      </li>
+      <li class="slider__slide features__item">
+        <img class="features__img" src="assets/img/feature-synergy-247.webp" srcset="assets/img/feature-synergy-247.webp 247w, assets/img/feature-synergy-494.webp 494w" sizes="266px" alt="" width="247" height="203" loading="lazy">
+        <h3 class="features__name t-h2 clamp-1">Синергия и скорость</h3>
+        <p class="features__text t-body clamp-3">Диагностика, назначения, лечение и консилиумы в одном месте</p>
+      </li>
+      <li class="slider__slide features__item">
+        <img class="features__img" src="assets/img/feature-expertise-247.webp" srcset="assets/img/feature-expertise-247.webp 247w, assets/img/feature-expertise-494.webp 494w" sizes="266px" alt="" width="247" height="203" loading="lazy">
+        <h3 class="features__name t-h2 clamp-1">Центры экспертиз</h3>
+        <p class="features__text t-body clamp-3">Многопрофильная клиника и узконаправленные центры экспертиз. У каждого свое направление</p>
+      </li>
+    </ul>
+    <div class="dots slider__dots" data-slider-dots></div>
+  </div>
+</section>
+        </div>
+        <aside class="row__aside">
+          <section class="articles media-feed" data-block="articles" aria-labelledby="articles-title">
+  <div class="section-head media-feed__head">
+    <h2 class="section-head__title t-h2" id="articles-title">Статьи</h2>
+    <a class="section-head__link link" href="#articles"><span class="only-desktop">/ Все статьи</span><span class="only-mobile">/ Смотреть статьи</span></a>
+  </div>
+  <div class="slider slider--bleed media-feed__slider" id="articles-slider" data-js="slider" aria-roledescription="карусель" aria-label="Статьи">
+    <ul class="slider__track media-feed__list" tabindex="-1">
+      <li class="slider__slide media-feed__item">
+        <a class="media-card" href="#article-1">
+          <img class="media-card__img" src="assets/img/article-dentistry-320.webp" srcset="assets/img/article-dentistry-320.webp 320w, assets/img/article-dentistry-640.webp 640w" sizes="(min-width: 1280px) 289px, 304px" alt="" width="289" height="180" loading="lazy">
+          <span class="media-card__row"><span class="media-card__text clamp-2">Современная стоматология: проблемы детских зубов</span>
+            <svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></span>
+        </a>
+      </li>
+      <li class="slider__slide media-feed__item">
+        <a class="media-card" href="#article-2">
+          <img class="media-card__img" src="assets/img/article-cystitis-320.webp" srcset="assets/img/article-cystitis-320.webp 320w, assets/img/article-cystitis-640.webp 640w" sizes="(min-width: 1280px) 289px, 304px" alt="" width="289" height="180" loading="lazy">
+          <span class="media-card__row"><span class="media-card__text clamp-2">«Я привыкла»: правда о циститах и недержании мочи</span>
+            <svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></span>
+        </a>
+      </li>
+    </ul>
+    <div class="dots slider__dots" data-slider-dots></div>
+  </div>
+</section>
+        </aside>
+      </div>
+      <div class="row row--wide row--rule-top">
+        <section class="centers" data-block="centers" aria-labelledby="centers-title">
+  <div class="section-head centers__head">
+    <h2 class="section-head__title t-h1" id="centers-title">Центры <br class="only-narrow">компетенций</h2>
+    <a class="section-head__link link only-desktop" href="/centers/">/ 20 Центров</a>
+    <div class="section-head__controls">
+      <button class="arrow-btn arrow-btn--prev" type="button" data-slider-prev="centers-slider" aria-label="Предыдущие центры">
+        <svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-chevron-left"/></svg></button>
+      <button class="arrow-btn arrow-btn--next" type="button" data-slider-next="centers-slider" aria-label="Следующие центры">
+        <svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-chevron-right"/></svg></button>
+    </div>
+  </div>
+
+  <div class="slider slider--shadow centers__slider" id="centers-slider" data-js="slider" aria-roledescription="карусель" aria-label="Центры компетенций">
+    <div class="slider__track">
+      <!-- карточка центра: повторяется для каждого центра (данные — из CMS) -->
+      <article class="slider__slide card center-card">
+        <div class="center-card__media">
+          <img class="center-card__img" src="assets/img/clinic-480.webp" srcset="assets/img/clinic-480.webp 480w, assets/img/clinic-960.webp 960w" sizes="(min-width: 1280px) 457px, 274px" width="457" height="300" alt="Ресепшен клиники «Три поколения»" loading="lazy">
+          <span class="center-card__logo only-desktop"><img src="assets/img/clinic-logo-160.webp" srcset="assets/img/clinic-logo-320.webp 2x" width="72" height="34" alt="Логотип клиники «Три поколения»" loading="lazy"></span>
+        </div>
+        <div class="center-card__info">
+          <div class="center-card__text">
+            <h3 class="center-card__title t-h3 clamp-2">«Три поколения» Клиника семейного здоровья</h3>
+            <p class="center-card__desc t-body-s clamp-3">Многопрофильная семейная клиника с хирургическим блоком</p>
+          </div>
+          <div class="center-card__staff only-desktop" aria-label="Специалистов в клинике: 20">
+            <span class="center-card__staff-label" aria-hidden="true">Специалисты<br>в клинике</span>
+            <span class="center-card__staff-row" aria-hidden="true">
+              <span class="center-card__staff-icon"><svg class="icon"><use href="assets/icons/sprite.svg#i-specialists"/></svg></span>
+              <span class="center-card__staff-num">20</span>
+            </span>
+          </div>
+        </div>
+        <div class="center-card__actions">
+          <a class="btn btn--primary btn--s center-card__cta" href="/centers/tri-pokoleniya/#booking">Записаться в клинику</a>
+          <a class="link-arrow center-card__more" href="/centers/tri-pokoleniya/"><span>Изучить центр</span><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></a>
+        </div>
+      </article>
+      <article class="slider__slide card center-card">
+        <div class="center-card__media">
+          <img class="center-card__img" src="assets/img/clinic-480.webp" srcset="assets/img/clinic-480.webp 480w, assets/img/clinic-960.webp 960w" sizes="(min-width: 1280px) 457px, 274px" width="457" height="300" alt="Ресепшен клиники «Три поколения»" loading="lazy">
+          <span class="center-card__logo only-desktop"><img src="assets/img/clinic-logo-160.webp" srcset="assets/img/clinic-logo-320.webp 2x" width="72" height="34" alt="Логотип клиники «Три поколения»" loading="lazy"></span>
+        </div>
+        <div class="center-card__info">
+          <div class="center-card__text">
+            <h3 class="center-card__title t-h3 clamp-2">«Три поколения» Клиника семейного здоровья</h3>
+            <p class="center-card__desc t-body-s clamp-3">Многопрофильная семейная клиника с хирургическим блоком</p>
+          </div>
+          <div class="center-card__staff only-desktop" aria-label="Специалистов в клинике: 20">
+            <span class="center-card__staff-label" aria-hidden="true">Специалисты<br>в клинике</span>
+            <span class="center-card__staff-row" aria-hidden="true">
+              <span class="center-card__staff-icon"><svg class="icon"><use href="assets/icons/sprite.svg#i-specialists"/></svg></span>
+              <span class="center-card__staff-num">20</span>
+            </span>
+          </div>
+        </div>
+        <div class="center-card__actions">
+          <a class="btn btn--primary btn--s center-card__cta" href="/centers/tri-pokoleniya/#booking">Записаться в клинику</a>
+          <a class="link-arrow center-card__more" href="/centers/tri-pokoleniya/"><span>Изучить центр</span><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></a>
+        </div>
+      </article>
+      <article class="slider__slide card center-card">
+        <div class="center-card__media">
+          <img class="center-card__img" src="assets/img/clinic-480.webp" srcset="assets/img/clinic-480.webp 480w, assets/img/clinic-960.webp 960w" sizes="(min-width: 1280px) 457px, 274px" width="457" height="300" alt="Ресепшен клиники «Три поколения»" loading="lazy">
+          <span class="center-card__logo only-desktop"><img src="assets/img/clinic-logo-160.webp" srcset="assets/img/clinic-logo-320.webp 2x" width="72" height="34" alt="Логотип клиники «Три поколения»" loading="lazy"></span>
+        </div>
+        <div class="center-card__info">
+          <div class="center-card__text">
+            <h3 class="center-card__title t-h3 clamp-2">«Три поколения» Клиника семейного здоровья</h3>
+            <p class="center-card__desc t-body-s clamp-3">Многопрофильная семейная клиника с хирургическим блоком</p>
+          </div>
+          <div class="center-card__staff only-desktop" aria-label="Специалистов в клинике: 20">
+            <span class="center-card__staff-label" aria-hidden="true">Специалисты<br>в клинике</span>
+            <span class="center-card__staff-row" aria-hidden="true">
+              <span class="center-card__staff-icon"><svg class="icon"><use href="assets/icons/sprite.svg#i-specialists"/></svg></span>
+              <span class="center-card__staff-num">20</span>
+            </span>
+          </div>
+        </div>
+        <div class="center-card__actions">
+          <a class="btn btn--primary btn--s center-card__cta" href="/centers/tri-pokoleniya/#booking">Записаться в клинику</a>
+          <a class="link-arrow center-card__more" href="/centers/tri-pokoleniya/"><span>Изучить центр</span><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></a>
+        </div>
+      </article>
+      <article class="slider__slide card center-card">
+        <div class="center-card__media">
+          <img class="center-card__img" src="assets/img/clinic-480.webp" srcset="assets/img/clinic-480.webp 480w, assets/img/clinic-960.webp 960w" sizes="(min-width: 1280px) 457px, 274px" width="457" height="300" alt="Ресепшен клиники «Три поколения»" loading="lazy">
+          <span class="center-card__logo only-desktop"><img src="assets/img/clinic-logo-160.webp" srcset="assets/img/clinic-logo-320.webp 2x" width="72" height="34" alt="Логотип клиники «Три поколения»" loading="lazy"></span>
+        </div>
+        <div class="center-card__info">
+          <div class="center-card__text">
+            <h3 class="center-card__title t-h3 clamp-2">«Три поколения» Клиника семейного здоровья</h3>
+            <p class="center-card__desc t-body-s clamp-3">Многопрофильная семейная клиника с хирургическим блоком</p>
+          </div>
+          <div class="center-card__staff only-desktop" aria-label="Специалистов в клинике: 20">
+            <span class="center-card__staff-label" aria-hidden="true">Специалисты<br>в клинике</span>
+            <span class="center-card__staff-row" aria-hidden="true">
+              <span class="center-card__staff-icon"><svg class="icon"><use href="assets/icons/sprite.svg#i-specialists"/></svg></span>
+              <span class="center-card__staff-num">20</span>
+            </span>
+          </div>
+        </div>
+        <div class="center-card__actions">
+          <a class="btn btn--primary btn--s center-card__cta" href="/centers/tri-pokoleniya/#booking">Записаться в клинику</a>
+          <a class="link-arrow center-card__more" href="/centers/tri-pokoleniya/"><span>Изучить центр</span><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></a>
+        </div>
+      </article>
+    </div>
+    <div class="dots slider__dots" data-slider-dots></div>
+  </div>
+
+  <a class="btn btn--primary btn--l centers__all" href="/centers/">Смотреть все центры</a>
+</section>
+      </div>
+      <div class="row row--split">
+        <div class="row__main">
+          <section class="booking" data-block="booking" id="booking" aria-labelledby="booking-title">
+  <div class="booking__panel">
+    <div class="booking__text">
+      <h2 class="booking__title t-h1" id="booking-title">Сделайте шаг на пути к&nbsp;здоровью</h2>
+      <p class="booking__subtitle t-lead-l">Запишитесь <br class="only-desktop">на прием в ЦЭМ</p>
+    </div>
+    <form class="booking__form" data-js="form" action="/api/booking" method="post" aria-labelledby="booking-title">
+      <input type="text" name="cem_hp" tabindex="-1" autocomplete="off" inert hidden aria-hidden="true">
+      <label class="field">
+        <span class="visually-hidden">Ваше имя</span>
+        <input class="field__input" type="text" name="name" placeholder="Ваше имя*" autocomplete="name" required>
+        <span class="field__error" aria-live="polite"></span>
+      </label>
+      <label class="field">
+        <span class="visually-hidden">Телефон</span>
+        <input class="field__input" type="tel" name="phone" placeholder="Телефон*" autocomplete="tel" inputmode="tel" required>
+        <span class="field__error" aria-live="polite"></span>
+      </label>
+      <label class="checkbox booking__consent">
+        <input type="checkbox" name="consent" required>
+        <span class="checkbox__box" aria-hidden="true"></span>
+        <span class="checkbox__text">Соглашаюсь на обработку <br class="only-narrow"><a class="link link--muted" href="/privacy/">Персональных данных</a></span>
+      </label>
+      <button class="btn btn--primary btn--f btn--block booking__submit" type="submit">Записаться на приём</button>
+    </form>
+  </div>
+</section>
+          <section class="cases" data-block="cases" aria-labelledby="cases-title">
+  <div class="section-head section-head--last cases__head">
+    <h2 class="section-head__title t-h1" id="cases-title">Сложные случаи<span class="only-mobile"> центра</span></h2>
+    <a class="section-head__link link" href="#cases">/ Смотреть все</a>
+    <div class="section-head__controls">
+      <button class="arrow-btn arrow-btn--prev" type="button" data-slider-prev="cases-slider" aria-label="Предыдущий случай"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-chevron-left"/></svg></button>
+      <button class="arrow-btn arrow-btn--next" type="button" data-slider-next="cases-slider" aria-label="Следующий случай"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-chevron-right"/></svg></button>
+    </div>
+  </div>
+  <div class="slider slider--bleed slider--shadow cases__slider" id="cases-slider" data-js="slider" aria-roledescription="карусель" aria-label="Сложные случаи">
+    <div class="slider__track" tabindex="-1">
+      <article class="slider__slide cases__card card">
+        <div class="cases__media">
+          <img class="cases__img" src="assets/img/case-bite-400.webp" srcset="assets/img/case-bite-400.webp 400w, assets/img/case-bite-800.webp 800w" sizes="(min-width: 1280px) 181px, 265px" width="265" height="194" alt="Пациентка до и после исправления прикуса" loading="lazy">
+          <span class="tag tag--green cases__tag">#стоматология</span>
+        </div>
+        <div class="cases__body">
+          <h3 class="cases__title t-title-m clamp-2"><a class="cases__link" href="#case-bite">Исправление <span class="only-mobile">мезиального </span><br class="only-desktop">прикуса у&nbsp;ребенка</a></h3>
+          <p class="cases__desc t-body clamp-3 only-desktop">Многопрофильная семейная клиника с&nbsp;хирургией</p>
+          <span class="cases__more link-arrow link-arrow--compact only-desktop" aria-hidden="true"><span>Читать</span><svg class="icon"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></span>
+          <svg class="icon cases__arrow only-mobile" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg>
+        </div>
+      </article>
+      <article class="slider__slide cases__card card">
+        <div class="cases__media">
+          <img class="cases__img" src="assets/img/case-bite-400.webp" srcset="assets/img/case-bite-400.webp 400w, assets/img/case-bite-800.webp 800w" sizes="(min-width: 1280px) 181px, 265px" width="265" height="194" alt="Пациентка до и после исправления прикуса" loading="lazy">
+          <span class="tag tag--green cases__tag">#стоматология</span>
+        </div>
+        <div class="cases__body">
+          <h3 class="cases__title t-title-m clamp-2"><a class="cases__link" href="#case-bite">Исправление <span class="only-mobile">мезиального </span><br class="only-desktop">прикуса у&nbsp;ребенка</a></h3>
+          <p class="cases__desc t-body clamp-3 only-desktop">Многопрофильная семейная клиника с&nbsp;хирургией</p>
+          <span class="cases__more link-arrow link-arrow--compact only-desktop" aria-hidden="true"><span>Читать</span><svg class="icon"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></span>
+          <svg class="icon cases__arrow only-mobile" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg>
+        </div>
+      </article>
+      <article class="slider__slide cases__card card">
+        <div class="cases__media">
+          <img class="cases__img" src="assets/img/case-bite-400.webp" srcset="assets/img/case-bite-400.webp 400w, assets/img/case-bite-800.webp 800w" sizes="(min-width: 1280px) 181px, 265px" width="265" height="194" alt="Пациентка до и после исправления прикуса" loading="lazy">
+          <span class="tag tag--green cases__tag">#стоматология</span>
+        </div>
+        <div class="cases__body">
+          <h3 class="cases__title t-title-m clamp-2"><a class="cases__link" href="#case-bite">Исправление <span class="only-mobile">мезиального </span><br class="only-desktop">прикуса у&nbsp;ребенка</a></h3>
+          <p class="cases__desc t-body clamp-3 only-desktop">Многопрофильная семейная клиника с&nbsp;хирургией</p>
+          <span class="cases__more link-arrow link-arrow--compact only-desktop" aria-hidden="true"><span>Читать</span><svg class="icon"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></span>
+          <svg class="icon cases__arrow only-mobile" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg>
+        </div>
+      </article>
+      <article class="slider__slide cases__card card">
+        <div class="cases__media">
+          <img class="cases__img" src="assets/img/case-bite-400.webp" srcset="assets/img/case-bite-400.webp 400w, assets/img/case-bite-800.webp 800w" sizes="(min-width: 1280px) 181px, 265px" width="265" height="194" alt="Пациентка до и после исправления прикуса" loading="lazy">
+          <span class="tag tag--green cases__tag">#стоматология</span>
+        </div>
+        <div class="cases__body">
+          <h3 class="cases__title t-title-m clamp-2"><a class="cases__link" href="#case-bite">Исправление <span class="only-mobile">мезиального </span><br class="only-desktop">прикуса у&nbsp;ребенка</a></h3>
+          <p class="cases__desc t-body clamp-3 only-desktop">Многопрофильная семейная клиника с&nbsp;хирургией</p>
+          <span class="cases__more link-arrow link-arrow--compact only-desktop" aria-hidden="true"><span>Читать</span><svg class="icon"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></span>
+          <svg class="icon cases__arrow only-mobile" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg>
+        </div>
+      </article>
+    </div>
+    <div class="dots slider__dots" data-slider-dots></div>
+  </div>
+</section>
+          <section class="services only-mobile" data-block="services" aria-labelledby="services-title">
+  <div class="section-head services__head">
+    <h2 class="section-head__title t-h1" id="services-title">Наши сервисы</h2>
+    <a class="section-head__link link" href="#services">/ Смотреть все</a>
+  </div>
+  <div class="slider slider--bleed slider--shadow services__slider" id="services-slider" data-js="slider" aria-roledescription="карусель" aria-label="Наши сервисы">
+    <ul class="slider__track services__list" tabindex="-1">
+      <li class="slider__slide">
+        <a class="card services__card" href="#service-pharmacy">
+          <span class="services__media">
+            <img class="services__img" src="assets/img/service-pharmacy-339.webp" srcset="assets/img/service-pharmacy-339.webp 339w, assets/img/service-pharmacy-678.webp 678w" sizes="265px" alt="" width="265" height="195" loading="lazy">
+            <span class="tag tag--blue services__tag">#аптека</span>
+          </span>
+          <span class="services__name">Аптека «Медис»</span>
+          <span class="services__text t-body">Полный ассортимент рецептурных и безрецептурных препаратов. Скидка 5% для пациентов кластера по карте ЦЭМ. Принимает электронные рецепты.</span>
+          <span class="services__foot">
+            <span class="services__place"><span class="services__pin"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-pin"/></svg></span>Правое крыло, 1 Этаж</span>
+            <svg class="icon services__arrow" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg>
+          </span>
+        </a>
+      </li>
+      <li class="slider__slide">
+        <!-- Q-services-1: в Figma вторая карточка — копия первой; тексты «Салона оптики» — заглушка до контента -->
+        <a class="card services__card" href="#service-optics">
+          <span class="services__media">
+            <img class="services__img" src="assets/img/service-optics-274.webp" srcset="assets/img/service-optics-274.webp 274w, assets/img/service-optics-547.webp 547w" sizes="265px" alt="" width="265" height="195" loading="lazy">
+            <span class="tag tag--blue services__tag">#оптика</span>
+          </span>
+          <span class="services__name">Салон оптики</span>
+          <span class="services__text t-body">Проверка зрения, подбор очков и контактных линз.</span>
+          <span class="services__foot">
+            <span class="services__place"><span class="services__pin"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-pin"/></svg></span>Правое крыло, 1 Этаж</span>
+            <svg class="icon services__arrow" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg>
+          </span>
+        </a>
+      </li>
+    </ul>
+    <div class="dots slider__dots" data-slider-dots></div>
+  </div>
+</section>
+          <section class="faq" data-block="faq" aria-labelledby="faq-title">
+  <h2 class="faq__title t-h1" id="faq-title">Вопрос / Ответ</h2>
+  <a class="faq__docs btn btn--primary btn--m" href="#documents">Документация</a>
+  <div class="faq__controls">
+    <button class="arrow-btn arrow-btn--prev" type="button" data-faq-prev aria-controls="faq-list" aria-label="Предыдущие вопросы"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-chevron-left"/></svg></button>
+    <button class="arrow-btn arrow-btn--next" type="button" data-faq-next aria-controls="faq-list" aria-label="Следующие вопросы"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-chevron-right"/></svg></button>
+  </div>
+  <div class="faq__list" id="faq-list" data-js="accordion" data-single data-per-page="4">
+    <div class="faq__item" data-acc-item>
+      <h3 class="faq__q">
+        <button class="faq__toggle" type="button" aria-expanded="false" aria-controls="faq-a1" id="faq-q1">
+          <span class="faq__q-text t-title clamp-3">Как остановить кариес молочных зубов?</span>
+          <span class="chevron-btn faq__chevron" aria-hidden="true"><svg class="icon"><use href="assets/icons/sprite.svg#i-faq-chevron"/></svg></span>
+        </button>
+      </h3>
+      <div class="faq__a t-body" id="faq-a1" role="region" aria-labelledby="faq-q1" hidden><p>Текст ответа на вопрос. Ответы в макете не нарисованы — содержание задаёт редактор, длина не ограничена.</p></div>
+    </div>
+    <div class="faq__item" data-acc-item>
+      <h3 class="faq__q">
+        <button class="faq__toggle" type="button" aria-expanded="false" aria-controls="faq-a2" id="faq-q2">
+          <span class="faq__q-text t-title clamp-3">Как остановить кариес молочных зубов?</span>
+          <span class="chevron-btn faq__chevron" aria-hidden="true"><svg class="icon"><use href="assets/icons/sprite.svg#i-faq-chevron"/></svg></span>
+        </button>
+      </h3>
+      <div class="faq__a t-body" id="faq-a2" role="region" aria-labelledby="faq-q2" hidden><p>Текст ответа на вопрос. Ответы в макете не нарисованы — содержание задаёт редактор, длина не ограничена.</p></div>
+    </div>
+    <div class="faq__item" data-acc-item>
+      <h3 class="faq__q">
+        <button class="faq__toggle" type="button" aria-expanded="false" aria-controls="faq-a3" id="faq-q3">
+          <span class="faq__q-text t-title clamp-3">Как остановить кариес молочных зубов?</span>
+          <span class="chevron-btn faq__chevron" aria-hidden="true"><svg class="icon"><use href="assets/icons/sprite.svg#i-faq-chevron"/></svg></span>
+        </button>
+      </h3>
+      <div class="faq__a t-body" id="faq-a3" role="region" aria-labelledby="faq-q3" hidden><p>Текст ответа на вопрос. Ответы в макете не нарисованы — содержание задаёт редактор, длина не ограничена.</p></div>
+    </div>
+    <div class="faq__item" data-acc-item>
+      <h3 class="faq__q">
+        <button class="faq__toggle" type="button" aria-expanded="false" aria-controls="faq-a4" id="faq-q4">
+          <span class="faq__q-text t-title clamp-3">Как остановить кариес молочных зубов?</span>
+          <span class="chevron-btn faq__chevron" aria-hidden="true"><svg class="icon"><use href="assets/icons/sprite.svg#i-faq-chevron"/></svg></span>
+        </button>
+      </h3>
+      <div class="faq__a t-body" id="faq-a4" role="region" aria-labelledby="faq-q4" hidden><p>Текст ответа на вопрос. Ответы в макете не нарисованы — содержание задаёт редактор, длина не ограничена.</p></div>
+    </div>
+    <div class="faq__item" data-acc-item>
+      <h3 class="faq__q">
+        <button class="faq__toggle" type="button" aria-expanded="false" aria-controls="faq-a5" id="faq-q5">
+          <span class="faq__q-text t-title clamp-3">Как остановить кариес молочных зубов?</span>
+          <span class="chevron-btn faq__chevron" aria-hidden="true"><svg class="icon"><use href="assets/icons/sprite.svg#i-faq-chevron"/></svg></span>
+        </button>
+      </h3>
+      <div class="faq__a t-body" id="faq-a5" role="region" aria-labelledby="faq-q5" hidden><p>Текст ответа на вопрос. Ответы в макете не нарисованы — содержание задаёт редактор, длина не ограничена.</p></div>
+    </div>
+  </div>
+</section>
+        </div>
+        <aside class="row__aside">          <!-- в макете «Новости» идут сразу под «Акциями» (4057), а не от верха «Кейсов» (4067) -->
+          <section class="promos" data-block="promos" aria-labelledby="promos-title">
+  <div class="section-head promos__head">
+    <h2 class="section-head__title t-h2" id="promos-title">Акции</h2>
+    <a class="section-head__link link" href="#promos">/ Больше акций</a>
+  </div>
+  <div class="slider slider--bleed promos__slider" id="promos-slider" data-js="slider" aria-roledescription="карусель" aria-label="Акции">
+    <ul class="slider__track promos__list" tabindex="-1">
+      <li class="slider__slide promos__item">
+        <a class="promos__banner" href="#promo-20">
+          <picture>
+            <source media="(min-width: 1280px)" srcset="assets/img/promo-20-288.webp 288w, assets/img/promo-20-576.webp 576w" sizes="288px">
+            <img class="promos__img" src="assets/img/promo-20-m-306.webp" srcset="assets/img/promo-20-m-306.webp 306w, assets/img/promo-20-m-612.webp 612w" sizes="306px" width="306" height="163" alt="−20% на все анализы до 21.10.2026. Участвовать" loading="lazy">
+          </picture>
+        </a>
+      </li>
+      <li class="slider__slide promos__item">
+        <a class="promos__banner" href="#promo-35">
+          <picture>
+            <source media="(min-width: 1280px)" srcset="assets/img/promo-35-288.webp 288w, assets/img/promo-35-576.webp 576w" sizes="288px">
+            <img class="promos__img" src="assets/img/promo-35-m-306.webp" srcset="assets/img/promo-35-m-306.webp 306w, assets/img/promo-35-m-612.webp 612w" sizes="306px" width="306" height="163" alt="−35% на все анализы до 21.10.2026. Участвовать" loading="lazy">
+          </picture>
+        </a>
+      </li>
+    </ul>
+    <div class="dots slider__dots" data-slider-dots></div>
+  </div>
+</section>
+          <section class="news media-feed" data-block="news" aria-labelledby="news-title">
+  <div class="section-head media-feed__head">
+    <h2 class="section-head__title t-h2" id="news-title">Новости</h2>
+    <a class="section-head__link link" href="#news"><span class="only-desktop">/ Все новости</span><span class="only-mobile">/ Читать новости</span></a>
+  </div>
+  <div class="slider slider--bleed media-feed__slider" id="news-slider" data-js="slider" aria-roledescription="карусель" aria-label="Новости">
+    <ul class="slider__track media-feed__list" tabindex="-1">
+      <li class="slider__slide media-feed__item">
+        <a class="media-card" href="#news-1">
+          <img class="media-card__img" src="assets/img/article-dentistry-320.webp" srcset="assets/img/article-dentistry-320.webp 320w, assets/img/article-dentistry-640.webp 640w" sizes="(min-width: 1280px) 289px, 304px" alt="" width="289" height="180" loading="lazy">
+          <span class="media-card__row"><span class="media-card__text clamp-2">Современная стоматология: проблемы детских зубов</span>
+            <svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></span>
+        </a>
+      </li>
+      <li class="slider__slide media-feed__item">
+        <a class="media-card" href="#news-2">
+          <img class="media-card__img" src="assets/img/article-cystitis-320.webp" srcset="assets/img/article-cystitis-320.webp 320w, assets/img/article-cystitis-640.webp 640w" sizes="(min-width: 1280px) 289px, 304px" alt="" width="289" height="180" loading="lazy">
+          <span class="media-card__row"><span class="media-card__text clamp-2">«Я привыкла»: правда о циститах и недержании мочи</span>
+            <svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></span>
+        </a>
+      </li>
+      <li class="slider__slide media-feed__item">
+        <a class="media-card" href="#news-3">
+          <img class="media-card__img" src="assets/img/article-cystitis-320.webp" srcset="assets/img/article-cystitis-320.webp 320w, assets/img/article-cystitis-640.webp 640w" sizes="(min-width: 1280px) 289px, 304px" alt="" width="289" height="180" loading="lazy">
+          <span class="media-card__row"><span class="media-card__text clamp-2">«Я привыкла»: правда о циститах и недержании мочи</span>
+            <svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-right"/></svg></span>
+        </a>
+      </li>
+    </ul>
+    <div class="dots slider__dots" data-slider-dots></div>
+  </div>
+</section>
+        </aside>
+      </div>
+      <div class="row row--wide row--rule-top">
+        <section class="assistant" data-block="assistant" aria-labelledby="assistant-title">
+  <h2 class="assistant__title t-h1" id="assistant-title"><span class="assistant__title-text">Ассистент<br class="only-mobile"> здоровья<sup class="assistant__ai t-title-l">AI</sup></span></h2>
+
+  <div class="assistant__voice">
+    <img class="assistant__orb" src="assets/img/orb-98.webp" srcset="assets/img/orb-98.webp 1x, assets/img/orb-196.webp 2x" width="98" height="98" alt="" loading="lazy">
+    <button class="btn btn--soft btn--m assistant__voice-btn" type="button" data-assistant-voice>Голосовой помощник Док</button>
+  </div>
+
+  <form class="assistant__search" role="search" action="/search/" method="get">
+    <button class="assistant__search-go" type="submit" aria-label="Найти"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-search"/></svg></button>
+    <input class="assistant__input" type="search" name="q" placeholder="Введите заболевание" aria-label="Поиск заболевания" autocomplete="off">
+    <button class="assistant__mic" type="button" aria-label="Голосовой ввод" data-assistant-mic><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-mic"/></svg></button>
+  </form>
+
+  <div class="assistant__aside">
+    <nav class="assistant__abc" aria-labelledby="assistant-abc-title">
+      <h3 class="assistant__subtitle t-h2" id="assistant-abc-title">Поиск по алфавиту</h3>
+      <ul class="assistant__letters">
+        <li><a class="assistant__letter t-letter" href="/diseases/?letter=А" aria-label="Заболевания на букву А">А</a></li>
+        <li><a class="assistant__letter t-letter" href="/diseases/?letter=Б" aria-label="Заболевания на букву Б">Б</a></li>
+        <li><a class="assistant__letter t-letter" href="/diseases/?letter=В" aria-label="Заболевания на букву В">В</a></li>
+        <li><a class="assistant__letter t-letter" href="/diseases/?letter=Г" aria-label="Заболевания на букву Г">Г</a></li>
+        <li><a class="assistant__letter t-letter" href="/diseases/?letter=Д" aria-label="Заболевания на букву Д">Д</a></li>
+        <li><a class="assistant__letter t-letter" href="/diseases/?letter=Е" aria-label="Заболевания на букву Е">Е</a></li>
+        <li><a class="assistant__letter t-letter" href="/diseases/?letter=Ё" aria-label="Заболевания на букву Ё">Ё</a></li>
+        <li><a class="assistant__letter t-letter" href="/diseases/?letter=Ж" aria-label="Заболевания на букву Ж">Ж</a></li>
+        <li><a class="assistant__letter t-letter" href="/diseases/?letter=З" aria-label="Заболевания на букву З">З</a></li>
+        <li><a class="assistant__letter t-letter" href="/diseases/?letter=И" aria-label="Заболевания на букву И">И</a></li>
+        <li><a class="assistant__letter t-letter" href="/diseases/?letter=К" aria-label="Заболевания на букву К">К</a></li>
+        <li><a class="assistant__letter t-letter" href="/diseases/?letter=Л" aria-label="Заболевания на букву Л">Л</a></li>
+        <li><a class="assistant__letter t-letter" href="/diseases/?letter=М" aria-label="Заболевания на букву М">М</a></li>
+        <li><a class="assistant__letter t-letter" href="/diseases/?letter=Н" aria-label="Заболевания на букву Н">Н</a></li>
+        <li><a class="assistant__letter t-letter" href="/diseases/?letter=О" aria-label="Заболевания на букву О">О</a></li>
+        <li><a class="assistant__letter t-letter" href="/diseases/?letter=П" aria-label="Заболевания на букву П">П</a></li>
+        <li><a class="assistant__letter t-letter" href="/diseases/?letter=Р" aria-label="Заболевания на букву Р">Р</a></li>
+        <li><a class="assistant__letter t-letter" href="/diseases/?letter=С" aria-label="Заболевания на букву С">С</a></li>
+        <li><a class="assistant__letter t-letter" href="/diseases/?letter=Т" aria-label="Заболевания на букву Т">Т</a></li>
+        <li><a class="assistant__letter t-letter" href="/diseases/?letter=У" aria-label="Заболевания на букву У">У</a></li>
+        <li><a class="assistant__letter t-letter" href="/diseases/?letter=Ф" aria-label="Заболевания на букву Ф">Ф</a></li>
+        <li><a class="assistant__letter t-letter" href="/diseases/?letter=Х" aria-label="Заболевания на букву Х">Х</a></li>
+        <li><a class="assistant__letter t-letter" href="/diseases/?letter=Ц" aria-label="Заболевания на букву Ц">Ц</a></li>
+        <li><a class="assistant__letter t-letter" href="/diseases/?letter=Ч" aria-label="Заболевания на букву Ч">Ч</a></li>
+        <li><a class="assistant__letter t-letter" href="/diseases/?letter=Э" aria-label="Заболевания на букву Э">Э</a></li>
+        <li><a class="assistant__letter t-letter" href="/diseases/?letter=Ю" aria-label="Заболевания на букву Ю">Ю</a></li>
+        <li><a class="assistant__letter t-letter" href="/diseases/?letter=Я" aria-label="Заболевания на букву Я">Я</a></li>
+        <li><a class="assistant__letter t-letter" href="/diseases/?letter=Ш" aria-label="Заболевания на букву Ш">Ш</a></li>
+      </ul>
+    </nav>
+
+    <div class="assistant__popular">
+      <h3 class="assistant__subtitle t-h2">Популярные запросы</h3>
+      <ul class="assistant__tags">
+        <li><a class="tag tag--l tag--peach assistant__tag" href="/search/?q=ковид">#ковид</a></li>
+        <li><a class="tag tag--l tag--lilac assistant__tag" href="/search/?q=аневризма">#аневризма</a></li>
+        <li><a class="tag tag--l tag--olive assistant__tag" href="/search/?q=подагра">#подагра</a></li>
+      </ul>
+    </div>
+
+    <div class="card assistant__facts only-desktop">
+      <div class="slider slider--mini" id="assistant-facts" data-js="slider" aria-roledescription="карусель" aria-label="Интересные факты">
+        <div class="slider__track" tabindex="-1">
+          <div class="slider__slide assistant__fact">
+            <img class="assistant__fact-img" src="assets/img/heart-105.webp" srcset="assets/img/heart-105.webp 1x, assets/img/heart-210.webp 2x" width="105" height="150" alt="" loading="lazy">
+            <div class="assistant__fact-body">
+              <p class="assistant__fact-title t-title">Интересный <br>факт</p>
+              <p class="assistant__fact-text t-body">Сердце человека за&nbsp;всю жизнь перекачивает около 200&nbsp;миллионов <br>литров крови.</p>
+            </div>
+          </div>
+          <div class="slider__slide assistant__fact">
+            <img class="assistant__fact-img" src="assets/img/heart-105.webp" srcset="assets/img/heart-105.webp 1x, assets/img/heart-210.webp 2x" width="105" height="150" alt="" loading="lazy">
+            <div class="assistant__fact-body">
+              <p class="assistant__fact-title t-title">Интересный <br>факт</p>
+              <p class="assistant__fact-text t-body">Текст факта 2 не задан в макете — заглушка (Q-assistant-5).</p>
+            </div>
+          </div>
+          <div class="slider__slide assistant__fact">
+            <img class="assistant__fact-img" src="assets/img/heart-105.webp" srcset="assets/img/heart-105.webp 1x, assets/img/heart-210.webp 2x" width="105" height="150" alt="" loading="lazy">
+            <div class="assistant__fact-body">
+              <p class="assistant__fact-title t-title">Интересный <br>факт</p>
+              <p class="assistant__fact-text t-body">Текст факта 3 не задан в макете — заглушка (Q-assistant-5).</p>
+            </div>
+          </div>
+          <div class="slider__slide assistant__fact">
+            <img class="assistant__fact-img" src="assets/img/heart-105.webp" srcset="assets/img/heart-105.webp 1x, assets/img/heart-210.webp 2x" width="105" height="150" alt="" loading="lazy">
+            <div class="assistant__fact-body">
+              <p class="assistant__fact-title t-title">Интересный <br>факт</p>
+              <p class="assistant__fact-text t-body">Текст факта 4 не задан в макете — заглушка (Q-assistant-5).</p>
+            </div>
+          </div>
+        </div>
+        <div class="assistant__facts-nav">
+          <button class="arrow-btn arrow-btn--outline arrow-btn--prev" type="button" data-slider-prev="assistant-facts" aria-label="Предыдущий факт"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-chev-sm-left"/></svg></button>
+          <div class="dots dots--mini assistant__dots" data-slider-dots></div>
+          <button class="arrow-btn arrow-btn--outline arrow-btn--next" type="button" data-slider-next="assistant-facts" aria-label="Следующий факт"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-chev-sm-right"/></svg></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="assistant__body">
+    <h3 class="assistant__subtitle assistant__map-title t-h2" id="assistant-map-title">Что вас беспокоит?</h3>
+    <div class="assistant__scroller">
+      <div class="assistant__map" data-assistant-map>
+        <span class="assistant__glow" aria-hidden="true"></span>
+        <img class="assistant__orbit" src="assets/icons/assistant-orbit.svg" width="623" height="811" alt="" aria-hidden="true">
+        <img class="assistant__body-img" src="assets/img/body-673.webp" srcset="assets/img/body-673.webp 673w, assets/img/body-1346.webp 1346w" sizes="(min-width: 1280px) 673px, 654px" width="673" height="843" alt="Схема тела человека" loading="lazy">
+        <ul class="assistant__points" aria-labelledby="assistant-map-title">
+      <li class="assistant__point" style="--x: 20.984%; --y: 4.639%"><!-- 3272:5259 -->
+        <button class="assistant__marker" type="button" aria-expanded="false" aria-controls="assistant-pop-1">
+          <span class="assistant__bullet" aria-hidden="true"></span><span class="assistant__label t-body">Зрение</span>
+        </button>
+        <div class="assistant__pop" id="assistant-pop-1" role="dialog" aria-labelledby="assistant-pop-1-t" hidden>
+          <div class="assistant__pop-head">
+            <p class="assistant__pop-title" id="assistant-pop-1-t">Зрение</p>
+            <button class="assistant__pop-close" type="button" aria-label="Закрыть"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-close"/></svg></button>
+          </div>
+          <!-- список заболеваний по симптому — из каталога (Q-assistant-6) -->
+          <a class="assistant__pop-more" href="/symptoms/?q=Зрение">Смотреть ещё</a>
+        </div>
+      </li>
+      <li class="assistant__point" style="--x: 13.042%; --y: 11.843%"><!-- 3272:5235 -->
+        <button class="assistant__marker" type="button" aria-expanded="false" aria-controls="assistant-pop-2">
+          <span class="assistant__bullet" aria-hidden="true"></span><span class="assistant__label t-body">Дыхание</span>
+        </button>
+        <div class="assistant__pop" id="assistant-pop-2" role="dialog" aria-labelledby="assistant-pop-2-t" hidden>
+          <div class="assistant__pop-head">
+            <p class="assistant__pop-title" id="assistant-pop-2-t">Дыхание</p>
+            <button class="assistant__pop-close" type="button" aria-label="Закрыть"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-close"/></svg></button>
+          </div>
+          <!-- список заболеваний по симптому — из каталога (Q-assistant-6) -->
+          <a class="assistant__pop-more" href="/symptoms/?q=Дыхание">Смотреть ещё</a>
+        </div>
+      </li>
+      <li class="assistant__point" style="--x: 7.086%; --y: 20.756%"><!-- 3272:5238 -->
+        <button class="assistant__marker" type="button" aria-expanded="false" aria-controls="assistant-pop-3">
+          <span class="assistant__bullet" aria-hidden="true"></span><span class="assistant__label t-body">Боль в груди</span>
+        </button>
+        <div class="assistant__pop" id="assistant-pop-3" role="dialog" aria-labelledby="assistant-pop-3-t" hidden>
+          <div class="assistant__pop-head">
+            <p class="assistant__pop-title" id="assistant-pop-3-t">Боль в груди</p>
+            <button class="assistant__pop-close" type="button" aria-label="Закрыть"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-close"/></svg></button>
+          </div>
+          <!-- список заболеваний по симптому — из каталога (Q-assistant-6) -->
+          <a class="assistant__pop-more" href="/symptoms/?q=Боль+в+груди">Смотреть ещё</a>
+        </div>
+      </li>
+      <li class="assistant__point" style="--x: 2.964%; --y: 30.647%"><!-- 3272:5241 -->
+        <button class="assistant__marker" type="button" aria-expanded="false" aria-controls="assistant-pop-4">
+          <span class="assistant__bullet" aria-hidden="true"></span><span class="assistant__label t-body">Печень</span>
+        </button>
+        <div class="assistant__pop" id="assistant-pop-4" role="dialog" aria-labelledby="assistant-pop-4-t" hidden>
+          <div class="assistant__pop-head">
+            <p class="assistant__pop-title" id="assistant-pop-4-t">Печень</p>
+            <button class="assistant__pop-close" type="button" aria-label="Закрыть"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-close"/></svg></button>
+          </div>
+          <!-- список заболеваний по симптому — из каталога (Q-assistant-6) -->
+          <a class="assistant__pop-more" href="/symptoms/?q=Печень">Смотреть ещё</a>
+        </div>
+      </li>
+      <li class="assistant__point" style="--x: 0.978%; --y: 41.148%"><!-- 3272:5244 -->
+        <button class="assistant__marker" type="button" aria-expanded="false" aria-controls="assistant-pop-5">
+          <span class="assistant__bullet" aria-hidden="true"></span><span class="assistant__label t-body">Колит в боку</span>
+        </button>
+        <div class="assistant__pop" id="assistant-pop-5" role="dialog" aria-labelledby="assistant-pop-5-t" hidden>
+          <div class="assistant__pop-head">
+            <p class="assistant__pop-title" id="assistant-pop-5-t">Колит в боку</p>
+            <button class="assistant__pop-close" type="button" aria-label="Закрыть"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-close"/></svg></button>
+          </div>
+          <!-- список заболеваний по симптому — из каталога (Q-assistant-6) -->
+          <a class="assistant__pop-more" href="/symptoms/?q=Колит+в+боку">Смотреть ещё</a>
+        </div>
+      </li>
+      <li class="assistant__point" style="--x: 1.895%; --y: 51.892%"><!-- 3272:5250 -->
+        <button class="assistant__marker" type="button" aria-expanded="false" aria-controls="assistant-pop-6">
+          <span class="assistant__bullet" aria-hidden="true"></span><span class="assistant__label t-body">Слабость</span>
+        </button>
+        <div class="assistant__pop" id="assistant-pop-6" role="dialog" aria-labelledby="assistant-pop-6-t" hidden>
+          <div class="assistant__pop-head">
+            <p class="assistant__pop-title" id="assistant-pop-6-t">Слабость</p>
+            <button class="assistant__pop-close" type="button" aria-label="Закрыть"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-close"/></svg></button>
+          </div>
+          <!-- список заболеваний по симптому — из каталога (Q-assistant-6) -->
+          <a class="assistant__pop-more" href="/symptoms/?q=Слабость">Смотреть ещё</a>
+        </div>
+      </li>
+      <li class="assistant__point" style="--x: 4.643%; --y: 63.736%"><!-- 3272:5247 -->
+        <button class="assistant__marker" type="button" aria-expanded="false" aria-controls="assistant-pop-7">
+          <span class="assistant__bullet" aria-hidden="true"></span><span class="assistant__label t-body">Репродуктивная<br>система</span>
+        </button>
+        <div class="assistant__pop" id="assistant-pop-7" role="dialog" aria-labelledby="assistant-pop-7-t" hidden>
+          <div class="assistant__pop-head">
+            <p class="assistant__pop-title" id="assistant-pop-7-t">Репродуктивная система</p>
+            <button class="assistant__pop-close" type="button" aria-label="Закрыть"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-close"/></svg></button>
+          </div>
+          <!-- список заболеваний по симптому — из каталога (Q-assistant-6) -->
+          <a class="assistant__pop-more" href="/symptoms/?q=Репродуктивная+система">Смотреть ещё</a>
+        </div>
+      </li>
+      <li class="assistant__point" style="--x: 11.362%; --y: 74.115%"><!-- 3272:5253 -->
+        <button class="assistant__marker" type="button" aria-expanded="false" aria-controls="assistant-pop-8">
+          <span class="assistant__bullet" aria-hidden="true"></span><span class="assistant__label t-body">Слабость</span>
+        </button>
+        <div class="assistant__pop" id="assistant-pop-8" role="dialog" aria-labelledby="assistant-pop-8-t" hidden>
+          <div class="assistant__pop-head">
+            <p class="assistant__pop-title" id="assistant-pop-8-t">Слабость</p>
+            <button class="assistant__pop-close" type="button" aria-label="Закрыть"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-close"/></svg></button>
+          </div>
+          <!-- список заболеваний по симптому — из каталога (Q-assistant-6) -->
+          <a class="assistant__pop-more" href="/symptoms/?q=Слабость">Смотреть ещё</a>
+        </div>
+      </li>
+      <li class="assistant__point" style="--x: 19.610%; --y: 82.052%"><!-- 3272:5256 -->
+        <button class="assistant__marker" type="button" aria-expanded="false" aria-controls="assistant-pop-9">
+          <span class="assistant__bullet" aria-hidden="true"></span><span class="assistant__label t-body">Болят<br>суставы</span>
+        </button>
+        <div class="assistant__pop" id="assistant-pop-9" role="dialog" aria-labelledby="assistant-pop-9-t" hidden>
+          <div class="assistant__pop-head">
+            <p class="assistant__pop-title" id="assistant-pop-9-t">Болят суставы</p>
+            <button class="assistant__pop-close" type="button" aria-label="Закрыть"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-close"/></svg></button>
+          </div>
+          <!-- список заболеваний по симптому — из каталога (Q-assistant-6) -->
+          <a class="assistant__pop-more" href="/symptoms/?q=Болят+суставы">Смотреть ещё</a>
+        </div>
+      </li>
+      <li class="assistant__point" style="--x: 62.980%; --y: -1.344%"><!-- 3272:5262 -->
+        <button class="assistant__marker" type="button" aria-expanded="false" aria-controls="assistant-pop-10">
+          <span class="assistant__bullet" aria-hidden="true"></span><span class="assistant__label t-body">Головные<br>боли</span>
+        </button>
+        <div class="assistant__pop" id="assistant-pop-10" role="dialog" aria-labelledby="assistant-pop-10-t" hidden>
+          <div class="assistant__pop-head">
+            <p class="assistant__pop-title" id="assistant-pop-10-t">Головные боли</p>
+            <button class="assistant__pop-close" type="button" aria-label="Закрыть"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-close"/></svg></button>
+          </div>
+          <!-- список заболеваний по симптому — из каталога (Q-assistant-6) -->
+          <a class="assistant__pop-more" href="/symptoms/?q=Головные+боли">Смотреть ещё</a>
+        </div>
+      </li>
+      <li class="assistant__point assistant__point--end" style="--x: 75.602%; --y: 6.959%"><!-- 3272:5265 -->
+        <button class="assistant__marker" type="button" aria-expanded="false" aria-controls="assistant-pop-11">
+          <span class="assistant__bullet" aria-hidden="true"></span><span class="assistant__label t-body">Кожный зуд</span>
+        </button>
+        <div class="assistant__pop" id="assistant-pop-11" role="dialog" aria-labelledby="assistant-pop-11-t" hidden>
+          <div class="assistant__pop-head">
+            <p class="assistant__pop-title" id="assistant-pop-11-t">Кожный зуд</p>
+            <button class="assistant__pop-close" type="button" aria-label="Закрыть"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-close"/></svg></button>
+          </div>
+          <!-- список заболеваний по симптому — из каталога (Q-assistant-6) -->
+          <a class="assistant__pop-more" href="/symptoms/?q=Кожный+зуд">Смотреть ещё</a>
+        </div>
+      </li>
+      <li class="assistant__point assistant__point--end" style="--x: 84.115%; --y: 15.995%"><!-- 3272:5268 -->
+        <button class="assistant__marker" type="button" aria-expanded="false" aria-controls="assistant-pop-12">
+          <span class="assistant__bullet" aria-hidden="true"></span><span class="assistant__label t-body">Колит<br>сердце</span>
+        </button>
+        <div class="assistant__pop" id="assistant-pop-12" role="dialog" aria-labelledby="assistant-pop-12-t" hidden>
+          <div class="assistant__pop-head">
+            <p class="assistant__pop-title" id="assistant-pop-12-t">Колит сердце</p>
+            <button class="assistant__pop-close" type="button" aria-label="Закрыть"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-close"/></svg></button>
+          </div>
+          <ul class="assistant__pop-list">
+            <li><a class="assistant__pop-link" href="/diseases/vsd/">Вегето-сосудистая дистония (ВСД)</a></li>
+            <li><a class="assistant__pop-link" href="/diseases/mezhrebernaya-nevralgiya/">Межрёберная невралгия</a></li>
+            <li><a class="assistant__pop-link" href="/diseases/osteokhondroz-grudnogo-otdela/">Остеохондроз грудного отдела позвоночника</a></li>
+            <li><a class="assistant__pop-link" href="/diseases/kardionevroz/">Кардионевроз</a></li>
+          </ul>
+          <a class="assistant__pop-more" href="/symptoms/?q=Колит+сердце">Смотреть ещё</a>
+        </div>
+      </li>
+      <li class="assistant__point assistant__point--end" style="--x: 89.171%; --y: 25.763%"><!-- 3272:5271 -->
+        <button class="assistant__marker" type="button" aria-expanded="false" aria-controls="assistant-pop-13">
+          <span class="assistant__bullet" aria-hidden="true"></span><span class="assistant__label t-body">Крутит<br>живот</span>
+        </button>
+        <div class="assistant__pop" id="assistant-pop-13" role="dialog" aria-labelledby="assistant-pop-13-t" hidden>
+          <div class="assistant__pop-head">
+            <p class="assistant__pop-title" id="assistant-pop-13-t">Крутит живот</p>
+            <button class="assistant__pop-close" type="button" aria-label="Закрыть"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-close"/></svg></button>
+          </div>
+          <!-- список заболеваний по симптому — из каталога (Q-assistant-6) -->
+          <a class="assistant__pop-more" href="/symptoms/?q=Крутит+живот">Смотреть ещё</a>
+        </div>
+      </li>
+      <li class="assistant__point assistant__point--end" style="--x: 91.607%; --y: 35.897%"><!-- 3272:5274 -->
+        <button class="assistant__marker" type="button" aria-expanded="false" aria-controls="assistant-pop-14">
+          <span class="assistant__bullet" aria-hidden="true"></span><span class="assistant__label t-body">Колики</span>
+        </button>
+        <div class="assistant__pop" id="assistant-pop-14" role="dialog" aria-labelledby="assistant-pop-14-t" hidden>
+          <div class="assistant__pop-head">
+            <p class="assistant__pop-title" id="assistant-pop-14-t">Колики</p>
+            <button class="assistant__pop-close" type="button" aria-label="Закрыть"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-close"/></svg></button>
+          </div>
+          <!-- список заболеваний по симптому — из каталога (Q-assistant-6) -->
+          <a class="assistant__pop-more" href="/symptoms/?q=Колики">Смотреть ещё</a>
+        </div>
+      </li>
+      <li class="assistant__point assistant__point--end" style="--x: 92.848%; --y: 45.421%"><!-- 3272:5277 -->
+        <button class="assistant__marker" type="button" aria-expanded="false" aria-controls="assistant-pop-15">
+          <span class="assistant__bullet" aria-hidden="true"></span><span class="assistant__label t-body">Ломит<br>кости</span>
+        </button>
+        <div class="assistant__pop" id="assistant-pop-15" role="dialog" aria-labelledby="assistant-pop-15-t" hidden>
+          <div class="assistant__pop-head">
+            <p class="assistant__pop-title" id="assistant-pop-15-t">Ломит кости</p>
+            <button class="assistant__pop-close" type="button" aria-label="Закрыть"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-close"/></svg></button>
+          </div>
+          <!-- список заболеваний по симптому — из каталога (Q-assistant-6) -->
+          <a class="assistant__pop-more" href="/symptoms/?q=Ломит+кости">Смотреть ещё</a>
+        </div>
+      </li>
+      <li class="assistant__point assistant__point--end" style="--x: 88.745%; --y: 63.125%"><!-- 3272:5280 -->
+        <button class="assistant__marker" type="button" aria-expanded="false" aria-controls="assistant-pop-16">
+          <span class="assistant__bullet" aria-hidden="true"></span><span class="assistant__label t-body">Проблемы при<br>мочеиспускании</span>
+        </button>
+        <div class="assistant__pop" id="assistant-pop-16" role="dialog" aria-labelledby="assistant-pop-16-t" hidden>
+          <div class="assistant__pop-head">
+            <p class="assistant__pop-title" id="assistant-pop-16-t">Проблемы при мочеиспускании</p>
+            <button class="assistant__pop-close" type="button" aria-label="Закрыть"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-close"/></svg></button>
+          </div>
+          <!-- список заболеваний по симптому — из каталога (Q-assistant-6) -->
+          <a class="assistant__pop-more" href="/symptoms/?q=Проблемы+при+мочеиспускании">Смотреть ещё</a>
+        </div>
+      </li>
+      <li class="assistant__point assistant__point--end" style="--x: 81.838%; --y: 78.633%"><!-- 3272:5283 -->
+        <button class="assistant__marker" type="button" aria-expanded="false" aria-controls="assistant-pop-17">
+          <span class="assistant__bullet" aria-hidden="true"></span><span class="assistant__label t-body">Расширение<br>вен</span>
+        </button>
+        <div class="assistant__pop" id="assistant-pop-17" role="dialog" aria-labelledby="assistant-pop-17-t" hidden>
+          <div class="assistant__pop-head">
+            <p class="assistant__pop-title" id="assistant-pop-17-t">Расширение вен</p>
+            <button class="assistant__pop-close" type="button" aria-label="Закрыть"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-close"/></svg></button>
+          </div>
+          <!-- список заболеваний по симптому — из каталога (Q-assistant-6) -->
+          <a class="assistant__pop-more" href="/symptoms/?q=Расширение+вен">Смотреть ещё</a>
+        </div>
+      </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+      </div>
+      <div class="row row--wide">
+        <section class="contacts" data-block="contacts" aria-labelledby="contacts-title">
+  <div class="section-head contacts__head">
+    <h2 class="section-head__title t-h1" id="contacts-title">Контакты<span class="only-desktop"> центра</span></h2>
+    <a class="section-head__link link link--l only-desktop" href="#contacts-all">/ Все контакты</a>
+  </div>
+  <div class="contacts__body">
+    <div class="contacts__info">
+      <dl class="contacts__list">
+        <div class="contacts__item"><dt class="contacts__label t-body">Горячая линия</dt><dd class="contacts__value t-contact"><a href="tel:+78008765643">8 800 876 56 43</a></dd></div>
+        <div class="contacts__item"><dt class="contacts__label t-body">Телефон для связи</dt><dd class="contacts__value t-contact"><a href="tel:+79548765643">+7 954 876 56 43</a></dd></div>
+        <div class="contacts__item"><dt class="contacts__label t-body">E-mail</dt><dd class="contacts__value t-contact"><a href="mailto:hello@cem.ru">hello@cem.ru</a></dd></div>
+        <div class="contacts__item"><dt class="contacts__label t-body">Адрес</dt><dd class="contacts__value t-contact">Санкт-Петербург<br>Светлановский проспект, 83</dd></div>
+        <div class="contacts__item"><dt class="contacts__label t-body">Адрес офиса</dt><dd class="contacts__value t-contact">Санкт-Петербург<br>Светлановский проспект, 83</dd></div>
+      </dl>
+      <a class="btn btn--primary btn--m contacts__all only-mobile" href="#contacts-all">Все контакты</a>
+    </div>
+    <div class="contacts__feedback">
+      <h3 class="contacts__form-title t-h2" id="contacts-form-title">Форма обратной связи</h3>
+      <form class="contacts__form" data-js="form" action="#" method="post" aria-labelledby="contacts-form-title">
+        <input type="text" name="cem_hp" tabindex="-1" autocomplete="off" inert hidden aria-hidden="true">
+        <div class="contacts__fields">
+          <label class="field contacts__f-name"><span class="visually-hidden">Ваше имя</span>
+            <input class="field__input" name="name" placeholder="Ваше имя*" required autocomplete="name" aria-describedby="cf-err-name">
+            <span class="field__error" id="cf-err-name" aria-live="polite"></span></label>
+          <label class="field contacts__f-phone"><span class="visually-hidden">Телефон</span>
+            <input class="field__input" type="tel" name="phone" placeholder="Телефон*" required autocomplete="tel" inputmode="tel" aria-describedby="cf-err-phone">
+            <span class="field__error" id="cf-err-phone" aria-live="polite"></span></label>
+          <label class="field contacts__f-email"><span class="visually-hidden">Email</span>
+            <input class="field__input" type="email" name="email" placeholder="Email*" required autocomplete="email" aria-describedby="cf-err-email">
+            <span class="field__error" id="cf-err-email" aria-live="polite"></span></label>
+          <label class="field field--area contacts__f-msg"><span class="visually-hidden">Вопрос или предложение</span>
+            <textarea class="field__input" name="message" placeholder="Вопрос или предложение"></textarea></label>
+        </div>
+        <div class="contacts__actions">
+          <label class="checkbox contacts__consent"><input type="checkbox" name="consent" required>
+            <span class="checkbox__box"></span><span class="checkbox__text">Соглашаюсь на обработку <a class="link link--muted" href="#privacy">Персональных данных</a></span></label>
+          <button class="btn btn--dark btn--m contacts__submit" type="submit">Отправить сообщение</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+        <section class="map" data-block="map" aria-label="Центр на карте">
+  <a class="map__link" href="https://yandex.ru/maps/?text=%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3%2C%20%D0%A1%D0%B2%D0%B5%D1%82%D0%BB%D0%B0%D0%BD%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9%20%D0%BF%D1%80%D0%BE%D1%81%D0%BF%D0%B5%D0%BA%D1%82%2C%2083" target="_blank" rel="noopener">
+    <img class="map__img" src="assets/img/map-1400.webp" srcset="assets/img/map-800.webp 800w, assets/img/map-1400.webp 1400w, assets/img/map-2724.webp 2724w" sizes="(min-width: 1280px) calc(100vw - 102px), 1386px" width="2724" height="1136" alt="Центр экспертной медицины на карте: Санкт-Петербург, Светлановский проспект, 83. Открыть в Яндекс Картах (новое окно)" loading="lazy">
+  </a>
+</section>
+        <footer class="footer" data-block="footer" aria-labelledby="footer-title">
+  <h2 class="footer__title t-h1" id="footer-title">Центр экспертной медицины</h2>
+  <nav class="footer__nav" aria-label="Информация для пациентов">
+    <div class="footer__col footer__col--patients">
+      <h3 class="footer__head t-label">Пациентам</h3>
+      <ul class="footer__links t-body-s">
+        <li><a class="footer__link" href="#">Экстренная помощь</a></li>
+        <li><a class="footer__link" href="#">Первичному пациенту</a></li>
+        <li><a class="footer__link" href="#">Стоимость и оплата услуг</a></li>
+        <li><a class="footer__link" href="#">Дистанционные услуги</a></li>
+        <li><a class="footer__link" href="#">Амбулаторный прием</a></li>
+        <li><a class="footer__link" href="#">Служба семейных врачей</a></li>
+        <li><a class="footer__link" href="#">Личный кабинет</a></li>
+        <li><a class="footer__link" href="#">Правила для пациентов <br>и посетителей</a></li>
+        <li><a class="footer__link" href="#">Книги врачей</a></li>
+        <li><a class="footer__link" href="#">Социальные сети <br>и полезные ссылки</a></li>
+      </ul>
+    </div>
+    <div class="footer__col footer__col--info">
+      <div class="footer__group">
+        <h3 class="footer__head t-label">Информация</h3>
+        <ul class="footer__links t-body-s">
+          <li><a class="footer__link" href="#">Официальная информация</a></li>
+          <li><a class="footer__link" href="#">Прайс-лист. Прейскурант.</a></li>
+          <li><a class="footer__link" href="#">Вакансии.</a></li>
+          <li><a class="footer__link" href="#">Положение об обработке <br>персональных данных</a></li>
+        </ul>
+      </div>
+      <div class="footer__group footer__group--licenses">
+        <h3 class="footer__head t-label">Лицензии</h3>
+        <ul class="footer__links t-body-s">
+          <li><a class="footer__link" href="#">Официальная информация</a></li>
+          <li><a class="footer__link" href="#">Прайс-лист. Прейскурант.</a></li>
+          <li><a class="footer__link" href="#">Вакансии.</a></li>
+          <li><a class="footer__link" href="#">Положение об обработке <br>персональных данных</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__col footer__col--feedback">
+      <h3 class="footer__head t-label">Обратная связь с пациентами</h3>
+      <ul class="footer__links t-body-s">
+        <li><a class="footer__link" href="#">Отзывы и предложения</a></li>
+        <li><a class="footer__link" href="#">Обращение <br>к Главному врачу</a></li>
+        <li><a class="footer__link" href="#">Обращение <br>к Генеральному директору</a></li>
+      </ul>
+    </div>
+  </nav>
+  <p class="footer__copy">Центр экспертной медицины. <br class="footer__br-m">Все права защищены. 2026&nbsp;год. <br class="footer__br-d">143421, Московская обл., городской округ Красногорск, <br>д.&nbsp;Глухово, ул.&nbsp;Рублёвское предместье, <br class="footer__br-m">д.&nbsp;2, корп.&nbsp;2</p>
+  <a class="footer__logo" href="/" aria-label="Центр экспертной медицины — на главную">
+    <span class="footer__logo-mark"><svg class="footer__logo-letters" aria-hidden="true"><use href="assets/icons/sprite.svg#i-logo-letters"/></svg></span>
+    <svg class="footer__logo-name" aria-hidden="true"><use href="assets/icons/sprite.svg#i-logo-name"/></svg>
+  </a>
+  <a class="footer__up" href="#top" data-footer-up><span class="footer__up-circle"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-arrow-up"/></svg></span>Наверх</a>
+  <p class="footer__disclaimer t-disclaimer">Имеются противопоказания. Необходима консультация специалиста.</p>
+</footer>
+      </div>
+    </main>
+  </div>
+  <nav class="tab-bar" data-block="tab-bar" aria-label="Быстрое меню">
+  <ul class="tab-bar__list">
+    <li><button class="tab-bar__item" type="button" data-sheet-open="search-sheet" aria-haspopup="dialog" aria-expanded="false"><span class="tab-bar__icon"><svg class="icon tab-bar__ic-search" aria-hidden="true"><use href="assets/icons/sprite.svg#i-search"/></svg></span><span class="tab-bar__label">Поиск</span></button></li>
+    <li><a class="tab-bar__item" href="#centers"><span class="tab-bar__icon"><svg class="icon tab-bar__ic-centers" aria-hidden="true"><use href="assets/icons/sprite.svg#i-building"/></svg></span><span class="tab-bar__label">Центры</span></a></li>
+    <li><button class="tab-bar__item tab-bar__item--main" type="button" data-sheet-open="booking-sheet" aria-haspopup="dialog" aria-expanded="false" aria-label="Записаться на приём"><span class="tab-bar__icon"><svg class="icon tab-bar__ic-pen" aria-hidden="true"><use href="assets/icons/sprite.svg#i-pen"/></svg></span></button></li>
+    <li><a class="tab-bar__item" href="#"><span class="tab-bar__icon"><svg class="icon tab-bar__ic-opinion" aria-hidden="true"><use href="assets/icons/sprite.svg#i-opinion"/></svg></span><span class="tab-bar__label">Мнение</span></a></li>
+    <li><a class="tab-bar__item" href="#"><span class="tab-bar__icon"><svg class="icon tab-bar__ic-media" aria-hidden="true"><use href="assets/icons/sprite.svg#i-megaphone"/></svg></span><span class="tab-bar__label">Медиа</span></a></li>
+  </ul>
+</nav>
+  <div class="overlays" data-block="overlays">
+
+  <!-- Меню (mobile): кадры 3272:5962 (закрыто) и 3272:5999 (раскрыт раздел «О центре») -->
+  <dialog class="overlays__sheet overlays__sheet--menu" id="menu-sheet" data-js="sheet" aria-labelledby="menu-sheet-title">
+    <button class="overlays__close" type="button" data-sheet-close aria-label="Закрыть меню"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-close"/></svg></button>
+    <h2 class="overlays__title" id="menu-sheet-title">Меню центра</h2>
+    <nav class="overlays__nav" aria-label="Меню центра">
+      <ul class="overlays__menu" data-js="accordion" data-single>
+        <li class="overlays__menu-item" data-acc-item>
+          <button class="overlays__menu-link t-nav" type="button" aria-expanded="false" aria-controls="menu-sub-about">О центре<svg class="icon overlays__chevron" aria-hidden="true"><use href="assets/icons/sprite.svg#i-chevron-down"/></svg></button>
+          <ul class="overlays__menu-sub" id="menu-sub-about" hidden>
+            <li><a class="overlays__menu-sublink t-nav" href="#">История центра</a></li>
+            <li><a class="overlays__menu-sublink t-nav" href="#">Написать руководству</a></li>
+            <li><a class="overlays__menu-sublink t-nav" href="#">Команда</a></li>
+          </ul>
+        </li>
+        <li class="overlays__menu-item" data-acc-item>
+          <button class="overlays__menu-link t-nav" type="button" aria-expanded="false" aria-controls="menu-sub-services">Сервисы<svg class="icon overlays__chevron" aria-hidden="true"><use href="assets/icons/sprite.svg#i-chevron-down"/></svg></button>
+          <ul class="overlays__menu-sub" id="menu-sub-services" hidden>
+            <li><a class="overlays__menu-sublink t-nav" href="#">Аптека «Медис»</a></li>
+            <li><a class="overlays__menu-sublink t-nav" href="#">Салон оптики</a></li>
+            <li><a class="overlays__menu-sublink t-nav" href="#">Личный кабинет</a></li>
+          </ul>
+        </li>
+        <li class="overlays__menu-item" data-acc-item>
+          <button class="overlays__menu-link t-nav" type="button" aria-expanded="false" aria-controls="menu-sub-directions">Направления<svg class="icon overlays__chevron" aria-hidden="true"><use href="assets/icons/sprite.svg#i-chevron-down"/></svg></button>
+          <ul class="overlays__menu-sub" id="menu-sub-directions" hidden>
+            <li><a class="overlays__menu-sublink t-nav" href="#">Взрослым</a></li>
+            <li><a class="overlays__menu-sublink t-nav" href="#">Детям</a></li>
+            <li><a class="overlays__menu-sublink t-nav" href="#">Диагностика</a></li>
+            <li><a class="overlays__menu-sublink t-nav" href="#">Анализы</a></li>
+            <li><a class="overlays__menu-sublink t-nav" href="#">Операции</a></li>
+          </ul>
+        </li>
+        <li class="overlays__menu-item" data-acc-item>
+          <button class="overlays__menu-link t-nav" type="button" aria-expanded="false" aria-controls="menu-sub-centers">Центры компетенций<svg class="icon overlays__chevron" aria-hidden="true"><use href="assets/icons/sprite.svg#i-chevron-down"/></svg></button>
+          <ul class="overlays__menu-sub" id="menu-sub-centers" hidden>
+            <li><a class="overlays__menu-sublink t-nav" href="#">Многопрофильный центр</a></li>
+            <li><a class="overlays__menu-sublink t-nav" href="#">Офтальмологический центр</a></li>
+            <li><a class="overlays__menu-sublink t-nav" href="#">Центр гинекологии</a></li>
+            <li><a class="overlays__menu-sublink t-nav" href="#">Стоматологический центр</a></li>
+            <li><a class="overlays__menu-sublink t-nav" href="#">Хирургический центр</a></li>
+            <li><a class="overlays__menu-sublink t-nav" href="#">Косметология</a></li>
+          </ul>
+        </li>
+        <li class="overlays__menu-item"><a class="overlays__menu-link t-nav" href="#">Второе мнение</a></li>
+        <li class="overlays__menu-item"><a class="overlays__menu-link t-nav" href="#">Подкасты</a></li>
+      </ul>
+    </nav>
+    <ul class="overlays__tags" aria-label="Популярные темы">
+      <li><a class="tag overlays__tag" href="#">#репродукция</a></li>
+      <li><a class="tag overlays__tag" href="#">#стоматология</a></li>
+      <li><a class="tag overlays__tag" href="#">#атлас_здоровья</a></li>
+    </ul>
+    <div class="overlays__actions">
+      <div class="overlays__action">
+        <a class="overlays__action-icon" href="tel:88009876754" tabindex="-1" aria-hidden="true"><svg class="icon overlays__ic-phone"><use href="assets/icons/sprite.svg#i-phone"/></svg></a>
+        <span class="overlays__action-text"><a class="overlays__action-main" href="tel:88009876754">8&nbsp;800&nbsp;987&nbsp;67&nbsp;54</a><button class="overlays__action-sub" type="button" data-sheet-open="call-sheet">Заказать звонок</button></span>
+      </div>
+      <button class="overlays__action" type="button" data-sheet-open="booking-sheet">
+        <span class="overlays__action-icon overlays__action-icon--pen" aria-hidden="true"><svg class="icon overlays__ic-pen"><use href="assets/icons/sprite.svg#i-pen"/></svg></span>
+        <span class="overlays__action-text"><span class="overlays__action-main">Записаться</span><span class="overlays__action-sub">На приём в ЦЭМ</span></span>
+      </button>
+    </div>
+  </dialog>
+
+  <!-- Поиск: mobile — кадр 3272:6034; desktop — кит «Хедер / Searsh» 3272:6071 (панель под шапкой) -->
+  <dialog class="overlays__sheet overlays__sheet--search" id="search-sheet" data-js="sheet" aria-labelledby="search-sheet-title">
+    <button class="overlays__close" type="button" data-sheet-close aria-label="Закрыть поиск"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-close"/></svg></button>
+    <h2 class="overlays__title" id="search-sheet-title">Поиск по сайту</h2>
+    <form class="overlays__search" role="search" action="#" method="get">
+      <div class="overlays__search-box">
+        <input class="overlays__search-input" type="search" name="q" placeholder="Язва" aria-label="Что ищем" autocomplete="off">
+        <button class="overlays__search-icon" type="submit" aria-label="Найти"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-search"/></svg></button>
+      </div>
+      <button class="btn btn--primary btn--m overlays__search-btn" type="submit">Найти</button>
+    </form>
+    <div class="overlays__actions">
+      <div class="overlays__action">
+        <a class="overlays__action-icon" href="tel:88009876754" tabindex="-1" aria-hidden="true"><svg class="icon overlays__ic-phone"><use href="assets/icons/sprite.svg#i-phone"/></svg></a>
+        <span class="overlays__action-text"><a class="overlays__action-main" href="tel:88009876754">8&nbsp;800&nbsp;987&nbsp;67&nbsp;54</a><button class="overlays__action-sub" type="button" data-sheet-open="call-sheet">Заказать звонок</button></span>
+      </div>
+      <button class="overlays__action" type="button" data-sheet-open="booking-sheet">
+        <span class="overlays__action-icon overlays__action-icon--pen" aria-hidden="true"><svg class="icon overlays__ic-pen"><use href="assets/icons/sprite.svg#i-pen"/></svg></span>
+        <span class="overlays__action-text"><span class="overlays__action-main">Записаться</span><span class="overlays__action-sub">На приём в ЦЭМ</span></span>
+      </button>
+    </div>
+  </dialog>
+
+  <!-- Запись на приём: mobile — кадр 3272:6052; desktop — окно по центру (ПРЕДЛОЖЕНИЕ, Q-overlays-3) -->
+  <dialog class="overlays__sheet overlays__sheet--form" id="booking-sheet" data-js="sheet" aria-labelledby="booking-sheet-title">
+    <button class="overlays__close" type="button" data-sheet-close aria-label="Закрыть запись"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-close"/></svg></button>
+    <h2 class="overlays__title" id="booking-sheet-title">Запись на приём</h2>
+    <form class="overlays__form" data-js="form" action="#" method="post">
+      <label class="field"><input class="field__input" name="name" placeholder="Ваше имя*" aria-label="Ваше имя" required autocomplete="name"><span class="field__error" aria-live="polite"></span></label>
+      <label class="field"><input class="field__input" name="phone" type="tel" inputmode="tel" placeholder="Телефон*" aria-label="Телефон" required autocomplete="tel"><span class="field__error" aria-live="polite"></span></label>
+      <label class="field"><input class="field__input" name="email" type="email" placeholder="Email*" aria-label="Email" required autocomplete="email"><span class="field__error" aria-live="polite"></span></label>
+      <div class="select" data-js="select" id="bs-direction">
+        <button class="select__toggle" type="button" aria-haspopup="listbox" aria-expanded="false"><span class="select__value">Выберите направление</span><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-chevron-down"/></svg></button>
+        <div class="select__panel" hidden>
+          <input class="select__search" type="search" placeholder="Поиск" aria-label="Поиск направления" role="combobox" aria-controls="bs-direction-list" aria-expanded="true">
+          <ul class="select__list" role="listbox" id="bs-direction-list" aria-label="Направление">
+            <li role="option" data-value="obgyn">Акушерство и гинекология</li>
+            <li role="option" data-value="allergy">Аллергология</li>
+            <li role="option" data-value="gastro">Гастроэнтерология</li>
+            <li role="option" data-value="genetics">Генетика</li>
+            <li role="option" data-value="derma">Дерматология</li>
+            <li role="option" data-value="cardio">Кардиология</li>
+            <li role="option" data-value="logoped">Логопедия</li>
+            <li role="option" data-value="mammo">Маммология</li>
+            <li role="option" data-value="neuro">Неврология</li>
+            <li role="option" data-value="neuropsy">Нейропсихология</li>
+            <li role="option" data-value="ophthalmo">Офтальмология</li>
+            <li role="option" data-value="pediatrics">Педиатрия</li>
+            <li role="option" data-value="procto">Проктология</li>
+            <li role="option" data-value="psychology">Психология</li>
+            <li role="option" data-value="psychotherapy">Психотерапия</li>
+            <li role="option" data-value="therapy">Терапия</li>
+            <li role="option" data-value="trauma">Травматология</li>
+            <li role="option" data-value="urology">Урология</li>
+            <li role="option" data-value="phlebo">Флебология</li>
+            <li role="option" data-value="surgery">Хирургия</li>
+          </ul>
+        </div>
+        <input type="hidden" name="direction">
+      </div>
+      <div class="select" data-js="select" id="bs-doctor">
+        <button class="select__toggle" type="button" aria-haspopup="listbox" aria-expanded="false"><span class="select__value">Выберите врача</span><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-chevron-down"/></svg></button>
+        <div class="select__panel" hidden>
+          <input class="select__search" type="search" placeholder="Поиск" aria-label="Поиск врача" role="combobox" aria-controls="bs-doctor-list" aria-expanded="true">
+          <ul class="select__list" role="listbox" id="bs-doctor-list" aria-label="Врач">
+            <li role="option" data-value="any">Любой свободный врач</li>
+          </ul>
+        </div>
+        <input type="hidden" name="doctor">
+      </div>
+      <label class="field"><input class="field__input" name="comment" placeholder="Комментарий" aria-label="Комментарий" autocomplete="off"><span class="field__error" aria-live="polite"></span></label>
+      <label class="checkbox overlays__consent"><input type="checkbox" name="consent" required>
+        <span class="checkbox__box"></span><span class="checkbox__text">Соглашаюсь на обработку <br><a class="link link--muted" href="#">Персональных данных</a></span></label>
+      <button class="btn btn--primary btn--m btn--block overlays__submit" type="submit">Записаться на прием</button>
+    </form>
+  </dialog>
+
+  <!-- Заказать звонок: макета нет — ПРЕДЛОЖЕНИЕ на основе окна записи (Q-overlays-4) -->
+  <dialog class="overlays__sheet overlays__sheet--form" id="call-sheet" data-js="sheet" aria-labelledby="call-sheet-title">
+    <button class="overlays__close" type="button" data-sheet-close aria-label="Закрыть"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-close"/></svg></button>
+    <h2 class="overlays__title" id="call-sheet-title">Заказать звонок</h2>
+    <form class="overlays__form" data-js="form" action="#" method="post">
+      <label class="field"><input class="field__input" name="name" placeholder="Ваше имя*" aria-label="Ваше имя" required autocomplete="name"><span class="field__error" aria-live="polite"></span></label>
+      <label class="field"><input class="field__input" name="phone" type="tel" inputmode="tel" placeholder="Телефон*" aria-label="Телефон" required autocomplete="tel"><span class="field__error" aria-live="polite"></span></label>
+      <label class="checkbox overlays__consent"><input type="checkbox" name="consent" required>
+        <span class="checkbox__box"></span><span class="checkbox__text">Соглашаюсь на обработку <br><a class="link link--muted" href="#">Персональных данных</a></span></label>
+      <button class="btn btn--primary btn--m btn--block overlays__submit" type="submit">Заказать звонок</button>
+    </form>
+  </dialog>
+
+  <!-- Видео: макета нет — минимальная заглушка-ПРЕДЛОЖЕНИЕ (Q-overlays-5, Q-16) -->
+  <dialog class="overlays__sheet overlays__sheet--video" id="video-sheet" data-js="sheet" aria-labelledby="video-sheet-title">
+    <button class="overlays__close" type="button" data-sheet-close aria-label="Закрыть видео"><svg class="icon" aria-hidden="true"><use href="assets/icons/sprite.svg#i-close"/></svg></button>
+    <h2 class="overlays__title visually-hidden" id="video-sheet-title">Видео о центре</h2>
+    <div class="overlays__video" data-video-src="">
+      <svg class="icon overlays__video-play" aria-hidden="true"><use href="assets/icons/sprite.svg#i-play"/></svg>
+    </div>
+  </dialog>
+</div>
+  <script src="main.js" defer></script>
+</body>
+</html>

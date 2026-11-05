@@ -1,0 +1,1714 @@
+/* === tokens.css === */
+/* =====================================================================
+   ЦЭМ — токены (единственный источник цветов, градиентов, теней, радиусов).
+   Источник: кадры Маши 3272:4597 (1440) и 3272:5376 (375), кит на странице
+   «Главная страница main», переменные Figma «Variable collection».
+   В Figma те же значения лежат в коллекции «cem/tokens» на странице
+   «Библиотека блоков» — имя переменной = имя токена без «--».
+   Правило: в блоках и компонентах НЕТ сырых цветов/теней — только var(--…).
+   fl(a, b) — значение a на 375 и b на 1440, между ними плавно (см. tools/build.mjs).
+   ===================================================================== */
+:root {
+  /* ---------- Цвета: текст ---------- */
+  --c-text: #262626;          /* Figma: Black */
+  --c-text-2: #616161;        /* Figma: Darck Grey — подписи, описания */
+  --c-text-muted: #919191;    /* Figma: Text muted — вторичный текст карточек */
+  --c-text-hover: #4a4a4a;    /* Figma: Text hover — текст поля при наведении */
+  --c-text-inverse: #ffffff;
+
+  /* ---------- Цвета: бренд ---------- */
+  --c-brand: #607ed8;         /* Figma: Light blue — ссылки, номера, иконки */
+  --c-brand-dark: #3c549e;    /* Figma: Darck blue — ссылки при наведении, открытый пункт меню */
+
+  /* ---------- Цвета: фоны ---------- */
+  --c-bg: #ffffff;
+  --c-bg-soft: #f2f4f8;       /* Figma: Light grey — плашки, теги шапки, точки */
+  --c-bg-muted: #f9f9f9;      /* Figma: Light Grey — FAQ, подвал, контакты */
+  --c-bg-panel: #f6f7fb;      /* Figma: Bg page — панель направлений, инфраструктура */
+  --c-bg-panel-2: #f3f5f8;    /* Figma: Bg soft */
+  --c-accent-soft: #fbe9e6;   /* Figma: Accent soft — пятно за картой симптомов */
+
+  /* ---------- Цвета: линии и обводки ---------- */
+  --c-line: #f2f2f2;          /* Figma: Divider — обводка карточки-ссылки */
+  --c-line-2: #f3f3f3;        /* Figma: Line — разделители страницы */
+  --c-border: #d9d9d9;        /* Figma: Non activ — обводка полей, кругов, неактивной стрелки */
+  --c-border-control: #dddddd;/* Figma: Border control — чекбокс */
+  --c-border-light: #d4d9df;  /* Figma: Border light — дисклеймер подвала */
+
+  /* ---------- Цвета: состояния ---------- */
+  --c-disabled: #d9d9d9;      /* неактивная стрелка слайдера (кит «Slider left / Non activ») */
+  --c-error: #ff4444;         /* Figma: BAG — ошибка поля */
+  --c-dot: #d9d9d9;           /* неактивная точка пагинации */
+  --c-dot-active: #607ed8;    /* активная точка пагинации */
+  --c-bullet: #d2daf2;        /* сердцевина маркера карты симптомов (Bullit) */
+  --c-ghost: #e6e7ec;         /* «тающая» часть заявления инфраструктуры */
+  --c-overlay: rgba(38, 38, 38, .4);  /* ПРЕДЛОЖЕНИЕ (Q-overlays): затемнение под окнами desktop — в макете окон desktop нет */
+  --c-photo-veil: rgba(211, 211, 211, .2); /* Figma: Shadow grey 20 % — вуаль на фото кейса */
+
+  /* ---------- Цвета: теги ---------- */
+  --c-tag-peach: #ffeadd;
+  --c-tag-lilac: #f3e4ff;
+  --c-tag-olive: #f6f7e8;
+  --c-tag-green: #ebf7e5;
+  --c-tag-blue: #e5f1f7;
+
+  /* ---------- Градиенты (пересчёт gradientTransform Figma → CSS, tools/figma_gradient.py) ---------- */
+  --g-brand: linear-gradient(166deg, #607ed8 29.7%, #9ab0f3 98.6%);          /* кнопка: обычное */
+  --g-brand-hover: linear-gradient(162deg, #6c87da 12.3%, #3753a8 100%);     /* кнопка: наведение (кит Btn 1 / Hover) */
+  --g-brand-pill: linear-gradient(161deg, #607ed8 29.7%, #9ab0f3 98.6%);     /* активный пункт переключателя 116×37 */
+  --g-brand-round: linear-gradient(132deg, #607ed8 29.7%, #9ab0f3 98.6%);    /* круглая стрелка: обычное */
+  --g-brand-round-hover: linear-gradient(127deg, #6c87da 12.3%, #3753a8 100%);
+  --g-dark: linear-gradient(134deg, #6e85cb 29.4%, #3c549e 98.5%);           /* Figma: Blue GR — логотип, тёмная кнопка mobile */
+  --g-soft: linear-gradient(90deg, #f2f4f8 0%, #fff6ee 100%);                /* Figma: Back GR / Linear — мягкие плашки (матрица = единичная) */
+  --g-soft-diag: linear-gradient(147deg, #f2f4f8 22.7%, #fff6ee 94.5%);      /* карточка «Подробнее про ЦЭМ» */
+  --g-pale: linear-gradient(173deg, #809aeb 29.4%, #9ab0f3 84.5%);           /* Figma: 23 — активный пункт инфраструктуры, таб-бар */
+  /* плитки направлений и цифры инфраструктуры */
+  --g-tile-violet: linear-gradient(171deg, #9aa0ee 10.5%, #d4c2fa 88.5%);    /* Диагностика */
+  --g-tile-aqua: linear-gradient(165deg, #99a0ed 14.3%, #8be8eb 80.6%);      /* Анализы */
+  --g-tile-orchid: linear-gradient(167deg, #a3a5ef 13.1%, #e8a2f8 87.2%);    /* Операции */
+  --g-tile-peach: linear-gradient(136deg, #9aa0ee -46.7%, #feb995 100%);     /* иконка «Направления» */
+  --g-stat: linear-gradient(164deg, #9aa0ee -13.8%, #d4c2fa 112.9%);         /* «5 этажей», «12 клиник» */
+  --g-stat-xl: linear-gradient(166deg, #b7bcfc -13.8%, #feb995 112.9%);     /* «8160 м²» */
+  --g-slide-shade: linear-gradient(206deg, rgba(255,255,255,0) 45.6%, rgba(142,153,166,.85) 76.2%); /* затемнение слайда инфраструктуры */
+
+  /* ---------- Тени ---------- */
+  --sh-card: 0 28px 62px rgba(60, 84, 158, .10);     /* Figma: DROP_SHADOW #3c549e 10% 0,28 r61.5 — карточки, маркеры */
+  --sh-card-m: 0 14px 32px rgba(60, 84, 158, .10);   /* то же на mobile (×21 в кадре 375) */
+  --sh-header: 0 -1px 40px rgba(0, 0, 0, .10);       /* шапка */
+  --sh-rail: 1px 0 0 #f4f6f9;                        /* правая граница левой колонки */
+  --focus-ring: 0 0 0 2px #ffffff, 0 0 0 4px #607ed8;/* ПРЕДЛОЖЕНИЕ: в ките фокуса нет (вопрос Q-02) */
+
+  /* ---------- Радиусы (после округления) ---------- */
+  --r-xs: 2px;     /* чекбокс (1,86 → 2) */
+  --r-s: 5px;      /* кнопки, поля, карточки, фото (4,7 / 5 / 5,1 → 5) */
+  --r-m: 10px;     /* кнопка голосового помощника desktop, панель направлений */
+  --r-l: 19px;     /* плашка «Специалисты» */
+  --r-pill: 100px; /* теги, переключатель, круглые кнопки */
+
+  /* ---------- Обводки ---------- */
+  --bw: 1px;       /* все обводки 1 px (0,7 / 0,73 → 1, решение 16.10) */
+
+  /* ---------- Движение ---------- */
+  --t-fast: 150ms;
+  --t: 250ms;
+  --ease: cubic-bezier(.2, .7, .3, 1);
+
+  /* ---------- Раскладка ---------- */
+  --bp-tablet: 1050;   /* справочно: точки в @media пишутся числом */
+  --bp-desktop: 1280;
+  --rail: 102px;       /* левая колонка desktop */
+  --aside: 339px;      /* правая колонка desktop (1101 → 1440) */
+  --header-h: clamp(60px, calc(47.3239px + 3.3803vw), 96px);
+  --pad-x: clamp(12px, calc(2.1408px + 2.6291vw), 40px); /* поле от края контента (mobile 12, desktop 40 от rail) */
+  --aside-pad-l: 22px; /* 1101 → 1123 */
+  --aside-pad-r: 28px; /* 1412 → 1440 */
+  --tabbar-h: 74px;    /* нижнее меню mobile */
+}
+
+
+/* === base.css === */
+/* =====================================================================
+   База: шрифты, сброс, текстовые роли.
+   Текстовая роль = класс .t-<роль>. В блоках размеры шрифта руками не пишутся:
+   берётся роль. Если ни одна роль не подходит — это вопрос к Маше (не новая цифра).
+   Значения: clamp(375px, calc(0px + 100vw), 1440px), округлены до целых px (решение 16.10).
+   В Figma каждая роль — текстовый стиль «role/<роль>» на странице «Библиотека блоков».
+   ===================================================================== */
+@font-face { font-family: "Manrope"; font-style: normal; font-weight: 200 800; font-display: swap;
+  src: url("assets/fonts/manrope-cyrillic-wght-normal.woff2") format("woff2");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: "Manrope"; font-style: normal; font-weight: 200 800; font-display: swap;
+  src: url("assets/fonts/manrope-latin-wght-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Alumni Sans"; font-style: normal; font-weight: 300; font-display: swap;
+  src: url("assets/fonts/alumni-sans-cyrillic-300-normal.woff2") format("woff2");
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: "Alumni Sans"; font-style: normal; font-weight: 300; font-display: swap;
+  src: url("assets/fonts/alumni-sans-latin-300-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+2000-206F; }
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body { margin: 0; background: var(--c-bg); color: var(--c-text);
+  font: 500 14px/normal "Manrope", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, p, ul, ol, figure, blockquote, dl, dd { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+img, svg, video { display: block; max-width: 100%; }
+img { height: auto; }
+a { color: inherit; text-decoration: none; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { padding: 0; border: 0; background: none; cursor: pointer; }
+:focus-visible { outline: none; box-shadow: var(--focus-ring); }
+.visually-hidden { position: absolute !important; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.icon { width: 1em; height: 1em; flex: none; fill: currentColor; }
+
+/* ---------- Текстовые роли ----------
+   «auto» в Figma (межстрочный по шрифту) = 1,366 кегля у Manrope: 12 → 16, 14 → 19, 16 → 22. Пишем числом:
+   браузер иначе округляет «normal» (12 px → 17). */
+/* Заголовки */
+.t-display   { font-weight: 600; font-size: clamp(32px, calc(24.9577px + 1.8779vw), 52px); line-height: clamp(38px, calc(29.9014px + 2.1596vw), 61px); letter-spacing: -0.02em; }   /* H1 первого экрана */
+.t-h1        { font-weight: 600; font-size: clamp(32px, calc(28.4789px + 0.939vw), 42px); line-height: clamp(38px, calc(34.4789px + 0.939vw), 48px); letter-spacing: -0.02em; }   /* заголовок секции */
+.t-h2        { font-weight: 600; font-size: 20px;       line-height: 24px;       letter-spacing: -0.02em; }   /* заголовок правой колонки, подзаголовок */
+.t-h3        { font-weight: 600; font-size: clamp(16px, calc(14.5915px + 0.3756vw), 20px); line-height: 24px;       letter-spacing: -0.02em; }   /* заголовок карточки центра */
+.t-title     { font-weight: 600; font-size: clamp(16px, calc(15.2958px + 0.1878vw), 18px); line-height: 26px;       letter-spacing: -0.02em; }   /* вопрос FAQ, заголовок сервиса/кейса */
+.t-title-m   { font-weight: 600; font-size: 14px;       line-height: 20px;       letter-spacing: -0.01em; }   /* заголовок карточки кейса: 375 — 14/20 −1 %, ≥ 1280 — 18/23 −2 % (Q-cases-3) */
+@media (min-width: 1280px) { .t-title-m { font-size: 18px; line-height: 23px; letter-spacing: -0.02em; } }
+.t-tile      { font-weight: 600; font-size: clamp(18px, calc(19.3521px + -0.0939vw), 19px); line-height: clamp(23px, calc(22.6479px + 0.0939vw), 24px); letter-spacing: -0.02em; } /* подпись плитки направлений */
+.t-title-xl  { font-weight: 600; font-size: 18px;       line-height: 27px;       letter-spacing: -0.02em; }   /* заголовок карточки «Подробнее про ЦЭМ» */
+.t-title-l   { font-weight: 600; font-size: 18px;       line-height: 24px;       letter-spacing: -0.02em; }   /* «Направления» в вкладке */
+/* Текст */
+.t-lead      { font-weight: 500; font-size: clamp(14px, calc(13.2958px + 0.1878vw), 16px); line-height: clamp(19px, calc(15.4789px + 0.939vw), 29px); letter-spacing: clamp(-0.32px, calc(0.1127px + -0.03vw), 0px); } /* лид первого экрана */
+.t-lead-l    { font-weight: 500; font-size: clamp(16px, calc(13.8873px + 0.5634vw), 22px); line-height: clamp(20px, calc(16.1268px + 1.0329vw), 31px); letter-spacing: -0.01em; }   /* подзаголовок формы записи */
+.t-body      { font-weight: 500; font-size: 14px;       line-height: 19px; }                                   /* Figma «text» (auto = 19 у Manrope 14) */
+.t-body-s    { font-weight: 500; font-size: clamp(12px, calc(11.2958px + 0.1878vw), 14px); line-height: clamp(16px, calc(14.9437px + 0.2817vw), 19px); }                             /* описание карточки (auto: 12 → 16, 14 → 19) */
+.t-caption   { font-weight: 500; font-size: 12px;       line-height: 16px; }                                   /* теги, подписи (auto = 16) */
+.t-label     { font-weight: 600; font-size: 14px;       line-height: 20px;       letter-spacing: -0.01em; }   /* Figma «Btn 1» — пункты списков, ссылки */
+.t-label-l   { font-weight: 600; font-size: 18px;       line-height: 20px;       letter-spacing: -0.01em; }   /* пункты инфраструктуры */
+.t-nav       { font-weight: 500; font-size: 14px;       line-height: 19px; }                                   /* меню шапки, левой колонки (auto = 19) */
+.t-input     { font-weight: 600; font-size: 14px;       line-height: clamp(20px, calc(24.0563px + -0.2817vw), 23px); letter-spacing: clamp(-0.42px, calc(-0.5186px + 0.0263vw), -0.14px); } /* подпись поля */
+.t-letter    { font-weight: 600; font-size: 19px;       line-height: 25px;       letter-spacing: -0.02em; }   /* буквы алфавита */
+.t-contact   { font-weight: 600; font-size: clamp(16px, calc(14.5915px + 0.3756vw), 20px); line-height: clamp(23px, calc(22.6479px + 0.0939vw), 24px); letter-spacing: -0.02em; }   /* значение в контактах */
+.t-phone     { font-weight: 600; font-size: clamp(12px, calc(10.5915px + 0.3756vw), 16px); line-height: 1.05; }                                   /* телефон в шапке */
+/* Мелкие подписи и окна */
+.t-micro     { font-weight: 600; font-size: clamp(9px, calc(8.6479px + 0.0939vw), 10px); line-height: clamp(12px, calc(22.8169px + -0.7512vw), 20px); letter-spacing: -0.02em; } /* подписи нижнего меню, «Заказать звонок» на 375 */
+.t-copy      { font-weight: 500; font-size: 13px;       line-height: 14px; }                                   /* копирайт подвала, «Наверх» */
+.t-sheet-title { font-weight: 600; font-size: 24px;     line-height: 38px;       letter-spacing: -0.02em; }   /* заголовок раздела в мобильном меню */
+/* Кнопки */
+.t-btn-xl    { font-weight: 600; font-size: clamp(19px, calc(18.6479px + 0.0939vw), 20px); line-height: clamp(23px, calc(22.6479px + 0.0939vw), 24px); letter-spacing: -0.02em; }   /* «Записаться на приём» в первом экране */
+.t-btn-l     { font-weight: 600; font-size: 19px;       line-height: 34px;       letter-spacing: -0.03em; }   /* «Смотреть все центры» */
+.t-btn-m     { font-weight: 600; font-size: clamp(14px, calc(12.9437px + 0.2817vw), 17px); line-height: clamp(30px, calc(32.7042px + -0.1878vw), 32px); letter-spacing: -0.03em; }   /* «Документация», «Отправить сообщение» */
+.t-btn-f     { font-weight: 600; font-size: 17px;       line-height: 32px;       letter-spacing: -0.03em; }   /* кнопка отправки формы */
+.t-btn-s     { font-weight: 600; font-size: 14px;       line-height: 30px;       letter-spacing: -0.03em; }   /* «Записаться в клинику» */
+/* Акцентные (инфраструктура) */
+.t-overline  { font-weight: 800; font-size: clamp(18px, calc(20.7042px + -0.1878vw), 20px); line-height: clamp(28px, calc(20.9577px + 1.8779vw), 48px); letter-spacing: 0.14em; text-transform: uppercase; }
+.t-statement { font-weight: 800; font-size: clamp(32px, calc(25.662px + 1.6901vw), 50px); line-height: clamp(37px, calc(27.493px + 2.5352vw), 64px); letter-spacing: -0.02em; }
+.t-stat      { font-weight: 700; font-size: clamp(35px, calc(41.7606px + -0.4695vw), 40px); line-height: clamp(54px, calc(71.5775px + -1.2207vw), 67px); letter-spacing: -0.06em; }
+.t-stat-xl   { font-weight: 700; font-size: clamp(60px, calc(54.7183px + 1.4085vw), 75px); line-height: clamp(77px, calc(70.3099px + 1.784vw), 96px); letter-spacing: -0.06em; }
+.t-slide-num { font-weight: 800; font-size: clamp(120px, calc(104.507px + 4.1315vw), 164px); line-height: clamp(148px, calc(128.9859px + 5.0704vw), 202px); letter-spacing: -0.02em; }
+.t-slide-title { font-weight: 800; font-size: clamp(20px, calc(16.4789px + 0.939vw), 30px); line-height: clamp(44px, calc(38.3662px + 1.5023vw), 60px); letter-spacing: 0.03em; text-transform: uppercase; }
+.t-slide-text  { font-weight: 500; font-size: clamp(20px, calc(16.4789px + 0.939vw), 30px); line-height: clamp(26px, calc(22.831px + 0.8451vw), 35px); }
+/* Подвал */
+.t-disclaimer { font-family: "Alumni Sans", sans-serif; font-weight: 300; font-size: clamp(45px, calc(40.4225px + 1.2207vw), 58px); line-height: 0.9; letter-spacing: -0.02em; text-transform: uppercase; }
+
+/* Ограничение строк: .clamp-1 … .clamp-4 (договорённость 28.10, обрезка многоточием) */
+.clamp-1, .clamp-2, .clamp-3, .clamp-4, .clamp-5 { display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; }
+.clamp-1 { -webkit-line-clamp: 1; line-clamp: 1; }
+.clamp-2 { -webkit-line-clamp: 2; line-clamp: 2; }
+.clamp-3 { -webkit-line-clamp: 3; line-clamp: 3; }
+.clamp-4 { -webkit-line-clamp: 4; line-clamp: 4; }
+.clamp-5 { -webkit-line-clamp: 5; line-clamp: 5; }
+
+/* Под открытым окном страница не прокручивается */
+html:has(dialog[open]) { overflow: hidden; }
+
+
+/* === layout.css === */
+/* =====================================================================
+   Каркас страницы.
+   Разметка страницы (pages/*.html):
+     <header data-block="header">          — шапка
+     <div class="page">
+       <nav data-block="rail">              — левая колонка (только ≥ 1280)
+       <main class="page__main">
+         <div class="row row--split">       — полоса «контент | правая колонка»
+           <div class="row__main">…блоки…</div>
+           <aside class="row__aside">…блоки…</aside>
+         </div>
+         <div class="row row--wide">…блок…</div>   — полоса на всю ширину справа от rail
+     </div>
+   < 1280: одна колонка. Обёртки .row/.row__main/.row__aside — display: contents,
+   порядок блоков — свойство --om в атрибуте style блока (style="--om: 7").
+   ≥ 1280: rail 102 | контент; в .row--split — main | aside 339 с линией слева (линия входит в 339; контент колонки с x 1123, ширина 289).
+   Шире 1440: ширина 100 %, rail и aside своей ширины, размеры как на 1440 (решение 28.10).
+   ===================================================================== */
+.page__main { display: flex; flex-direction: column; min-width: 0; }
+.row, .row__main, .row__aside { display: contents; }
+.page__main > .row > * > [data-block], .page__main > .row > [data-block] { order: var(--om, 0); }
+@media (max-width: 1279.98px) { .only-desktop { display: none !important; } }
+@media (min-width: 1050px) { .only-narrow { display: none !important; } }   /* только < 1050 */
+
+@media (min-width: 1280px) {
+  .only-mobile { display: none !important; }
+  .page { display: grid; grid-template-columns: var(--rail) minmax(0, 1fr); }
+  .page__main { display: block; }
+  .row { display: block; }
+  .row--split { display: grid; grid-template-columns: minmax(0, 1fr) var(--aside); }
+  .row__main { display: block; min-width: 0; }
+  .row__aside { display: block; min-width: 0; padding: 0 var(--aside-pad-r) 0 calc(var(--aside-pad-l) - var(--bw)); border-left: var(--bw) solid var(--c-line-2); }
+  .row--rule-top { border-top: var(--bw) solid var(--c-line-2); }
+}
+
+/* Отступ контента от края: mobile 12, desktop 40 от rail. Блоки берут его через var(--pad-x). */
+.container { padding-inline: var(--pad-x); }
+
+/* Порядок блоков на mobile (< 1280) — как в кадре 375 (3272:5376). Новый блок — добавить строку. */
+[data-block="hero"] { --om: 1; }
+[data-block="directions"] { --om: 2; }
+[data-block="centers-list"] { --om: 3; }
+[data-block="infra-intro"] { --om: 4; }
+[data-block="infra"] { --om: 5; }
+[data-block="features"] { --om: 6; }
+[data-block="podcasts"] { --om: 7; }
+[data-block="centers"] { --om: 8; }
+[data-block="booking"] { --om: 9; }
+[data-block="promos"] { --om: 10; }
+[data-block="cases"] { --om: 11; }
+[data-block="services"] { --om: 12; }
+[data-block="faq"] { --om: 13; }
+[data-block="assistant"] { --om: 14; }
+[data-block="articles"] { --om: 15; }
+[data-block="news"] { --om: 16; }
+[data-block="contacts"] { --om: 17; }
+[data-block="map"] { --om: 18; }
+[data-block="footer"] { --om: 19; }
+
+
+/* === components/button.css === */
+/* =====================================================================
+   КНОПКА  .btn            Figma: компонент «btn» (кит: «Btn 1» 3272:6179, «btn Medium» ×14 в кадрах)
+   ---------------------------------------------------------------------
+   Разметка:  <a|button class="btn btn--primary btn--xl">Текст</a|button>
+   Вариант (variant):  primary — фирменный градиент (по умолчанию)
+                        soft    — мягкий градиент, тёмный текст («Голосовой помощник Док»)
+                        dark    — тёмный градиент Blue GR (mobile «Отправить сообщение», см. Q-06)
+   Размер (size):      xl 65 · l 65 · m clamp(45px, calc(39.7183px + 1.4085vw), 60px) · s 40 · f 62 (отправка формы)  (см. таблицу ниже)
+   Ширина:             по содержимому; .btn--block — на всю ширину родителя;
+                       фиксированную ширину из макета задаёт блок (width: …), не компонент.
+   Состояния:          default · hover (кит) · focus-visible · active · disabled · loading
+   ОБВОДКА: у .btn её нет НИ В ОДНОМ состоянии и варианте (в ките нет stroke ни у Default, ни у Hover).
+   ===================================================================== */
+.btn {
+  position: relative; isolation: isolate;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  border: 0; border-radius: var(--r-s);
+  color: var(--c-text-inverse); background: var(--g-brand);
+  text-align: center; white-space: nowrap; cursor: pointer; user-select: none;
+  transition: transform var(--t-fast) var(--ease), opacity var(--t-fast) var(--ease);
+}
+/* hover-градиент — отдельным слоем: градиенты нельзя анимировать напрямую */
+.btn::before {
+  content: ""; position: absolute; inset: 0; z-index: -1; border-radius: inherit;
+  background: var(--g-brand-hover); opacity: 0; transition: opacity var(--t) var(--ease);
+}
+@media (hover: hover) { .btn:hover::before { opacity: 1; } }
+.btn:focus-visible { box-shadow: var(--focus-ring); }                 /* ПРЕДЛОЖЕНИЕ, Q-02 */
+.btn:active::before { opacity: 1; }                                    /* ПРЕДЛОЖЕНИЕ: нажатие = вид наведения, Q-03 */
+.btn:active { transform: translateY(1px); }
+.btn:disabled, .btn[aria-disabled="true"] {                             /* ПРЕДЛОЖЕНИЕ, Q-04: в ките нет */
+  background: var(--c-disabled); color: var(--c-text-inverse); cursor: not-allowed; transform: none;
+}
+.btn:disabled::before, .btn[aria-disabled="true"]::before { opacity: 0; }
+.btn[aria-busy="true"] { cursor: progress; color: transparent; }         /* ПРЕДЛОЖЕНИЕ: отправка формы, Q-04 */
+.btn[aria-busy="true"]::after {
+  content: ""; position: absolute; width: 18px; height: 18px; border-radius: 50%;
+  border: 2px solid color-mix(in srgb, var(--c-text-inverse) 50%, transparent); border-top-color: var(--c-text-inverse); animation: btn-spin .8s linear infinite;
+}
+@keyframes btn-spin { to { transform: rotate(360deg); } }
+
+/* --- Варианты --- */
+.btn--soft { color: var(--c-text); background: var(--g-soft); }
+.btn--soft::before { background: var(--g-soft); }                    /* hover не нарисован — не меняется, Q-05 */
+.btn--dark { background: var(--g-dark); }
+
+/* --- Размеры (значения из макета; текст — роль) ---
+   xl  276×65  отступы 15/41/12/41  .t-btn-xl  — «Записаться на приём» (первый экран, кит Btn 1)
+   l   310×65  отступы 14/37/11/37  .t-btn-l   — «Смотреть все центры»
+   m   229×60 (mobile 159×45) отступы 14/44     .t-btn-m   — «Документация», «Отправить сообщение»
+   s   185×40  отступы 14/44         .t-btn-s   — «Записаться в клинику», «Участвовать»
+   f   ×62 (форма; в форме записи desktop — 75, задаёт блок) отступы 14/37/11/37, текст 17/32 −3 % — кнопки отправки форм */
+.btn--xl { min-height: 65px; padding: 15px 41px 12px; font-weight: 600; font-size: clamp(19px, calc(18.6479px + 0.0939vw), 20px); line-height: clamp(23px, calc(22.6479px + 0.0939vw), 24px); letter-spacing: -0.02em; }
+.btn--l  { min-height: 65px; padding: 14px 37px 11px; font-weight: 600; font-size: 19px; line-height: 34px; letter-spacing: -0.03em; }
+.btn--m  { min-height: clamp(45px, calc(39.7183px + 1.4085vw), 60px); padding: 0 clamp(32px, calc(27.7746px + 1.1268vw), 44px); font-weight: 600; font-size: clamp(14px, calc(12.9437px + 0.2817vw), 17px); line-height: clamp(30px, calc(32.7042px + -0.1878vw), 32px); letter-spacing: -0.03em; }
+.btn--s  { min-height: 40px; padding: 0 clamp(20px, calc(11.5493px + 2.2535vw), 44px); font-weight: 600; font-size: 14px; line-height: 30px; letter-spacing: -0.03em; }
+.btn--f  { min-height: 62px; padding: 14px 37px 11px; font-weight: 600; font-size: 17px; line-height: 32px; letter-spacing: -0.03em; }
+.btn--block { display: flex; width: 100%; }
+
+/* =====================================================================
+   КРУГЛАЯ СТРЕЛКА  .arrow-btn      Figma: «arrow-btn» (кит «Slider left» 3272:6218)
+   ---------------------------------------------------------------------
+   Разметка:  <button class="arrow-btn arrow-btn--next" aria-label="Следующий слайд">
+                <svg class="icon"><use href="assets/icons/sprite.svg#i-chevron-right"/></svg></button>
+              (для --outline — иконки i-chev-sm-left / i-chev-sm-right)
+   Направление:  --prev (шеврон влево) · --next (шеврон вправо)
+   Вариант:      filled (по умолчанию, 50 px) — стрелки слайдеров секций
+                 outline (--outline, 33 px) — мини-слайдер «Интересный факт»
+   Состояния и ОБВОДКА (закреплено по киту):
+     filled  default  — градиент --g-brand-round, обводки НЕТ, шеврон белый
+     filled  hover    — градиент --g-brand-round-hover, обводки НЕТ, шеврон белый
+     filled  disabled — фона НЕТ, обводка 1 px --c-disabled, шеврон --c-disabled  (кит «Non activ»)
+     outline default  — фон белый, обводка 1 px --c-border, шеврон --c-brand
+     outline hover    — ПРЕДЛОЖЕНИЕ: обводка --c-brand (в макете не нарисовано, Q-07)
+     outline disabled — шеврон и обводка --c-disabled
+   Неактивна кнопка, когда листать в эту сторону некуда (слайдер ставит disabled сам).
+   ===================================================================== */
+.arrow-btn {
+  position: relative; isolation: isolate; flex: none;
+  display: inline-grid; place-items: center;
+  width: 50px; height: 50px; border-radius: 50%;
+  border: var(--bw) solid transparent; color: var(--c-text-inverse);
+  background: var(--g-brand-round); cursor: pointer;
+  transition: color var(--t-fast), border-color var(--t-fast), background-color var(--t-fast);
+}
+.arrow-btn::before { content: ""; position: absolute; inset: -1px; z-index: -1; border-radius: 50%; background: var(--g-brand-round-hover); opacity: 0; transition: opacity var(--t) var(--ease); }
+@media (hover: hover) { .arrow-btn:not(:disabled):hover::before { opacity: 1; } }
+.arrow-btn .icon { position: absolute; inset: -1px; width: calc(100% + 2px); height: calc(100% + 2px); } /* иконки спрайта нарисованы в рамке кнопки: i-chevron-* 50×50, i-chev-sm-* 33×33 */
+.arrow-btn:disabled, .arrow-btn[aria-disabled="true"] {
+  background: transparent; border-color: var(--c-disabled); color: var(--c-disabled); cursor: default;
+}
+.arrow-btn:disabled::before { opacity: 0; }
+.arrow-btn--outline { width: 33px; height: 33px; background: var(--c-bg); border-color: var(--c-border); color: var(--c-brand); }
+.arrow-btn--outline::before { display: none; }
+@media (hover: hover) { .arrow-btn--outline:not(:disabled):hover { border-color: var(--c-brand); } }
+.arrow-btn--outline:disabled { background: var(--c-bg); border-color: var(--c-disabled); color: var(--c-disabled); }
+
+/* =====================================================================
+   КРУГЛАЯ КНОПКА-ШЕВРОН  .chevron-btn   Figma: «chevron-btn» (в кадрах «arrow down (FUCK)», 43×43)
+   Используется в FAQ. Обводка 1 px --c-border во всех состояниях; шеврон --c-brand.
+   Раскрыто (aria-expanded="true") — шеврон повёрнут на 180° (ПРЕДЛОЖЕНИЕ, Q-12: в макете не нарисовано).
+   ===================================================================== */
+.chevron-btn { flex: none; display: inline-grid; place-items: center; width: 43px; height: 43px; border-radius: 50%;
+  border: var(--bw) solid var(--c-border); color: var(--c-brand); background: transparent; transition: transform var(--t) var(--ease); }
+.chevron-btn .icon { width: 43px; height: 43px; margin: -1px; } /* i-faq-chevron, рамка 43×43 */
+[aria-expanded="true"] > .chevron-btn, .chevron-btn[aria-expanded="true"] { transform: rotate(180deg); }
+
+
+/* === components/link.css === */
+/* =====================================================================
+   ССЫЛКА  .link            Figma: «link» (кит «Link» 3272:6184)
+   ---------------------------------------------------------------------
+   Разметка: <a class="link" href="…">/ Все подкасты</a>
+   Текст: SemiBold 14/20, −1 %, подчёркнута ВСЕГДА (в ките подчёркнуты и Default, и Hover).
+   Префикс «/ » — часть текста ссылки (так в макете), пишется контентом.
+   Размер: --l → SemiBold 18/26 −2 % («Изучить Центр» в карточке «Подробнее про ЦЭМ»)
+   Состояния: default --c-brand · hover --c-brand-dark (кит) · focus-visible (кольцо, Q-02)
+   Подчёркивание: offset 3 px, толщина 1 px (решение по ссылке ПД, v4).
+   ===================================================================== */
+.link {
+  display: inline; color: var(--c-brand);
+  font-weight: 600; font-size: 14px; line-height: 20px; letter-spacing: -0.01em;
+  text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px;
+  transition: color var(--t-fast) var(--ease);
+}
+@media (hover: hover) { .link:hover { color: var(--c-brand-dark); } }
+.link--l { font-size: 18px; line-height: 26px; letter-spacing: -0.02em; }
+/* Ссылка ПД в согласии: серая, подчёркивание полупрозрачное (решение v4) */
+.link--muted { color: var(--c-text-2); font-weight: 500; line-height: normal; letter-spacing: 0; text-decoration-color: color-mix(in srgb, var(--c-text-2) 75%, transparent); white-space: nowrap; }
+@media (hover: hover) { .link--muted:hover { color: var(--c-text); } }
+
+/* =====================================================================
+   ССЫЛКА СО СТРЕЛКОЙ  .link-arrow     Figma: «link-arrow» (кит 3272:6211 «Изучить центр»)
+   ---------------------------------------------------------------------
+   <a class="link-arrow" href="…"><span>Изучить центр</span><svg class="icon"><use href="…#i-arrow-right"/></svg></a>
+   Декоративно (ссылка — заголовок карточки, вся карточка кликабельна): тот же вид на <span class="link-arrow" aria-hidden="true">…</span>
+   Текст Medium 14/32 −2 %, стрелка 29×29 у правого края (текст слева, стрелка справа, между — свободно).
+   Без подчёркивания. default --c-brand · hover --c-brand-dark (и текст, и стрелка — кит Variant2).
+   Варианты: --compact — стрелка сразу за текстом на 15 px («Читать →» в кейсах, Medium 14/28).
+   ===================================================================== */
+.link-arrow { display: flex; align-items: center; justify-content: space-between; gap: 15px;
+  color: var(--c-brand); font-weight: 500; font-size: 14px; line-height: 32px; letter-spacing: -0.02em;
+  transition: color var(--t-fast) var(--ease); }
+.link-arrow .icon { width: 29px; height: 29px; }
+@media (hover: hover) { .link-arrow:hover { color: var(--c-brand-dark); } }
+.link-arrow--compact { display: inline-flex; justify-content: flex-start; line-height: 28px; }
+
+/* =====================================================================
+   ПУНКТ СПИСКА НАПРАВЛЕНИЙ  .list-link   Figma: «list-link» (кит 3272:6189)
+   ---------------------------------------------------------------------
+   <a class="list-link" href="…"><span class="list-link__num">01</span>
+      <span class="list-link__text clamp-2">Акушерство и гинекология</span>
+      <svg class="icon list-link__arrow"><use href="…#i-arrow-right"/></svg></a>
+   Высота 42 (одна строка), поля 15 слева/справа, номер → текст 15, стрелка 21×26 у правого края.
+   Текст SemiBold 14/20 −1 %, номер --c-brand, текст --c-text, стрелка --c-brand.
+   hover (кит): фон --g-brand, радиус 5, номер/текст/стрелка белые.
+   Текст: максимум 2 строки, стрелка остаётся у первой строки (решение 28.10).
+   ===================================================================== */
+.list-link { display: flex; align-items: flex-start; gap: 15px; min-height: 42px; padding: 8px 15px;
+  border-radius: var(--r-s); color: var(--c-text); font-weight: 600; font-size: 14px; line-height: 20px; letter-spacing: -0.01em;
+  transition: background-color var(--t-fast), color var(--t-fast); }
+.list-link__num { flex: none; min-width: 15px; padding-top: 3px; color: var(--c-brand); font-variant-numeric: tabular-nums; }
+.list-link__text { flex: 1 1 auto; min-width: 0; padding-top: 3px; }
+.list-link__arrow { flex: none; width: 26px; height: 26px; margin: 0 -2.5px 0 -5px;  /* −5: от текста до стрелки 10, как в макете (текст до 348, стрелка с 365) */ color: var(--c-brand); }  /* i-arrow-right нарисована в рамке 37: в рамке 26 стрелка = 12,9 px, как в макете */
+@media (hover: hover) {
+  .list-link:hover { background: var(--g-brand); color: var(--c-text-inverse); }
+  .list-link:hover .list-link__num, .list-link:hover .list-link__arrow { color: var(--c-text-inverse); }
+}
+
+/* =====================================================================
+   КАРТОЧКА-ССЫЛКА  .card-link    Figma: «card-link» (кит 3272:6202 «Многопрофильный центр»)
+   ---------------------------------------------------------------------
+   <a class="card-link" href="…"><span class="card-link__text clamp-2">…</span><svg class="icon">…#i-arrow-right</svg></a>
+   Высота 63, поля 10/20, текст SemiBold 15/32 −2 %, стрелка 30×37.
+   ОБВОДКА: default — 1 px --c-line (#f2f2f2) внутрь; hover — обводки НЕТ, фон --g-soft (кит «Hovr»).
+   Текст: максимум 2 строки (решение 28.10; межстрочный 20 при 2 строках — помещается в 63).
+   ===================================================================== */
+.card-link { display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  min-height: 63px; padding: 10px 20px; border-radius: var(--r-s);
+  box-shadow: inset 0 0 0 var(--bw) var(--c-line); background: var(--c-bg);
+  color: var(--c-text); font-weight: 600; font-size: 15px; line-height: 32px; letter-spacing: -0.02em;
+  transition: box-shadow var(--t-fast), background-color var(--t-fast); }
+.card-link__text { min-width: 0; }
+.card-link__text.clamp-2 { line-height: 20px; }
+.card-link .icon { flex: none; width: 37px; height: 37px; margin: 0 -3.5px; color: var(--c-brand); }  /* рамка стрелки в макете 30×37, иконка спрайта — 37×37 */
+.card-link.is-active, .card-link[aria-current="page"] { box-shadow: none; background: var(--g-soft); }
+@media (hover: hover) { .card-link:hover { box-shadow: none; background: var(--g-soft); } }
+
+
+/* === components/form.css === */
+/* =====================================================================
+   ПОЛЕ ВВОДА  .field       Figma: «field» (кит «Component 1» 3272:6286)
+   ---------------------------------------------------------------------
+   <label class="field">
+     <input class="field__input" name="name" placeholder="Ваше имя*" required autocomplete="name">
+     <span class="field__error" id="…">Заполните поле</span>
+   </label>
+   Подпись поля = placeholder (так в макете: текст внутри поля, отдельной подписи над полем нет).
+   Высота clamp(50px, calc(41.1972px + 2.3474vw), 75px), фон белый, радиус 5, отступ текста слева 21. Текст .t-input (SemiBold 14/20 −1 %;
+   mobile 14/23 −3 %). Placeholder --c-text-2, введённое значение --c-text.
+   Тип: text · tel · email · textarea (.field--area, высота clamp(100px, calc(84.1549px + 4.2254vw), 145px)).
+   Состояния и ОБВОДКА (закреплено по киту):
+     default — обводки НЕТ
+     hover   — 1 px --c-border, текст placeholder --c-text-hover (кит HOVER)
+     focus   — ПРЕДЛОЖЕНИЕ: 1 px --c-brand (в ките нет, Q-08)
+     error   — 1 px --c-error; текст ошибки Medium 14 --c-error под строкой ввода (кит ERROR):
+               строка ввода поднимается на 13 от верха, ошибка — на 43 (desktop)
+     filled  — значение --c-text на месте placeholder (в ките нет отдельного вида, Q-08)
+     disabled — ПРЕДЛОЖЕНИЕ: фон --c-bg-muted, текст --c-text-muted (Q-08)
+   Ошибка показывается после ухода из поля или после попытки отправки (interactive.js, data-js="form").
+   Форма целиком: <form data-js="form" …> → первым потомком ловушка для ботов
+   <input type="text" name="cem_hp" tabindex="-1" autocomplete="off" inert hidden aria-hidden="true">
+   → поля .field / .select → .checkbox (согласие, required) → кнопка type=submit .btn.
+   ===================================================================== */
+.field { position: relative; display: block; min-width: 0; }
+.field__input {
+  display: block; width: 100%; height: clamp(50px, calc(41.1972px + 2.3474vw), 75px); padding: 0 16px 0 21px;
+  border: 0; border-radius: var(--r-s); background: var(--c-bg); color: var(--c-text);
+  box-shadow: inset 0 0 0 var(--bw) transparent; outline: none;
+  font-weight: 600; font-size: 14px; line-height: clamp(20px, calc(24.0563px + -0.2817vw), 23px); letter-spacing: clamp(-0.42px, calc(-0.5186px + 0.0263vw), -0.14px);
+  transition: box-shadow var(--t-fast) var(--ease);
+  -webkit-appearance: none; appearance: none;
+}
+.field__input::placeholder { color: var(--c-text-2); opacity: 1; transition: color var(--t-fast); }
+@media (hover: hover) {
+  .field__input:hover { box-shadow: inset 0 0 0 var(--bw) var(--c-border); }
+  .field__input:hover::placeholder { color: var(--c-text-hover); }
+}
+.field__input:focus, .field__input:focus-visible { box-shadow: inset 0 0 0 var(--bw) var(--c-brand); }
+.field__input:disabled { background: var(--c-bg-muted); color: var(--c-text-muted); cursor: not-allowed; }
+textarea.field__input, .field--area .field__input { height: clamp(100px, calc(84.1549px + 4.2254vw), 145px); padding-top: clamp(13px, calc(11.2394px + 0.4695vw), 18px); resize: vertical; }
+.field__error { display: none; position: absolute; left: 21px; right: 16px; top: clamp(28px, calc(22.7183px + 1.4085vw), 43px);
+  color: var(--c-error); font-weight: 500; font-size: 14px; line-height: normal; pointer-events: none; }
+.field.is-invalid .field__input { height: clamp(64px, calc(60.1268px + 1.0329vw), 75px); box-shadow: inset 0 0 0 var(--bw) var(--c-error); padding-bottom: clamp(24px, calc(22.5915px + 0.3756vw), 28px); }
+/* 1440: строка ввода на 13, ошибка на 43 (кит ERROR 3272:6291). Mobile ошибки в ките нет — ПРЕДЛОЖЕНИЕ (Q-08): поле растёт до 64, ошибка на 28. */
+.field.is-invalid .field__error { display: block; }
+.field--area.is-invalid .field__error { top: auto; bottom: 10px; }
+
+/* =====================================================================
+   ВЫПАДАЮЩИЙ СПИСОК С ПОИСКОМ  .select    Figma: «select» (кит «Input dropdown» 3272:6294)
+   ---------------------------------------------------------------------
+   <div class="select" data-js="select">
+     <button class="select__toggle" type="button" aria-haspopup="listbox" aria-expanded="false">
+       <span class="select__value">Выберите направление</span><svg class="icon">…#i-chevron-down</svg></button>
+     <div class="select__panel" hidden>
+       <input class="select__search" type="search" placeholder="Поиск" aria-label="Поиск направления">
+       <ul class="select__list" role="listbox"><li role="option" data-value="…">Направление 1</li>…</ul>
+     </div>
+     <input type="hidden" name="direction">
+   </div>
+   Закрыто: высота 50, белый, радиус 5, текст SemiBold 14/23 −3 % --c-brand, шеврон 20 --c-brand.
+   Открыто (кит Variant2): панель продолжает поле вниз (общий белый фон), шеврон вверх,
+     поиск 36 высотой с обводкой 1 px --c-border, пункты SemiBold 14/23 −3 % --c-text, шаг 33.
+   Пункт под курсором/клавиатурой — ПРЕДЛОЖЕНИЕ: фон --c-bg-soft, радиус 5 (в ките нет, Q-09).
+   Выбрано — ПРЕДЛОЖЕНИЕ: значение --c-text вместо подсказки (Q-09).
+   Поведение: клик/Enter/Space/↓ — открыть; ввод в поиск фильтрует; ↑/↓ — по пунктам; Enter — выбрать;
+   Esc и клик снаружи — закрыть без выбора. Пусто после фильтра — «Ничего не найдено» (ПРЕДЛОЖЕНИЕ).
+   ===================================================================== */
+.select { position: relative; }
+.select__toggle { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%;
+  min-height: 50px; padding: 0 14px 0 21px; border-radius: var(--r-s); background: var(--c-bg); color: var(--c-brand); text-align: left;
+  font-weight: 600; font-size: 14px; line-height: 23px; letter-spacing: -0.03em; }
+.select__toggle .icon { width: 20px; height: 20px; transition: transform var(--t) var(--ease); }
+.select.is-open .select__toggle { border-radius: var(--r-s) var(--r-s) 0 0; }
+.select.is-open .select__toggle .icon { transform: rotate(180deg); }
+.select.has-value .select__value { color: var(--c-text); }
+.select__panel { position: absolute; z-index: 20; left: 0; right: 0; top: 100%; padding: 0 14px 9px 21px;
+  margin-top: -1px; border-radius: 0 0 var(--r-s) var(--r-s); background: var(--c-bg); box-shadow: var(--sh-card); }
+.select__search { display: block; width: 100%; height: 36px; padding: 0 10px; margin-bottom: 10px; border: 0; border-radius: var(--r-s);
+  box-shadow: inset 0 0 0 var(--bw) var(--c-border); color: var(--c-text); background: var(--c-bg);
+  font-weight: 600; font-size: 14px; line-height: 23px; letter-spacing: -0.03em; outline: none; }
+.select__search::placeholder { color: var(--c-text-2); }
+.select__search:focus { box-shadow: inset 0 0 0 var(--bw) var(--c-brand); }
+.select__list { max-height: 165px; overflow-y: auto; margin-inline: -6px -8px; padding-inline: 6px 8px; } /* место под подсветку пункта (v14) */
+.select__list [role="option"] { padding: 5px 6px; margin-inline: -6px; border-radius: var(--r-s); cursor: pointer;
+  color: var(--c-text); font-weight: 600; font-size: 14px; line-height: 23px; letter-spacing: -0.03em; }
+.select__list [role="option"].is-active, .select__list [role="option"]:hover { background: var(--c-bg-soft); }
+.select__list [aria-selected="true"] { color: var(--c-brand); }
+.select__empty { padding: 5px 0; color: var(--c-text-muted); }
+
+/* =====================================================================
+   ЧЕКБОКС  .checkbox       Figma: «checkbox» (кит «Check BOX» 3272:6173)
+   ---------------------------------------------------------------------
+   <label class="checkbox"><input type="checkbox" name="consent" required>
+     <span class="checkbox__box"></span><span class="checkbox__text">Соглашаюсь на обработку
+     <a class="link link--muted" href="…">Персональных данных</a></span></label>
+   Квадрат 15×15, обводка 1 px --c-border-control ВО ВСЕХ состояниях (кит: и Default, и отмечен),
+   радиус 2, фон белый; галочка 9×10, линия 2 px --c-brand.
+   По умолчанию НЕ отмечен (152-ФЗ, намеренное отличие от кадра, где отмечен — решение I-01).
+   Текст Medium 14/19 --c-text-2, отступ от квадрата 10 (форма записи 3272:5088).
+   Ошибка (не отмечен при отправке) — ПРЕДЛОЖЕНИЕ: обводка квадрата --c-error (Q-10).
+   ===================================================================== */
+.checkbox { position: relative; display: inline-flex; align-items: flex-start; gap: 10px; cursor: pointer;
+  color: var(--c-text-2); font-weight: 500; font-size: 14px; line-height: 19px; }
+.checkbox input { position: absolute; opacity: 0; width: 15px; height: 15px; margin: 0; }
+.checkbox__box { position: relative; flex: none; width: 15px; height: 15px; margin-top: 2px; border-radius: var(--r-xs);
+  background: var(--c-bg); box-shadow: inset 0 0 0 var(--bw) var(--c-border-control); }
+.checkbox__box::after { content: ""; position: absolute; inset: 0; opacity: 0;
+  background: center / 10px 10px no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11.33 11.5'%3E%3Cpath d='M1 5L4 10.5L10.33 1' stroke='%23607ed8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E"); }
+.checkbox input:checked + .checkbox__box::after { opacity: 1; }
+.checkbox input:focus-visible + .checkbox__box { box-shadow: inset 0 0 0 var(--bw) var(--c-border-control), var(--focus-ring); }
+.checkbox.is-invalid .checkbox__box { box-shadow: inset 0 0 0 var(--bw) var(--c-error); }
+
+
+/* === components/ui.css === */
+/* =====================================================================
+   ТЕГ  .tag          Figma: «tag»
+   ---------------------------------------------------------------------
+   <a class="tag tag--soft" href="…">#стоматология</a>
+   Форма-«пилюля» (радиус 100), высота 24–25, поля 4/10–21, текст Medium 12 (12,4 → 12).
+   Варианты (variant) — фон и цвет текста:
+     soft   — --c-bg-soft  / --c-brand   (теги шапки: #репродукция…)
+     green  — --c-tag-green / --c-text-2 (тег на фото кейса)
+     blue   — --c-tag-blue  / --c-text-2 (тег сервиса #аптека)
+     peach · lilac · olive — популярные запросы ассистента (размер --l: Medium 15, высота 38, поля 21)
+   Состояния: ссылка-тег — hover ПРЕДЛОЖЕНИЕ: текст --c-brand-dark (Q-11); тег на фото — не интерактивен.
+   Текст: одна строка, без переноса; длинный тег обрезается многоточием по ширине родителя.
+   ===================================================================== */
+.tag { display: inline-flex; align-items: center; max-width: 100%; min-height: 24px; padding: 3px 10px;
+  border-radius: var(--r-pill); background: var(--c-bg-soft); color: var(--c-brand);
+  font-weight: 500; font-size: 12px; line-height: normal; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  transition: color var(--t-fast); }
+a.tag:hover { color: var(--c-brand-dark); }
+.tag--green { background: var(--c-tag-green); color: var(--c-text-2); }
+.tag--blue  { background: var(--c-tag-blue);  color: var(--c-text-2); }
+.tag--peach { background: var(--c-tag-peach); color: var(--c-text-2); }
+.tag--lilac { background: var(--c-tag-lilac); color: var(--c-text-2); }
+.tag--olive { background: var(--c-tag-olive); color: var(--c-text-2); }
+.tag--l { min-height: 38px; padding: 8px 21px; font-size: 15px; }
+
+/* =====================================================================
+   ПЕРЕКЛЮЧАТЕЛЬ  .segmented     Figma: «segmented» (кадр 1440, «Взрослым / Детям» 3272:4878)
+   ---------------------------------------------------------------------
+   <div class="segmented" role="tablist" data-js="tabs">
+     <button class="segmented__item" role="tab" aria-selected="true" aria-controls="p1">Взрослым</button>
+     <button class="segmented__item" role="tab" aria-selected="false" aria-controls="p2">Детям</button></div>
+   Белая «пилюля» 47 высотой, поля 5/24/5/7, между пунктами 11. Активный пункт — пилюля 37 с --g-brand,
+   текст белый; неактивный — текст --c-brand, без фона. Текст SemiBold 14/26 −2 %.
+   hover неактивного — ПРЕДЛОЖЕНИЕ: текст --c-brand-dark (Q-11). Переключение — мгновенно, без анимации.
+   Клавиатура: ←/→ между пунктами (components/tabs.js).
+   ===================================================================== */
+.segmented { display: inline-flex; align-items: center; gap: 11px; height: 47px; padding: 5px 24px 5px 7px;
+  border-radius: var(--r-pill); background: var(--c-bg); }
+.segmented__item { height: 37px; padding: 0 24px; border-radius: var(--r-pill); color: var(--c-brand);
+  font-weight: 600; font-size: 14px; line-height: 26px; letter-spacing: -0.02em; transition: color var(--t-fast); }
+.segmented__item:not([aria-selected="true"]) { padding: 0; }
+.segmented__item[aria-selected="true"] { background: var(--g-brand-pill); color: var(--c-text-inverse); }
+@media (hover: hover) { .segmented__item:not([aria-selected="true"]):hover { color: var(--c-brand-dark); } }
+
+/* =====================================================================
+   ТОЧКИ ПАГИНАЦИИ  .dots      Figma: «dots» (кадр 375, Group 33176 и др.)
+   ---------------------------------------------------------------------
+   <div class="dots" data-slider-dots></div>  — точки создаёт слайдер, по одной на слайд (решение I-03).
+   Точка 9×9, шаг 21 (между точками 12), неактивная --c-dot, активная --c-dot-active.
+   Точка — кнопка (aria-label «Слайд N из M»), клик листает к слайду. Hover — ПРЕДЛОЖЕНИЕ: --c-brand 50 % (Q-13).
+   ===================================================================== */
+.dots { display: flex; justify-content: center; gap: 12px; }
+.dots button { width: 9px; height: 9px; padding: 0; border-radius: 50%; background: var(--c-dot); transition: background-color var(--t-fast); }
+.dots button[aria-current="true"] { background: var(--c-dot-active); }
+@media (hover: hover) { .dots button:not([aria-current="true"]):hover { background: color-mix(in srgb, var(--c-brand) 50%, transparent); } }
+/* --mini: мини-слайдер «Интересный факт» — точка 6, шаг 15, неактивная --c-bg-soft (кадр 1440, 3272:5300) */
+.dots--mini { gap: 9px; }
+.dots--mini button { width: 6px; height: 6px; background: var(--c-bg-soft); }
+
+/* =====================================================================
+   КАРТОЧКА  .card     Figma: «card» — общая основа карточек (центры, кейсы, сервисы, акции, факт)
+   Фон белый, радиус 5, тень --sh-card (mobile --sh-card-m). Без обводки. Поля задаёт блок.
+   Интерактивность: если вся карточка — ссылка, hover ПРЕДЛОЖЕНИЕ не меняет вид (Q-11).
+   ===================================================================== */
+.card { position: relative; border-radius: var(--r-s); background: var(--c-bg); box-shadow: var(--sh-card-m); }
+@media (min-width: 1050px) { .card { box-shadow: var(--sh-card); } }
+.card--flat { box-shadow: none; }
+
+/* =====================================================================
+   МЕДИА-КАРТОЧКА  .media-card    Figma: «media-card» (подкасты, статьи, новости; 3272:4637)
+   ---------------------------------------------------------------------
+   <a class="media-card" href="…">
+     <img class="media-card__img" src="…" alt="" width="289" height="180" loading="lazy">
+     <span class="media-card__row"><span class="media-card__text clamp-2">Современная стоматология: …</span>
+       <svg class="icon">…#i-arrow-right</svg></span></a>
+   Фото высотой 180 на любой ширине карточки (289 на 1440, 304 на 375; object-fit: cover), радиус 5; под фото 14,
+   подпись SemiBold 14/20 −1 % --c-text, максимум 2 строки (решение 28.10); стрелка 37×37 --c-brand,
+   от правого края 12 (375) / 8 (1440). Высота карточки не меньше 237 (Figma «Media Card»).
+   hover — ПРЕДЛОЖЕНИЕ: стрелка и подпись --c-brand-dark (Q-11).
+   ===================================================================== */
+.media-card { display: flex; flex-direction: column; gap: 14px; min-height: 237px; color: var(--c-text); }
+.media-card__img { width: 100%; height: 180px; object-fit: cover; border-radius: var(--r-s); background: var(--c-bg-soft); }
+.media-card__row { display: flex; align-items: center; justify-content: space-between; gap: 15px; min-height: 40px; padding-right: clamp(8px, calc(13.4085px + -0.3756vw), 12px); }
+.media-card__text { min-width: 0; font-weight: 600; font-size: 14px; line-height: 20px; letter-spacing: -0.01em; transition: color var(--t-fast); }
+.media-card .icon { flex: none; width: 37px; height: 37px; color: var(--c-brand); transition: color var(--t-fast); }
+@media (hover: hover) { .media-card:hover .media-card__text, .media-card:hover .icon { color: var(--c-brand-dark); } }
+
+/* =====================================================================
+   ЗАГОЛОВОК СЕКЦИИ  .section-head    Figma: «section-head»
+   ---------------------------------------------------------------------
+   <div class="section-head">
+     <h2 class="section-head__title t-h1">Центры компетенций</h2>
+     <a class="section-head__link link" href="…">/ 20 Центров</a>          (необязательно)
+     <div class="section-head__controls">…arrow-btn ×2 / btn…</div>     (необязательно, только ≥ 1280)
+   Вариант .section-head--last — заголовок в 2 строки на mobile, ссылка по нижней строке.
+   </div>
+   Ссылка стоит справа от заголовка, ПРИПОДНЯТА к верхней линии заголовка (как надстрочный индекс), отступ 9–16.
+   Размер заголовка: .t-h1 — секция основной колонки; .t-h2 — секция правой колонки/подсекция.
+   Mobile: ссылка уезжает к правому краю той же строки (space-between); controls скрыты.
+   ===================================================================== */
+.section-head { display: flex; align-items: flex-start; gap: clamp(12px, calc(10.5915px + 0.3756vw), 16px); }
+.section-head__title { min-width: 0; }
+.section-head__link { flex: none; margin-top: 0; }
+.section-head__controls { display: none; margin-left: auto; align-items: center; gap: 10px; }
+@media (max-width: 1279.98px) { .section-head { justify-content: space-between; align-items: baseline; } }
+/* --last: заголовок в 2 строки — ссылка на базовой линии НИЖНЕЙ строки (кадр 375 «Сложные случаи центра») */
+@media (max-width: 1279.98px) { .section-head--last { align-items: last baseline; } }
+@media (min-width: 1280px) { .section-head__controls { display: flex; } }
+
+
+/* === components/slider.css === */
+/* =====================================================================
+   СЛАЙДЕР (лента)  .slider     Figma: «slider»
+   Где: центры компетенций, сложные случаи, сервисы, акции, подкасты/статьи/новости (mobile),
+        «Чем мы отличаемся» (mobile), «Интересный факт» (мини-слайдер).
+   ---------------------------------------------------------------------
+   <div class="slider" data-js="slider" aria-roledescription="карусель" aria-label="Центры компетенций">
+     <div class="slider__track" tabindex="-1">
+       <div class="slider__slide" aria-roledescription="слайд" aria-label="1 из 4">…</div> …
+     </div>
+     <div class="dots slider__dots" data-slider-dots></div>        — пагинация (mobile)
+   </div>
+   Стрелки — в .section-head__controls (или где угодно на странице):
+     <button class="arrow-btn arrow-btn--prev" data-slider-prev="ID">… <button class="arrow-btn arrow-btn--next" data-slider-next="ID">…
+     где ID = id слайдера.
+   ПОВЕДЕНИЕ (единое для всех лент):
+   · Лента листается по одному слайду: стрелка → следующий слайд встаёт к левому краю ленты.
+   · Начальное состояние: первый слайд у левого края; «назад» неактивна (вид disabled), «вперёд» активна.
+     В конце: «вперёд» неактивна. Если все слайды видны — обе неактивны. Зацикливания нет.
+   · Автопрокрутки нет (в макете не задана — Q-14).
+   · Касание/трекпад: свайп с привязкой к слайду (scroll-snap), инерция браузера.
+   · Точки: по одной на слайд; активна точка слайда у левого края; клик по точке — к слайду.
+     В кадрах Figma на mobile активна 2-я точка — это иллюстрация, при загрузке активна 1-я (Q-13).
+   · Видимость: стрелки — от 1280, точки — до 1280 (кроме мини-слайдера: и стрелки, и точки всегда).
+   · Слайды справа «выглядывают» за край (как в макете) — лента не обрезает их внутри страницы,
+     обрезка по краю окна (.slider--bleed) — только до 1280; от 1280 лента всегда в пределах своей колонки
+     (во всех кадрах 1440 карточки не выглядывают), переопределять в блоке не нужно.
+   · Клавиатура: стрелки и точки — кнопки (Tab, Enter/Space); фокус на ссылке внутри скрытого слайда
+     прокручивает ленту к нему. prefers-reduced-motion — без плавной прокрутки.
+   ===================================================================== */
+.slider { position: relative; min-width: 0; }
+.slider__track { display: flex; gap: var(--slider-gap, 20px); overflow-x: auto; overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory; scroll-behavior: smooth; scrollbar-width: none; -webkit-overflow-scrolling: touch; outline: none; }
+.slider__track::-webkit-scrollbar { display: none; }
+.slider__slide { flex: 0 0 var(--slide-w, auto); min-width: 0; scroll-snap-align: start; }
+.slider__dots { margin-top: var(--dots-gap, 30px); }
+@media (max-width: 1279.98px) { .slider--bleed .slider__track { margin-inline: calc(-1 * var(--pad-x)); padding-inline: var(--pad-x); scroll-padding-inline: var(--pad-x); } }
+/* место под тень карточек: тень не обрезается лентой */
+.slider--shadow .slider__track { padding-block: 10px 60px; margin-block: -10px -60px; }
+@media (min-width: 1280px) { .slider:not(.slider--mini) .slider__dots { display: none; } }
+@media (prefers-reduced-motion: reduce) { .slider__track { scroll-behavior: auto; } }
+
+
+/* === components/media-feed.css === */
+/* =====================================================================
+   МЕДИА-ЛЕНТА  .media-feed     Figma: «media-feed» (подкасты 3272:4637/3272:5556, статьи, новости)
+   Разметка (одинакова у podcasts, articles, news — отличаются только данные):
+   <section class="media-feed <id>" data-block="<id>">
+     <div class="section-head media-feed__head"><h2 class="section-head__title t-h2">…</h2><a class="section-head__link link">/ …</a></div>
+     <div class="slider media-feed__slider" data-js="slider" id="…"><ul class="slider__track media-feed__list">
+       <li class="slider__slide"><a class="media-card">…</a></li> …</ul><div class="dots slider__dots" data-slider-dots></div></div>
+   </section>
+   ===================================================================== */
+/* ---------------------------------------------------------------------
+   .media-feed — ОБЩИЙ паттерн лент «Подкасты / Статьи / Новости» (podcasts, articles, news).
+   Разметка одинаковая у всех трёх блоков, отличаются только данные и отступы блока в колонке.
+   375: заголовок + ссылка в строке 37, лента карточек 304 (зазор 15) со свайпом и точками.
+   ≥ 1280: карточки столбиком в правой колонке (289), зазоры 22, точек нет.
+   --------------------------------------------------------------------- */
+.media-feed { padding-inline: var(--pad-x); --slide-w: 304px; --slider-gap: 15px; --dots-gap: 30px; }
+.media-feed__head { min-height: 37px; align-items: center; }      /* F-podcasts-2: на 375 строка заголовка 20/37, роль .t-h2 — 24; высоту строки держит блок */
+.media-feed__slider { margin-top: 30px; }                          /* 3293 − (3226 + 37) */
+.media-feed__list { margin: 0; list-style: none; }
+
+@media (min-width: 1280px) {
+  .media-feed { padding-inline: 0; }                               /* в правой колонке поля задаёт .row__aside */
+  .media-feed__head { min-height: 0; align-items: flex-start; gap: 9px; }  /* Figma: ссылка на одном верху с заголовком, отступ 9 */
+  .media-feed__slider { margin-top: 22px; }
+  .media-feed .slider__track { flex-direction: column; gap: 22px; overflow: visible; margin-inline: 0; padding-inline: 0; scroll-snap-type: none; }
+  .media-feed .slider__slide { flex: none; }
+}
+
+
+
+/* === blocks/about-card === */
+/* about-card — карточка «Подробнее про «Центр Экспертной Медицины»». Спецификация: spec.json.
+   Figma: 1440 → 3272:4720 (1123,1285 288×158). На 375 карточки нет (кадр 3272:5376 — проверено по данным). */
+.about-card { display: none; }
+@media (min-width: 1280px) {
+  .about-card {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 24px;
+    min-height: 158px; margin-top: 20px; padding: 13px 30px;   /* Figma: поля 30, но содержимое 131 по центру карточки 158 выходит в поля — переносим видимое (F-about-card-1) */
+    border-radius: var(--r-s); background: var(--g-soft-diag); text-align: center;
+  }
+  .about-card__title { color: var(--c-text); }   /* роль .t-title-xl (18/27) */
+}
+
+
+/* === blocks/articles === */
+/* articles — «Статьи». Спецификация: spec.json. Figma: 1440 → 3272:4653; 375 → 3272:5642
+   Вид и разметка — общий паттерн .media-feed (src/components/media-feed.css).
+   Здесь — только отступы блока на его месте. */
+.articles { padding-bottom: 50px; }
+@media (min-width: 1280px) { .articles { padding: 60px 0 31px; } }  /* 2204 − 2144; снизу до линии 2777 */
+
+
+/* === blocks/assistant === */
+/* assistant — «Ассистент здоровья AI». Спецификация: spec.json.
+   Figma: 1440 → группа 3272:5150 (блок 102 4908 1338×1215); 375 → 3272:5716…5794 (блок 0 6806 375×1699).
+   Карта тела: координаты маркеров — в % от рамки изображения 3272:5286 (672,83×841,53), поэтому масштабируются. */
+.assistant { position: relative; display: flex; flex-direction: column; padding: 0 var(--pad-x) 30px; overflow-x: clip; }
+
+/* ---------- Заголовок с надстрочным «AI» ---------- */
+.assistant__title { text-align: center; }                         /* mobile: по центру, перенос после «Ассистент» (3272:5716) */
+.assistant__title-text { position: relative; display: inline-block; }
+.assistant__ai { position: absolute; left: 100%; top: clamp(0px, calc(-0.3521px + 0.0939vw), 1px); margin-left: clamp(1px, calc(-9.2113px + 2.723vw), 30px); color: var(--c-brand); vertical-align: baseline; }
+/* «AI» 3272:5717 / 3272:5152: SemiBold 18/26 −2 % (роль .t-title-l 18/24 — та же гарнитура, строка 24: верх глифа совпадает) */
+
+/* ---------- Голосовой помощник ---------- */
+.assistant__voice { position: relative; order: 3; margin-top: 15px; }
+.assistant__voice-btn { display: flex; width: 100%; min-height: 60px;  /* в кадре 375 высота 60 (не 45, как у btn--m) — F-assistant-2 */
+  font-size: 17px; line-height: 30px; }                              /* текст 16,78/30 −3 % на обеих ширинах (btn--m mobile 14 — Q-assistant-9) */
+.assistant__orb { position: absolute; z-index: 1; left: clamp(-18px, calc(-16.6479px + -0.0939vw), -17px); top: clamp(-18px, calc(-16.6479px + -0.0939vw), -17px); width: clamp(96px, calc(95.2958px + 0.1878vw), 98px); height: clamp(95px, calc(93.9437px + 0.2817vw), 98px);
+  object-fit: cover; border-radius: 50%; pointer-events: none; }  /* «image 11» 3272:5723 / 3272:5308 — шар поверх кнопки */
+
+/* ---------- Поиск заболевания ---------- */
+.assistant__search { order: 2; display: flex; align-items: center; gap: 14px; height: 52px; margin-top: 30px; padding: 0 8px;
+  border: var(--bw) solid var(--c-brand); border-radius: var(--r-s); background: var(--c-bg); transition: border-color var(--t-fast); }
+.assistant__search:focus-within { border-color: var(--c-brand-dark); }   /* ПРЕДЛОЖЕНИЕ: фокус не нарисован, Q-08 */
+.assistant__search-go { flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; color: var(--c-brand); }
+.assistant__search-go .icon { width: 13px; height: 13px; }
+.assistant__input { flex: 1 1 auto; min-width: 0; height: 100%; padding: 0; border: 0; outline: none; background: transparent; color: var(--c-text);
+  font-weight: 500; font-size: 14px; line-height: normal; -webkit-appearance: none; appearance: none; }   /* mobile: Medium 14 (3272:5721) — роль не подходит, Q-assistant-8 */
+.assistant__input::placeholder { color: var(--c-text-2); opacity: 1; }
+.assistant__input::-webkit-search-cancel-button { -webkit-appearance: none; }
+.assistant__mic { display: none; flex: none; width: 38px; height: 26px; color: var(--c-brand); }   /* микрофона в кадре 375 нет — F-assistant-4 */
+.assistant__mic .icon { width: 38px; height: 26px; }
+.assistant__mic:focus-visible, .assistant__search-go:focus-visible { border-radius: var(--r-s); }
+
+/* ---------- Левая колонка: алфавит, популярные запросы, факт ---------- */
+.assistant__aside { order: 4; display: flex; flex-direction: column; margin-top: 30px; }   /* в кадре 375 x = 13, у поиска и кнопки — 12: поле 12 у всех, F-assistant-1 */
+.assistant__letters { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); column-gap: 9px; row-gap: 10px; max-width: 373px; margin-top: 15px; }
+.assistant__letter { display: grid; place-items: center; height: 51px; border: var(--bw) solid var(--c-border); border-radius: var(--r-pill);
+  color: var(--c-brand); transition: background-color var(--t-fast), border-color var(--t-fast); }
+/* В макете «А» залита --c-bg-soft без обводки — трактуем как вид наведения/выбора (Q-assistant-3), по умолчанию все буквы одинаковые */
+@media (hover: hover) { .assistant__letter:hover { background: var(--c-bg-soft); border-color: var(--c-bg-soft); } }
+.assistant__letter[aria-current="true"] { background: var(--c-bg-soft); border-color: var(--c-bg-soft); }   /* ПРЕДЛОЖЕНИЕ: выбранная буква на странице каталога */
+
+.assistant__popular { margin-top: 30px; }
+.assistant__tags { display: grid; grid-template-columns: repeat(2, 124px); gap: 10px; margin-top: 15px; }   /* ячейки 123,5×38 */
+.assistant__tag { display: flex; justify-content: center; width: 100%; padding-inline: 10px; }   /* текст по центру ячейки, как в макете */
+
+/* Карточка «Интересный факт» — только desktop (в кадре 375 её нет, Q-assistant-4) */
+.assistant__facts { margin-top: 47px; margin-left: -2px; width: 375px; padding: 13px 40px; }
+.assistant__fact { --slide-w: 100%; display: flex; align-items: center; gap: 10px; min-height: 163px; }
+.assistant__fact-img { flex: none; width: 105px; height: 150px; object-fit: contain; }
+.assistant__fact-body { display: flex; flex-direction: column; gap: 15px; width: 162px; }
+.assistant__fact-text { color: var(--c-text-muted); }
+.assistant__facts-nav { display: flex; align-items: center; justify-content: space-between; margin: 20px 5px 0; }
+/* точки мини-слайдера — общий вариант .dots--mini */
+
+/* ---------- Карта тела «Что вас беспокоит?» ---------- */
+.assistant__body { order: 5; margin-top: 50px; }
+.assistant__scroller { position: relative; margin: -95px calc(-1 * var(--pad-x)) -30px; padding: 95px var(--pad-x) 30px;
+  overflow-x: auto; overflow-y: hidden; scrollbar-width: none; overscroll-behavior-x: contain; }
+/* ПРЕДЛОЖЕНИЕ (Q-assistant-2): на mobile правая половина карты за краем экрана (так в кадре 375) — её можно пролистать пальцем */
+.assistant__scroller::-webkit-scrollbar { display: none; }
+.assistant__map { position: relative; width: 654px; aspect-ratio: 672.83 / 841.53; margin-top: 25px; }
+.assistant__glow { position: absolute; left: 4.796%; top: -2.076%; width: 90.561%; height: 97.192%; border-radius: 50%;
+  background: var(--c-accent-soft); opacity: .55; filter: blur(150px); pointer-events: none; }   /* LAYER_BLUR 300 (3272:5233) ≈ blur(150px) */
+.assistant__orbit { position: absolute; left: 3.727%; top: -1.710%; width: 92.545%; height: 96.338%; max-width: none; pointer-events: none; }
+.assistant__body-img { position: relative; width: 100%; height: 100%; object-fit: cover; }
+
+.assistant__point { position: absolute; left: var(--x); top: var(--y); }
+.assistant__point--end { transform: translateX(calc(-100% + 40px)); }       /* подпись слева от буллита */
+.assistant__point.is-open { z-index: 5; }
+.assistant__marker { display: flex; align-items: center; gap: 9px; color: var(--c-text); text-align: left; white-space: nowrap; border-radius: 20px; }
+.assistant__point--end .assistant__marker { flex-direction: row-reverse; text-align: right; }
+/* Маркер «Bullit»: белый круг 40 с тенью, сердцевина 16 --c-bullet (3272:5236) */
+.assistant__bullet { position: relative; flex: none; width: 40px; height: 40px; border-radius: 50%; background: var(--c-bg); box-shadow: var(--sh-card-m); }
+.assistant__bullet::after { content: ""; position: absolute; inset: 12px; border-radius: 50%; background: var(--c-bullet); transition: background-color var(--t-fast); }
+@media (hover: hover) { .assistant__marker:hover .assistant__bullet::after { background: var(--c-brand); } }   /* ПРЕДЛОЖЕНИЕ, Q-assistant-7 */
+.assistant__marker[aria-expanded="true"] .assistant__bullet::after { background: var(--c-brand); }               /* ПРЕДЛОЖЕНИЕ, Q-assistant-7 */
+
+/* Поповер симптома (3272:5287): 245, поля 20, промежутки 17, тень карточки, радиус 5.
+   Положение — как в макете относительно буллита «Колит сердце»: левее на 58, ниже на 15. JS сдвигает внутрь видимой области. */
+.assistant__pop { position: absolute; z-index: 2; left: calc(-58px + var(--dx, 0px)); top: 15px; width: 245px; padding: 20px;
+  display: flex; flex-direction: column; gap: 17px; border-radius: var(--r-s); background: var(--c-bg); box-shadow: var(--sh-card); white-space: normal; text-align: left; }
+.assistant__point--end .assistant__pop { left: calc(100% - 98px + var(--dx, 0px)); }
+.assistant__pop.is-up { top: auto; bottom: 55px; }                          /* ПРЕДЛОЖЕНИЕ: у нижнего края карты открывается вверх */
+.assistant__pop[hidden] { display: none; }
+.assistant__pop-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.assistant__pop-title { font-weight: 600; font-size: 16px; line-height: 25px; letter-spacing: -0.02em; color: var(--c-text); }   /* роли 16/25 нет — Q-assistant-8 */
+.assistant__pop-close { flex: none; display: grid; place-items: center; width: 18px; height: 18px; margin-top: 4px; color: var(--c-text-muted); }
+.assistant__pop-close .icon { width: 16px; height: 16px; }   /* крестик i-close (рамка Close 18, 3272:5290) */
+@media (hover: hover) { .assistant__pop-close:hover { color: var(--c-text); } }   /* ПРЕДЛОЖЕНИЕ, Q-assistant-7 */
+.assistant__pop-list { display: flex; flex-direction: column; gap: 15px; max-width: 167px; }   /* ширина текста 167 (3272:5292) */
+.assistant__pop-list li { line-height: 15px; }
+.assistant__pop-link, .assistant__pop-more { font-weight: 600; font-size: 14px; line-height: 15px; letter-spacing: -0.02em; }   /* 14/15 −2 % — роли нет, Q-assistant-8 */
+.assistant__pop-link { color: var(--c-text-muted); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 2px; transition: color var(--t-fast); }
+@media (hover: hover) { .assistant__pop-link:hover { color: var(--c-brand); } }   /* ПРЕДЛОЖЕНИЕ, Q-assistant-7 */
+.assistant__pop-more { color: var(--c-brand); transition: color var(--t-fast); }
+@media (hover: hover) { .assistant__pop-more:hover { color: var(--c-brand-dark); } }
+
+/* ---------- Планшет 1050–1279 (макета нет — Q-01): раскладка mobile, карта целиком и по центру ---------- */
+@media (min-width: 1050px) {
+  .assistant__scroller { margin: 0; padding: 0; overflow: visible; }
+  .assistant__map { width: 673px; margin-inline: auto; }
+  .assistant__map-title { text-align: center; }
+  .assistant__bullet { box-shadow: var(--sh-card); }
+}
+
+/* ---------- Desktop ≥ 1280: две колонки (левая 397 | 17 | правая), Figma 3272:5150 ---------- */
+@media (min-width: 1280px) {
+  .assistant { display: grid; grid-template-columns: 397px minmax(0, 1fr); column-gap: 17px; align-items: start;
+    grid-template-areas: "title title" "voice search" "aside body"; padding: 50px var(--aside-pad-r) 65px var(--pad-x); }
+  .assistant__title { grid-area: title; margin-left: 18px; text-align: left; white-space: nowrap; }
+  .assistant__voice { grid-area: voice; margin: 44px 0 0 20px; width: 377px; }
+  .assistant__voice-btn { border-radius: var(--r-m); }                       /* desktop 10, mobile 5 — F-assistant-3 */
+  .assistant__search { grid-area: search; align-self: end; height: 57px; margin: 0 0 1px; gap: 12px; padding: 0 16px; border-radius: var(--r-m); }
+  .assistant__search-go { width: 55px; height: 55px; }
+  .assistant__search-go .icon { width: 22px; height: 22px; }
+  .assistant__input { font-weight: 600; font-size: 17px; line-height: 30px; letter-spacing: -0.03em; }   /* desktop: SemiBold 16,78/30 −3 % (3272:5157) — F-assistant-5 */
+  .assistant__input::placeholder { color: var(--c-text); }
+  .assistant__mic { display: block; }
+  .assistant__aside { grid-area: aside; margin: 43px 0 0 25px; padding: 0; }
+  .assistant__letters { width: 373px; margin-top: 27px; }                   /* 375: 15, 1440: 27 */
+  .assistant__popular { margin-top: 39px; }
+  .assistant__body { grid-area: body; margin: 43px 0 0 80px; max-width: 673px; }
+  .assistant__map-title { padding-left: 16px; }
+  .assistant__map { width: 100%; margin-top: 39px; }
+}
+
+
+/* === blocks/booking === */
+/* booking — «Сделайте шаг на пути к здоровью» (форма записи). Спецификация: spec.json.
+   Figma: 1440 → группа 3272:5082 (плашка 3272:5083, заголовок 3272:5084, подзаголовок 3272:5093, форма 3272:5085);
+          375  → группа 3272:5576 (плашка 3272:5577, 3272:5586, 3272:5587, форма 3272:5578) */
+.booking { padding-bottom: 50px; }
+.booking__panel { display: flex; flex-direction: column; padding: 36px var(--pad-x) 52px; background: var(--g-soft); }
+.booking__text { display: flex; flex-direction: column; }
+.booking__title { max-width: clamp(220px, calc(182.6761px + 9.9531vw), 326px); }              /* перенос по ширине колонки — 3 строки, как в макете */
+.booking__subtitle { margin-top: clamp(19px, calc(-6.7042px + 6.8545vw), 92px); color: var(--c-text); }   /* 1440: подзаголовок на 292 от верха плашки */
+.booking__form { display: flex; flex-direction: column; gap: 15px; margin-top: 36px; }
+.booking__consent { align-self: flex-start; }
+.booking__submit { min-height: clamp(62px, calc(57.4225px + 1.2207vw), 75px); }
+
+/* Планшет и desktop: заголовок слева, форма справа (1050–1279 — ПРЕДЛОЖЕНИЕ, Q-01) */
+@media (min-width: 1050px) {
+  .booking { padding-bottom: 60px; }
+  .booking__panel { display: grid; grid-template-columns: minmax(0, 390fr) minmax(0, 467fr); align-items: start; padding: 56px 45px 56px 35px; }
+  .booking__form { margin-top: 0; }
+  .booking__consent { min-height: 22px; align-items: center; }
+  .booking__consent .checkbox__box { margin-top: 0; }
+}
+@media (min-width: 1280px) {
+  .booking { padding: 0 22px 60px var(--pad-x); }   /* плашка 142…1079 в колонке 102…1101 */
+}
+
+
+/* === blocks/cases === */
+/* cases — «Сложные случаи». Спецификация: spec.json. Figma: 1440 → 3272:5101; 375 → 3272:5598 (группа: 3272:5604 заголовок, 3272:5619 ссылка, 3272:5605/5612 карточки, 3272:5599 точки) */
+.cases { padding: 0 var(--pad-x) 29px; }                       /* mobile: точки 5575+9 → следующий блок 5613 */
+/* mobile: ссылка «/ Смотреть все» стоит на базовой линии нижней строки двухстрочного заголовка (3272:5619 y 5221) */
+.cases__slider { margin-top: 20px; --slide-w: 304px; --slider-gap: 15px; }
+.cases__card { display: flex; flex-direction: column; gap: 10px; padding: 15px 20px 16px; }   /* 304×276, фото 265×194 по центру; радиус 2,4 в кадре → --r-s (F-cases-3) */
+.cases__media { position: relative; }
+/* Вуаль над фото: в Figma у фото вторая заливка #d3d3d3 20 % поверх изображения (3272:5112, 3272:5606) */
+.cases__media::after { content: ""; position: absolute; inset: 0; border-radius: var(--r-s); pointer-events: none;
+  background: var(--c-photo-veil); }
+.cases__img { width: 100%; height: 194px; object-fit: cover; border-radius: var(--r-s); background: var(--c-bg-soft); }
+.cases__tag { position: absolute; z-index: 1; left: 6px; top: 6px; max-width: calc(100% - 12px); }
+.cases__body { display: flex; align-items: flex-start; gap: 30px; min-height: 40px; }
+.cases__title { flex: 0 1 185px; min-width: 0; color: var(--c-text); }     /* в кадре текстовый слой 185 + зазор 30 + стрелка 38 */
+.cases__link::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }   /* вся карточка — одна ссылка */
+.cases__link:focus-visible { box-shadow: none; }
+.cases__card:has(.cases__link:focus-visible) { box-shadow: var(--sh-card-m), var(--focus-ring); }  /* ПРЕДЛОЖЕНИЕ, Q-02 */
+.cases__arrow { flex: none; width: 38px; height: 38px; margin-top: 1px; color: var(--c-brand); transition: color var(--t-fast); }
+@media (hover: hover) { .cases__card:hover .cases__arrow, .cases__card:hover .cases__more { color: var(--c-brand-dark); } }  /* ПРЕДЛОЖЕНИЕ, Q-11 */
+
+/* Планшет 1050–1279: та же лента, что на mobile (макета нет — ПРЕДЛОЖЕНИЕ, Q-01) */
+
+@media (min-width: 1280px) {
+  .cases { padding: 0 22px 60px var(--pad-x); }               /* 102+40 … 1079 | 22 до колонки; до FAQ 60 */
+  .cases__slider { margin-top: 41px; --slide-w: calc((100% - 10px) / 2); --slider-gap: 10px; }   /* 463 + 10 + 463 = 936 */
+  .cases__card { flex-direction: row; gap: 20px; padding: 15px 11px 15px 20px; min-height: 181px; }
+  .cases__card:has(.cases__link:focus-visible) { box-shadow: var(--sh-card), var(--focus-ring); }
+  .cases__media { flex: none; width: min(181px, 42%); height: 151px; }   /* 181 = 42 % поля карточки 432 (463 − 20 − 11) на 1440; карточка 463 (1440); уже 1440 фото сужается, чтобы заголовок не обрезался — ПРЕДЛОЖЕНИЕ, Q-01 */
+  .cases__img { height: 100%; }
+  .cases__body { flex: 1 1 auto; flex-direction: column; gap: 18px; min-height: 0; }
+  .cases__title { flex: none; }   /* размер — роль .t-title-m (18/23 на desktop) */
+  .cases__desc { color: var(--c-text-muted); }
+}
+
+
+/* === blocks/centers === */
+/* centers — Центры компетенций (лента карточек). Спецификация: spec.json.
+   Figma: 1440 → 3272:4972 (заголовок), 3272:4979/5006/5033/5060 (карточки), 3272:5081 (кнопка);
+          375  → 3272:5459, 3272:5460/5483, 3272:5383 (точки), 3272:5510 (кнопка) */
+.centers { padding: 0 var(--pad-x) 50px; }
+.centers__head { align-items: center; gap: 14px; }
+.centers__head .section-head__link { align-self: flex-start; margin-top: 1px; }
+.centers__slider { --slider-gap: clamp(14px, calc(11.8873px + 0.5634vw), 20px); --slide-w: clamp(304px, calc(229px + 20vw), 517px); --dots-gap: 30px; margin-top: 20px; }
+.centers__all { margin-top: 30px; width: 100%; }
+
+/* --- Карточка центра .center-card (элемент ленты; на других страницах — та же разметка) --- */
+.center-card { display: flex; flex-direction: column; gap: clamp(10px, calc(7.1831px + 0.7512vw), 18px); padding: clamp(15px, calc(11.1268px + 1.0329vw), 26px) clamp(15px, calc(9.7183px + 1.4085vw), 30px); }  /* Figma 1440: рамка 524 с полями 30, содержимое по центру → фактически 26 сверху/снизу (F-centers-2) */
+.center-card__media { position: relative; }
+.center-card__img { width: 100%; height: clamp(191px, calc(152.6197px + 10.2347vw), 300px); object-fit: cover; border-radius: var(--r-s); }
+.center-card__logo { position: absolute; left: 16px; bottom: 12px; display: grid; place-items: center; width: 102px; height: 42px; border-radius: 7px; background: var(--c-bg); }
+.center-card__logo img { width: 72px; height: 34px; object-fit: contain; }
+.center-card__info { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.center-card__text { display: flex; flex-direction: column; gap: clamp(5px, calc(2.8873px + 0.5634vw), 11px); min-width: 0; max-width: 263px; }
+.center-card__title { color: var(--c-text); }
+.center-card__desc { color: var(--c-text-muted); }
+.center-card__staff { flex: none; display: flex; flex-direction: column; align-items: flex-end; gap: 16px; }
+.center-card__staff-label { color: var(--c-brand); font-weight: 700; font-size: 14px; line-height: 16px; text-align: right; }
+.center-card__staff-row { display: flex; gap: 3px; }
+.center-card__staff-icon { display: grid; place-items: center; width: 39px; height: 38px; border-radius: var(--r-pill); background: var(--c-bg-soft); color: var(--c-brand); }
+.center-card__staff-icon .icon { width: 24px; height: 14px; }
+.center-card__staff-num { display: grid; place-items: center; width: 38px; height: 38px; border-radius: var(--r-l); background: var(--c-bg-soft);
+  color: var(--c-brand); font-weight: 700; font-size: 18px; line-height: 31px; }
+.center-card__actions { display: flex; flex-direction: column; gap: 13px; }
+.center-card__cta { width: 100%; }
+.center-card__more { height: 23px; line-height: 23px; }
+.center-card__more .icon { margin-block: -3px; }   /* стрелка 29 в строке 23 (mobile, как в макете) */
+
+@media (min-width: 1280px) {
+  .centers { padding: 41px var(--aside-pad-r) 60px var(--pad-x); }
+  .centers__slider { margin-top: 30px; }
+  .centers__all { width: 310px; margin-top: 50px; }
+  .center-card__actions { flex-direction: row; align-items: center; gap: 20px; }
+  .center-card__cta { width: 185px; flex: none; }
+  .center-card__more { flex: 1 1 auto; height: auto; line-height: 32px; }
+}
+
+
+/* === blocks/centers-list === */
+/* centers-list — «Центры компетенций» (список в правой колонке). Спецификация: spec.json.
+   Figma: 1440 → 3272:4691 (1123,727 289×538); 375 → 3272:5430 (14,1022 350×563). */
+.centers-list { margin: 50px var(--pad-x) 0; }          /* 375: от плиток 972 → 1022 */
+.centers-list__items { display: flex; flex-direction: column; gap: 10px; margin-top: 20px; }
+/* ВРЕМЕННО: ждёт вариант card-link (Q-centers-list-2): Figma 375 — высота 66, текст 14,87→15, поля 21;
+   1440 — высота 62–64 (берём 63, как кит), текст 14, поля 11 (текст 1134 и стрелка до 1401 в карточке 1123–1412) */
+.centers-list__card { min-height: clamp(63px, calc(67.0563px + -0.2817vw), 66px); padding-inline: clamp(11px, calc(24.5211px + -0.939vw), 21px); font-size: clamp(14px, calc(15.3521px + -0.0939vw), 15px); }
+.centers-list__all {
+  margin-top: 10px; min-height: clamp(58px, calc(62.0563px + -0.2817vw), 61px); padding: 0 10px;
+  /* ВРЕМЕННО: ни один размер .btn не совпадает (Figma: 350×61 / 289×58, SemiBold 16/24 −2 %; .t-btn-l 19/34 в base.css — не из этого узла), Q-centers-list-3 */
+  font-weight: 600; font-size: 16px; line-height: 24px; letter-spacing: -0.02em;
+}
+@media (min-width: 1280px) {
+  .centers-list { margin: 0; }   /* поля задаёт правая колонка (.row__aside); 50 от «Подкастов» — padding-bottom .podcasts (727) */
+}
+/* размер стрелки — в общем компоненте card-link (рамка 37, поля −3,5) */
+
+
+/* === blocks/contacts === */
+/* contacts — «Контакты центра» + форма обратной связи. Спецификация: spec.json. Figma: 1440 → 3272:5309; 375 → группа 3272:5849 (3272:5850 фон, 3272:5852 заголовок, 3272:5853 список, 3272:5869 кнопка, 3272:5870 форма). Кит формы 3272:6266 */
+.contacts { padding: clamp(39px, calc(30.5493px + 2.2535vw), 63px) var(--pad-x) 63px; background: var(--c-bg-muted); }
+.contacts__body { margin-top: clamp(41px, calc(36.4225px + 1.2207vw), 54px); }
+.contacts__list { display: flex; flex-direction: column; gap: clamp(30px, calc(25.0704px + 1.3146vw), 44px); }
+.contacts__item { display: flex; flex-direction: column; gap: 5px; }
+.contacts__label { color: var(--c-brand); }
+.contacts__value { color: var(--c-text); }
+.contacts__value a { transition: color var(--t-fast); }
+@media (hover: hover) { .contacts__value a:hover { color: var(--c-brand-dark); } }   /* ПРЕДЛОЖЕНИЕ, Q-11 */
+.contacts__all { width: 159px; margin-top: 30px; }                       /* кадр 375: 159×45, как «Документация» в FAQ (ширина фиксирована в макете) */
+.contacts__feedback { margin-top: 50px; }                                   /* кнопка 9885 → заголовок формы 9935 */
+.contacts__form { margin-top: 31px; }
+.contacts__fields { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; }
+/* ВРЕМЕННО: ждёт общий компонент — высота поля в кадре 375 = 55 (кит/компонент: 50), поле «Вопрос» 106 (компонент 100), NOTES.md */
+.contacts .field__input { height: clamp(55px, calc(47.9577px + 1.8779vw), 75px); }
+.contacts textarea.field__input { height: clamp(106px, calc(92.2676px + 3.662vw), 145px); padding-top: 9px; }   /* текст «Вопрос…» 9,33 от верха в обоих кадрах */
+.contacts__actions { display: flex; flex-direction: column; align-items: flex-start; gap: 30px; margin-top: 10px; }
+/* ВРЕМЕННО: ждёт общий компонент — согласие на mobile Medium 12 (3272:5886), на desktop 14 (3272:5348), NOTES.md */
+.contacts__consent, .contacts__consent .link { font-size: clamp(12px, calc(11.2958px + 0.1878vw), 14px); }
+.contacts__consent { line-height: clamp(16px, calc(14.9437px + 0.2817vw), 19px); }
+.contacts__consent .checkbox__box { margin-top: clamp(1px, calc(0.6479px + 0.0939vw), 2px); }
+/* mobile «Отправить сообщение» — тёмный градиент Blue GR (3272:5887), desktop — фирменный (3272:5344): F-contacts-3, Q-06 */
+
+/* Планшет 1050–1279: два столбца, как desktop (макета нет — ПРЕДЛОЖЕНИЕ, Q-01) */
+@media (min-width: 1050px) {
+  .contacts__body { display: grid; grid-template-columns: minmax(0, 366px) minmax(0, 1fr); column-gap: 48px; }
+  .contacts__feedback { margin-top: 0; }
+  .contacts__fields { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 766px; }
+  .contacts__f-email, .contacts__f-msg { grid-column: 1 / -1; }
+  /* DOM: согласие → кнопка (порядок фокуса = смысловой); визуально на desktop кнопка слева — так в кадре 1440 */
+  .contacts__actions { flex-direction: row-reverse; justify-content: flex-end; align-items: center; margin-top: 30px; }
+}
+@media (min-width: 1280px) {
+  .contacts__body { column-gap: 98px; }
+  .contacts__submit { width: 265px; background: var(--g-brand); }          /* кадр 1440: 265×62 (кит btn Medium 60 → взято 60, F-contacts-4) */
+}
+
+
+/* === blocks/directions === */
+/* directions — «Направления / Диагностика / Анализы / Операции». Спецификация: spec.json.
+   Figma: 1440 → 3272:4882, 3272:4738, 3272:4748, 3272:4729 (плитки), 3272:4726 (панель Union), 3272:4878 (переключатель), 3272:4756 (список);
+          375  → 3272:5392, 3272:5401, 3272:5411, 3272:5420 (плитки-аккордеон).
+   Один DOM: < 1050 — аккордеон (плитка + панель под ней), ≥ 1050 — вкладки (плитки в ряд, общая панель). Режим переключает directions.js. */
+
+.directions { margin: clamp(10px, calc(0.493px + 2.5352vw), 37px) var(--pad-x) 0; }
+
+/* ---------- Mobile (база): плитки-аккордеон, 375 ---------- */
+.directions__grid { display: flex; flex-direction: column; gap: 10px; }
+.directions__item { display: flex; flex-direction: column; }
+
+.directions__tab {
+  display: flex; align-items: center; width: 100%; min-height: 65px; padding: 0 25px 0 7px;
+  border-radius: var(--r-s); background: var(--tile); color: var(--c-text-inverse); text-align: left;
+  font-weight: 600; font-size: clamp(18px, calc(19.3521px + -0.0939vw), 19px); line-height: clamp(23px, calc(22.6479px + 0.0939vw), 24px); letter-spacing: -0.02em;   /* = роль .t-tile */
+}
+.directions__icon { flex: none; display: grid; place-items: center; width: 56px; color: var(--c-text-inverse); }
+/* иконки спрайта нарисованы в рамке своей плитки 1440 (viewBox): размеры — рамки Figma */
+.directions__tab--therapy .directions__icon .icon { width: 55px; height: 43px; }       /* 375: рамка 55×43 (3272:5395) */
+.directions__tab--diagnostics .directions__icon .icon { width: 48px; height: 44px; }   /* рамка 48×44 (3272:4741) */
+.directions__tab--tests .directions__icon .icon,
+.directions__tab--surgery .directions__icon .icon { width: 50px; height: 50px; }       /* рамка 50×50 (3272:4750, 3272:4731) */
+.directions__label { min-width: 0; margin-left: 7px; }
+.directions__chev { width: 28px; height: 28px; margin-left: auto; transition: transform var(--t) var(--ease); }
+.directions__tab[aria-expanded="true"] .directions__chev { transform: rotate(180deg); }   /* ПРЕДЛОЖЕНИЕ: раскрытая плитка не нарисована, Q-directions-2 */
+@media (hover: hover) { .directions__tab:hover { filter: brightness(1.04); } }              /* ПРЕДЛОЖЕНИЕ: hover плитки не нарисован, Q-11 */
+
+/* Панель под плиткой (mobile) — ПРЕДЛОЖЕНИЕ, Q-directions-2: фон и радиус как у панели desktop, список в 1 колонку */
+.directions__panel { margin-top: 10px; padding: 15px 0 11px; border-radius: var(--r-s); background: var(--c-bg-panel); }
+.directions__seg { margin-left: 12px; }
+.directions__list { margin-top: 12px; }
+.directions__list > li { padding-bottom: 4px; break-inside: avoid; }
+.directions__stub { padding: 4px 15px; color: var(--c-text-2); }            /* ЗАГЛУШКА: контента нет в макете, Q-directions-1/3 */
+.directions__seg + .directions__list-wrap .directions__stub { margin-top: 12px; }
+
+/* ---------- ≥ 1050: вкладки. 1050–1279 — макета нет (Q-01): та же раскладка, что на 1440 ---------- */
+@media (min-width: 1050px) {
+  .directions__grid {
+    display: grid; gap: 9px 10px;                                  /* плитка 85 + 9 = 94 — высота «ушка» активной вкладки */
+    grid-template-columns: minmax(217px, 241fr) minmax(0, 242fr) minmax(0, 232fr) minmax(0, 232fr); /* 236+5 | 243→242 | 232 | 232 (F-directions-2); 217 — чтобы «Направления» с кругом не обрезались на 1050–1440 */
+  }
+  .directions__item { display: contents; }
+  .directions__item:nth-child(1) > .directions__tab { grid-column: 1; margin-right: 5px; }   /* 102→338, до первой плитки 15 */
+  .directions__item:nth-child(2) > .directions__tab { grid-column: 2; }
+  .directions__item:nth-child(3) > .directions__tab { grid-column: 3; }
+  .directions__item:nth-child(4) > .directions__tab { grid-column: 4; }
+  .directions__tab {
+    grid-row: 1; position: relative; justify-content: center; gap: 10px; align-self: start;
+    min-height: 85px; height: 85px; padding: 0 6px;              /* Figma: зазор иконка→текст 6 / 11 / 10 — взято 10 (F-directions-3) */
+  }
+  .directions__label { margin-left: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .directions__chev { display: none; }
+  .directions__icon { width: auto; }
+  .directions__tab--therapy .directions__icon .icon { width: 46px; height: 36px; }   /* глиф 26×25 в круге 50 (3272:4883) */
+
+  /* Активная вкладка сливается с панелью (Figma: Union 3272:4726, радиус 10 и снаружи, и во внутреннем углу) */
+  .directions__tab[aria-selected="true"] {
+    height: 94px; margin-bottom: -9px; align-items: flex-start; justify-content: flex-start; gap: 14px;
+    padding: 23px 6px 0 26px; border-radius: var(--r-m) var(--r-m) 0 0; background: var(--c-bg-panel); color: var(--c-text);
+    filter: none;
+  }
+  .directions__tab[aria-selected="true"] .directions__icon { width: 50px; height: 50px; border-radius: 50%; background: var(--icon-bg); }
+  .directions__tab[aria-selected="true"] .directions__label { padding-top: 13px; }   /* текст 24 по центру круга 50 */
+  /* ПРЕДЛОЖЕНИЕ (Q-directions-1): у «Диагностики/Анализов/Операций» активный вид не нарисован — как у «Направлений»: иконка в круге 50 с градиентом плитки */
+  .directions__tab[aria-selected="true"]:not(.directions__tab--therapy) .directions__icon .icon { width: 40px; height: 40px; }
+  .directions__tab[aria-selected="true"]::before, .directions__tab[aria-selected="true"]::after {
+    content: ""; position: absolute; bottom: 0; width: 10px; height: 10px; pointer-events: none;
+  }
+  .directions__tab[aria-selected="true"]::after { right: -10px; background: radial-gradient(circle at 100% 0, transparent 10px, var(--c-bg-panel) 10.5px); }
+  .directions__tab[aria-selected="true"]::before { left: -10px; background: radial-gradient(circle at 0 0, transparent 10px, var(--c-bg-panel) 10.5px); }
+  .directions__item:first-child > .directions__tab::before, .directions__item:last-child > .directions__tab::after { display: none; }
+  .directions__item:first-child > .directions__tab { margin-right: 5px; }
+  .directions__item:first-child > .directions__tab[aria-selected="true"]::after { right: -10px; }
+
+  .directions__panel {
+    grid-row: 2; grid-column: 1 / -1; margin-top: 0;
+    padding: 16px 9px 17px 20px; border-radius: var(--r-m);
+  }
+  .directions[data-active="0"] .directions__panel { border-top-left-radius: 0; }
+  .directions[data-active="3"] .directions__panel { border-top-right-radius: 0; }
+  .directions__seg { margin-left: 5px; }
+  /* 3 колонки по 281 (Figma: сетка 944, ячейки 274,67 + поля list-link). Заполнение по колонкам, как в макете;
+     число строк --rows = ceil(пунктов / 3) задаётся в разметке (20 пунктов → 7) */
+  .directions__list { display: grid; grid-auto-flow: column; grid-template-rows: repeat(var(--rows, 7), auto); grid-template-columns: repeat(3, minmax(0, 1fr));
+    column-gap: clamp(24px, 17.5vw - 200px, 52px); /* 52 на 1440; уже — меньше, чтобы «Гастроэнтерология» помещалась (ПРЕДЛОЖЕНИЕ, Q-01) */ align-content: start; }
+  .directions__stub { padding: 4px 0; }
+}
+
+@media (min-width: 1280px) {
+  .directions { margin: 37px 22px 0 0; }   /* панель 102 → 1079 (977), до правой колонки 22 */
+}
+
+/* размер стрелки пункта — в общем компоненте list-link (рамка 26, поля −2,5) */
+
+
+/* === blocks/faq === */
+/* faq — «Вопрос / Ответ». Спецификация: spec.json. Figma: 1440 → 3272:5129; 375 → 3272:5621 (заголовок), 3272:5622/5625/5628/5631/5634 (вопросы), 3272:5620 (кнопка) */
+.faq { display: grid; grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "title" "list" "docs"; justify-items: center; padding: 0 var(--pad-x) 50px; }   /* mobile: кнопка 6756 → следующий блок 6806 */
+.faq__title { grid-area: title; text-align: center; }
+.faq__docs { grid-area: docs; margin-top: 32px; }                        /* 6679 → 6711 */
+.faq__controls { grid-area: controls; display: none; gap: 10px; }
+.faq__list { grid-area: list; justify-self: stretch; display: flex; flex-direction: column; gap: clamp(10px, calc(6.4789px + 0.939vw), 20px); margin-top: 40px; }
+.faq__item { border-radius: var(--r-s); background: var(--c-bg-muted); }
+.faq__item.is-off { display: none; }
+.faq__toggle { display: flex; align-items: center; justify-content: space-between; gap: 62px; width: 100%;
+  min-height: clamp(71px, calc(81.8169px + -0.7512vw), 79px); padding: 10px clamp(20px, calc(16.4789px + 0.939vw), 30px); border-radius: inherit; text-align: left; color: var(--c-text); }
+/* 62 = зазор текст → кнопка в кадре 375 (текстовый слой 206, кнопка x 300); на 1440 текст в одну строку — зазор не виден */
+.faq__q-text { min-width: 0; }
+.faq__toggle:focus-visible { box-shadow: var(--focus-ring); }             /* ПРЕДЛОЖЕНИЕ, Q-02 */
+@media (hover: hover) { .faq__toggle:hover .faq__chevron { border-color: var(--c-brand); } }   /* ПРЕДЛОЖЕНИЕ, Q-12 */
+/* Раскрытый ответ — ПРЕДЛОЖЕНИЕ, Q-12: в макете не нарисован. Текст Medium 14 --c-text-2 под вопросом в той же плашке. */
+.faq__a { padding: 0 clamp(20px, calc(16.4789px + 0.939vw), 30px) clamp(20px, calc(18.5915px + 0.3756vw), 24px); margin-top: -4px; color: var(--c-text-2); }
+
+/* Планшет 1050–1279: как mobile, все вопросы (макета нет — ПРЕДЛОЖЕНИЕ, Q-01) */
+
+@media (min-width: 1280px) {
+  .faq { grid-template-columns: minmax(0, 1fr) 229px 110px; grid-template-areas: "title docs controls" "list list list";
+    column-gap: 47px; align-items: center; justify-items: start; padding: 0 22px 64px var(--pad-x); }   /* до линии ряда ассистента 64 */
+  .faq__title { text-align: left; }
+  .faq__docs { width: 229px; margin-top: 0; }                            /* кит btn Medium 229×60 */
+  .faq__controls { display: flex; }
+}
+
+
+/* === blocks/features === */
+/* features — «Чем мы отличаемся?». Спецификация: spec.json. Figma: 1440 → 3272:4952; 375 → 3272:5543 */
+/* 375: заголовок по центру (2 строки), лента по одной карточке в колонке 316 (поля 30), точки */
+.features { padding: 50px var(--pad-x); text-align: center; }          /* 2757 − 2707; 3176 → 3226 */
+.features__slider { margin: 10px 18px 0; --slide-w: 100%; --slider-gap: 30px; --dots-gap: 28px; }  /* колонка 30…346 = поле 12 + 18 */
+.features__list { margin: 0; list-style: none; }
+.features__item { display: flex; flex-direction: column; align-items: center; }
+.features__img { width: 266px; height: 202px; object-fit: contain; }   /* 375: 266×202 */
+.features__name { max-width: 237px; margin-top: 18px; color: var(--c-text); }
+.features__text { max-width: 237px; margin-top: 14px; color: var(--c-text-2); }
+.features__text.clamp-3 { -webkit-line-clamp: 3; line-clamp: 3; }
+
+/* 1050–1279: три колонки без ленты — ПРЕДЛОЖЕНИЕ, Q-01 (макета нет) */
+@media (min-width: 1050px) {
+  .features { text-align: left; }
+  .features__slider { margin: 50px 0 0; }
+  .features .slider__track { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 15px; overflow: visible; scroll-snap-type: none; }
+  .features .slider__dots { display: none; }
+  .features__item { text-align: center; }
+  .features__img { width: 247px; height: 203px; }                    /* 1440: большинство 247×203 (F-features-2) */
+  .features__name { max-width: none; margin-top: 12px; }
+  .features__text { max-width: 311px; }                               /* ширина описания в Figma 294–311 (большее — 311); шире 1440 строки не растягиваются */
+  .features__text.clamp-3 { -webkit-line-clamp: 4; line-clamp: 4; }  /* решение 28.10: описание до 4 строк на desktop */
+}
+@media (min-width: 1280px) {
+  .features { min-height: 100%; padding: 60px 26px 60px 42px; }       /* 144 − 102; правый край 1075 (1101 − 26). Высота = высота ряда (в макете ряд 633 задаёт колонка «Статьи», под карточками пусто) */
+}
+
+
+/* === blocks/footer === */
+/* footer — Подвал. Спецификация: spec.json.
+   Figma: 1440 → 3272:5350 «FUTER» (104 7171 1337 828); 375 → часть группы 3272:5849: фон 3272:5851 и узлы 3272:5890…5909 (0 10826 375 1192).
+   < 1050 — две колонки ссылок, ниже копирайт, логотип + «Наверх», дисклеймер.
+   ≥ 1050 — четыре колонки (на 1050–1279 — пропорционально, ПРЕДЛОЖЕНИЕ Q-01). */
+.footer { display: grid; grid-template-columns: minmax(0, 1fr) auto; grid-template-areas: "title title" "nav nav" "copy copy" "logo up" "disc disc";
+  padding: 50px 11px 26px 12px; background: var(--c-bg-muted); }   /* справа 11: колонки 12…364 */
+.footer__title { grid-area: title; color: var(--c-text); }   /* в Figma 375 x = 10 при поле 12 — F-footer-6 */
+.footer__nav { grid-area: nav; display: grid; grid-template-columns: minmax(0, 186fr) minmax(0, 158fr); grid-template-areas: "pat info" "feed info";   /* «Обратная связь» — через 30 под «Пациентам»; колонка «Информация/Лицензии» выше на 4 и уходит во 2-ю строку */
+  column-gap: 8px; row-gap: 30px; margin-top: 30px; }
+.footer__col--patients { grid-area: pat; }
+.footer__col--info { grid-area: info; }
+.footer__col--feedback { grid-area: feed; }
+.footer__col--feedback .footer__head { white-space: nowrap; }   /* заголовок 248 шире колонки 186 — как в макете */
+.footer__head { color: var(--c-brand); }   /* в Figma 375 у трёх заголовков 14/23 −3 %, у «Пациентам» 14/20 −1 % (как на 1440) — F-footer-2 */
+.footer__links { display: flex; flex-direction: column; gap: 1lh; margin-top: 18px;   /* пункты разделены пустой строкой, как в макете */
+  line-height: clamp(16px, calc(14.9437px + 0.2817vw), 19px); }   /* Figma «auto» у Manrope 12/14 = 16/19 px (в браузере normal = 16,4/19,1 — к концу колонки +8 px), Q-footer-3 */
+.footer__link { color: var(--c-text); transition: color var(--t-fast); }
+@media (hover: hover) { .footer__link:hover { color: var(--c-brand); } }   /* ПРЕДЛОЖЕНИЕ, Q-footer-2 */
+.footer__group--licenses { margin-top: clamp(46px, calc(39.3099px + 1.784vw), 65px); }   /* заголовок «Лицензии» на 212 / 255 ниже «Информации» (в Figma у списков фиксированная высота рамки) */
+.footer__copy { grid-area: copy; margin-top: 31px; max-width: 305px; color: var(--c-brand);
+  font-weight: 500; font-size: clamp(13px, calc(12.6479px + 0.0939vw), 14px); line-height: normal; }   /* роли нет (13 на 375, 14 на 1440) — Q-footer-1 */
+.footer__br-d { display: none; }
+.footer__logo { grid-area: logo; position: relative; display: block; width: 141px; height: 66px; margin-top: 38px; color: var(--c-brand-dark); }   /* надпись: 375 — #3c549e, 1440 — градиент Blue GR; F-footer-4 */
+.footer__logo-mark { position: absolute; left: 0; top: 0; width: 66px; height: 66px; background: var(--g-dark); color: var(--c-text-inverse); }
+.footer__logo-letters { position: absolute; left: 13px; top: 27px; width: 39px; height: 15px; fill: currentColor; }   /* 39,38×14,6 в 13,34/26,65 */
+.footer__logo-name { position: absolute; left: 76px; top: 17px; width: 65px; height: 34px; fill: currentColor; }      /* 65,42×34,27 в 75,58/16,5 */
+.footer__up { grid-area: up; align-self: start; display: flex; flex-direction: column; align-items: center; gap: 9px; width: 46px;
+  margin-top: 45px; color: var(--c-brand); font-weight: 500; font-size: 13px; line-height: normal; }   /* «Наверх» 13,05 — роли нет, Q-footer-1; верх на 7 ниже логотипа */
+.footer__up-circle { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--g-dark); color: var(--c-text-inverse); }   /* 375: градиент Blue GR, 1440: #607ed8 — F-footer-5 */
+.footer__up-circle .icon { width: 32px; height: 32px; }   /* стрелка 16,29×17,62 (символ i-arrow-up в рамке 24) */
+@media (hover: hover) { .footer__up:hover { color: var(--c-brand-dark); } }   /* ПРЕДЛОЖЕНИЕ, Q-footer-2 */
+.footer__disclaimer { grid-area: disc; max-width: 305px; margin-top: 30px; color: var(--c-border-light); }
+
+@media (min-width: 1050px) {
+  .footer { display: grid; padding: 81px 61px 81px 40px;   /* справа 40 + 21: в Figma содержимое 1236 при ширине 1257 */
+    /* 1440: 186 | 71 | 186 | 71 | 435 | 65 | 222 (сумма 1236). Колонки ссылок и логотипа не уже, чем в макете;
+       сжимается колонка копирайта и промежутки (до 24 на 1050) — ПРЕДЛОЖЕНИЕ для 1050–1439, Q-01 */
+    grid-template-columns: minmax(186px, 186fr) minmax(186px, 186fr) minmax(0, 435fr) minmax(222px, 216fr);
+    column-gap: clamp(24px, 12.2vw - 105px, 71px);
+    grid-template-areas: "title title title title" "pat info feed up" "pat info copy logo" "disc disc disc disc"; }
+  .footer__title { margin-bottom: 59px; }   /* заголовок 48 + 59 = колонки на 187,5 (в Figma рамка заголовка 67) */
+  .footer__nav { display: contents; }
+  .footer__col--feedback { align-self: start; }
+  .footer__col--info { margin-bottom: -8px; }   /* в Figma список «Лицензии» выходит за рамку колонок на 8 (рамка текста 144 < 152): копирайт и логотип выровнены по «Пациентам», F-footer-3 */
+  .footer__copy { align-self: end; max-width: none; margin-top: 0; }
+  .footer__br-d { display: inline; }
+  .footer__br-m { display: none; }
+  .footer__logo { align-self: end; justify-self: end; width: 222px; height: 104px; margin: 0; }
+  .footer__logo-mark { width: 104px; height: 104px; }
+  .footer__logo-letters { left: 21px; top: 42px; width: 62px; height: 23px; }
+  .footer__logo-name { left: 119px; top: 26px; width: 103px; height: 54px; }
+  .footer__up { justify-self: end; margin: 0; }
+  .footer__up-circle { background: var(--c-brand); }
+  .footer__disclaimer { max-width: none; margin: 53px -48px 0 0; line-height: normal; }   /* строка 1284 шире колонок: до 13 от правого края */   /* 1440: межстрочный auto (70 при 58), 375: 90 % — F-footer-1 */
+}
+
+
+/* === blocks/header === */
+/* header — Шапка. Спецификация: spec.json.
+   Figma: 1440 → 3272:4598 «heder 1440» (0 0 1440 96); 375 → 3272:5911 «Heder mobile» (0 0 375 60);
+   кит «Хедер» 3272:6069: варианты 3272:6072 (Default/Hover), выпадающее меню 3272:6133.
+   < 1280 — мобильная шапка (логотип + звонок/телефон/меню), ≥ 1280 — полная шапка. */
+
+.header {
+  position: sticky; top: 0; z-index: 40;   /* ПРЕДЛОЖЕНИЕ, Q-header-1: закрепление шапки при прокрутке в макете не задано */
+  display: flex; align-items: center; height: 60px;
+  background: var(--c-bg); box-shadow: var(--sh-header);   /* Figma: DROP_SHADOW #000 6 % 0,-1 r40 — токен .10, см. NOTES */
+}
+
+/* ---------- Логотип (компонент Figma «Logo») ---------- */
+.header__logo { position: relative; flex: none; display: block; width: 128px; height: 60px; color: var(--c-brand); }
+.header__logo-mark { position: absolute; left: 0; top: 0; width: 60px; height: 60px; background: var(--g-dark); color: var(--c-text-inverse); }
+.header__logo-letters { position: absolute; left: 12px; top: 24px; width: 36px; height: 13px; fill: currentColor; }   /* 35,77×13,27 в 12,12/24,23 */
+.header__logo-name { position: absolute; left: 69px; top: 15px; width: 59px; height: 31px; fill: currentColor; }      /* 59,42×31,15 в 68,65/15 */
+
+/* ---------- Мобильная часть (< 1280) ---------- */
+.header__main, .header__contacts { display: none; }
+.header__mobile { display: flex; align-items: center; gap: 13px; margin-left: auto; padding-right: 11px; }   /* 364 → 375 */
+.header__call { display: flex; flex-direction: column; align-items: flex-end; gap: 7px; }
+.header__call-sub { color: var(--c-brand); font-weight: 600; font-size: 10px; line-height: 1; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 1px; transition: color var(--t-fast); }   /* роли нет — Q-header-3; подчёркнута только на 375 — F-header-4 */
+.header__call-phone { color: var(--c-text); white-space: nowrap; }
+.header__round { display: grid; place-items: center; flex: none; width: 32px; height: 32px; border-radius: 50%; background: var(--g-soft); color: var(--c-brand); }
+.header__round-phone { width: 16px; height: 16px; }
+.header__round-menu { width: 18px; height: 18px; }   /* линии 12,8 (символ i-menu: рамка 16, линии 11,52) */
+@media (hover: hover) {
+  .header__call-sub:hover { color: var(--c-brand-dark); }   /* ПРЕДЛОЖЕНИЕ, Q-header-2 */
+  .header__round { transition: color var(--t-fast); }
+  .header__round:hover { color: var(--c-brand-dark); }      /* ПРЕДЛОЖЕНИЕ, Q-header-2 */
+}
+
+/* ---------- Desktop (≥ 1280) ---------- */
+@media (min-width: 1280px) {
+  .header { display: grid; grid-template-columns: 218px minmax(0, 1fr) var(--aside); align-items: stretch; height: 96px; }
+  .header__mobile { display: none; }
+
+  .header__logo { width: 218px; height: 96px; }
+  .header__logo-mark { width: 102px; height: 96px; }   /* 102,13 → 102 = ширина левой колонки */
+  .header__logo-letters { left: 21px; top: 39px; width: 61px; height: 21px; }   /* 60,88×21,23 в 20,62/38,77 */
+  .header__logo-name { left: 117px; top: 24px; width: 101px; height: 50px; }   /* 101,14×49,85 в 116,86/24 */
+
+  /* Отступ меню от логотипа 41 и между пунктами 33 — на 1440. На 1280–1439 меню не помещается,
+     промежутки сжимаются линейно до 12 (ПРЕДЛОЖЕНИЕ, Q-header-4). */
+  .header__main { display: block; min-width: 0; padding: 25px 0 0 clamp(12px, 18.125vw - 220px, 41px); }
+  .header__menu { display: flex; align-items: center; gap: clamp(12px, 13.125vw - 156px, 33px); }
+  .header__item { position: relative; flex: none; }
+  .header__link { display: inline-flex; align-items: center; gap: 5px; height: 20px; color: var(--c-text); white-space: nowrap; transition: color var(--t-fast) var(--ease); }
+  .header__chevron { width: 20px; height: 20px; transition: transform var(--t) var(--ease); }
+  .header__link:hover { color: var(--c-brand); }                         /* кит «heder / Hover» 3272:6103 */
+  .header__item.is-open .header__link { color: var(--c-brand); }         /* ПРЕДЛОЖЕНИЕ, Q-header-5 */
+  .header__item.is-open .header__chevron { transform: rotate(180deg); }   /* ПРЕДЛОЖЕНИЕ, Q-header-5 */
+
+  /* Выпадающее меню (кит «dropdown» 3272:6133): 222 шириной, поля 18/20, шаг пунктов 35 */
+  .header__sub { position: absolute; z-index: 10; top: 30px; left: -4px; min-width: 222px;
+    display: flex; flex-direction: column; gap: 16px; padding: 18px 20px;
+    background: var(--c-bg); box-shadow: var(--sh-header); }
+  .header__sub[hidden] { display: none; }
+  .header__sublink { display: block; color: var(--c-text); white-space: nowrap; transition: color var(--t-fast); }   /* в ките #000 — F-header-3 */
+  .header__sublink:hover { color: var(--c-brand); }   /* ПРЕДЛОЖЕНИЕ, Q-header-5 */
+
+  .header__tags { display: flex; gap: 6px; margin: 11px 0 0 -3px; }   /* теги: верх 56, левый край 256 (меню — 259) */
+  .header__tag { min-height: 24px; padding-inline: 23px; }   /* ВРЕМЕННО: ждёт общий вариант .tag (в Figma поля 21 / 25 / 23,5 — взято среднее 23), см. NOTES; F-header-2 */
+
+  .header__contacts { display: flex; align-items: flex-start; gap: 25px; padding: 30px 0 0 30px; background: var(--g-soft); }
+  .header__pair { display: flex; flex-direction: column; align-items: flex-start; gap: 5px; text-align: left; }
+  .header__pair-main { color: var(--c-text); white-space: nowrap; }
+  .header__pair-sub { color: var(--c-brand); font-weight: 600; font-size: 12px; line-height: normal; white-space: nowrap; transition: color var(--t-fast); }   /* роли нет — Q-header-3 */
+  .header__pair-sub:hover, .header__pair--booking:hover .header__pair-sub { color: var(--c-brand-dark); }   /* ПРЕДЛОЖЕНИЕ, Q-header-2 */
+  .header__pair--booking:hover .header__pair-main { color: var(--c-brand); }                                 /* ПРЕДЛОЖЕНИЕ, Q-header-2 */
+}
+
+
+/* === blocks/hero === */
+/* hero — Первый экран. Спецификация: spec.json. Figma: 1440 → 3272:4632 + 3272:4724; 375 → 3272:5377/5378, 3272:5379, 3272:5388, 3272:5390 */
+.hero { display: flex; flex-direction: column; }
+.hero__media { position: relative; }
+.hero__img { width: 100%; aspect-ratio: 375 / 374; max-height: 560px; object-fit: cover; }
+.hero__play { position: absolute; display: grid; place-items: center; background: var(--g-brand-round); color: var(--c-text-inverse); left: clamp(12px, calc(4.2535px + 2.0657vw), 34px); bottom: clamp(20px, calc(18.9437px + 0.2817vw), 23px); width: clamp(55px, calc(47.9577px + 1.8779vw), 75px); height: clamp(55px, calc(47.9577px + 1.8779vw), 75px); border-radius: 50%; transition: transform var(--t) var(--ease); }
+.hero__play .icon { width: 100%; height: 100%; }  /* i-play — треугольник в рамке 75×75; круг — фон кнопки (Figma «Video»: эллипс с градиентом) */
+@media (hover: hover) { .hero__play:hover { transform: scale(1.06); } }   /* ПРЕДЛОЖЕНИЕ: hover не нарисован, Q-16 */
+.hero__body { padding: 20px var(--pad-x) 0; }
+.hero__lead { max-width: 341px; margin-top: 14px; color: var(--c-text); }          /* mobile: лид --c-text (#262626), desktop: --c-text-2 — так в макете, F-05 */
+.hero__cta { margin-top: 25px; }
+@media (max-width: 1049.98px) { .hero__cta { display: flex; width: 100%; } }
+
+/* Планшет 1050–1279: два столбца (макета нет — предложение, Q-01) */
+@media (min-width: 1050px) {
+  .hero { display: grid; grid-template-columns: minmax(0, 513fr) minmax(0, 453fr);  /* 40 + 473 текст | 453 фото, зазор 33 = 999 на 1440 */ grid-template-areas: "body media"; align-items: start; column-gap: 33px; }
+  .hero__media { grid-area: media; }
+  .hero__body { grid-area: body; padding: 23px 0 0 var(--pad-x); }
+  .hero__img { aspect-ratio: 453 / 333; max-height: none; }
+  .hero__lead { max-width: none; margin-top: 21px; color: var(--c-text-2); }
+  .hero__cta { width: 276px; margin-top: 44px; }   /* ширина зафиксирована в макете (кит Btn 1: 276) */
+}
+
+
+/* === blocks/infra === */
+/* infra — слайдер инфраструктуры. Спецификация: spec.json.
+   Figma: 1440 → 3272:4910 (103,1473 1337×671): слева 11 пунктов (вертикальные вкладки), справа фото 831×551 с подписью;
+          375  → низ 3272:5511 (3272:5531: 0,2240 375×467): лента слайдов во всю ширину + точки.
+   Один DOM: вкладки (data-js="tabs", aria-orientation="vertical") + лента (.slider). < 1050 — список скрыт, все слайды видны в ленте
+   (атрибут hidden от вкладок перекрыт); ≥ 1050 — показан только слайд активной вкладки. */
+
+/* ---------- Mobile (база): лента ---------- */
+.infra__tabs { display: none; }
+.infra__slider { --slide-w: 100%; --slider-gap: 0px; --dots-gap: 35px; }
+.infra__slide[hidden] { display: block; }                 /* < 1050 все слайды в ленте; hidden — состояние вкладок для desktop */
+.infra__slide { position: relative; overflow: hidden; }
+.infra__img { width: 100%; height: auto; aspect-ratio: 375 / 423; object-fit: cover; }   /* Figma FILL — кадр по центру */
+.infra__slide::after { content: ""; position: absolute; inset: 0; background: var(--g-slide-shade); pointer-events: none; }  /* слой затемнения (второй fill фото) */
+.infra__caption {
+  position: absolute; z-index: 1; left: clamp(12px, calc(7.0704px + 1.3146vw), 26px); right: 43px; bottom: clamp(25px, calc(22.5352px + 0.6573vw), 32px);
+  display: flex; align-items: flex-start; gap: clamp(5px, calc(4.2958px + 0.1878vw), 7px); color: var(--c-text-inverse);
+}
+.infra__big { flex: none; height: clamp(104px, calc(90.9718px + 3.4742vw), 141px); }          /* рамка цифры в Figma 103,66 / 141 при межстрочном 148 / 201 — цифра выходит за рамку вверх-вниз так же */
+.infra__caption-body { display: flex; flex-direction: column; gap: clamp(1px, calc(0.6479px + 0.0939vw), 2px); min-width: 0; max-width: 262px; }
+/* Подпись: название до 2 строк, описание до 3 (mobile) — решение 28.10 */
+
+/* ---------- ≥ 1050: список слева + фото справа (1050–1279 — макета нет, та же раскладка, Q-01) ---------- */
+@media (min-width: 1050px) {
+  .infra { padding-inline: var(--pad-x); }
+  .infra__inner {
+    display: grid; grid-template-columns: minmax(0, 396px) minmax(0, 1fr); align-items: start; column-gap: 28px;
+    padding: 60px 54px 45px 29px; border-radius: var(--r-s); background: var(--c-bg-panel);   /* 1337×671, фон Figma «Bg page» = --c-bg-panel */
+  }
+  .infra__tabs { display: flex; flex-direction: column; gap: 6px; }
+  .infra__tab {
+    display: flex; align-items: center; width: 100%; min-height: 46px; padding: 3px 13px; border-radius: var(--r-s);
+    color: var(--c-text); text-align: left;
+    transition: color var(--t-fast);
+  }
+  .infra__num { flex: none; width: 40px; color: var(--c-brand); font-variant-numeric: tabular-nums; }   /* номер → текст: 40 от начала номера (19 + 21) */
+  .infra__tab-text { min-width: 0; }
+  .infra__tab[aria-selected="true"] { background: var(--g-pale); color: var(--c-text-inverse); }
+  .infra__tab[aria-selected="true"] .infra__num { color: var(--c-text-inverse); }
+  @media (hover: hover) { .infra__tab:not([aria-selected="true"]):hover { color: var(--c-brand-dark); } }   /* ПРЕДЛОЖЕНИЕ: hover не нарисован, Q-11 */
+
+  .infra__slider { --slide-w: 100%; }
+  .infra__track { display: block; overflow: visible; }
+  .infra__slide[hidden] { display: none; }
+  .infra__slide { border-radius: var(--r-s); }
+  .infra__img { aspect-ratio: 831 / 551; }
+  .infra__dots { display: none; }
+  .infra__caption { right: 26px; }
+  .infra__caption-body { max-width: 480px; }                /* исправление 28.10: ширина подписи 480 (в макете 356) */
+  .infra__name { -webkit-line-clamp: 1; line-clamp: 1; }    /* desktop: название 1 строка, описание 2 (решение 28.10) */
+  .infra__text { -webkit-line-clamp: 2; line-clamp: 2; }
+}
+@media (min-width: 1280px) {
+  .infra { padding-inline: 0; }
+}
+@media (min-width: 1441px) {
+  .infra__img { max-height: 551px; }   /* шире 1440 — фото растёт в ширину, высота как на 1440 (решение 28.10), кадр по центру */
+}
+
+
+/* === blocks/infra-intro === */
+/* infra-intro — «Инфраструктура центра»: надзаголовок, заявление с «тающей» частью, цифры-пилюли. Спецификация: spec.json.
+   Figma: 1440 → 3272:4889 (131,1016 937×398); 375 → 3272:5512 (0,1636 375×555, верх группы 3272:5511). */
+.infra-intro { display: flex; flex-direction: column; align-items: center; margin-top: clamp(42px, calc(54.169px + -0.8451vw), 51px); padding-bottom: clamp(49px, calc(45.4789px + 0.939vw), 59px); text-align: center; }
+.infra-intro__overline { max-width: 854px; color: var(--c-text); }
+.infra-intro__statement { max-width: 854px; margin-top: clamp(5px, calc(26.6338px + -1.5023vw), 21px); }
+.infra-intro__accent { color: var(--c-brand); }
+.infra-intro__ghost { color: var(--c-ghost); }
+.infra-intro__nowrap { white-space: nowrap; }   /* «Санкт-Петербурга» не рвётся по дефису */
+
+.infra-intro__stats { display: flex; flex-direction: column; gap: 10px; width: 100%; margin-top: clamp(40px, calc(38.9437px + 0.2817vw), 43px); padding-inline: var(--pad-x); }
+.infra-intro__stat {
+  display: flex; align-items: center; justify-content: center; min-height: 90px;
+  border-radius: var(--r-pill); background: var(--g-stat); color: var(--c-text-inverse);   /* радиусы 35,9 / 44,6 / 51,76 / 63,86 = половина высоты → пилюля */
+}
+.infra-intro__stat--xl { order: -1; justify-content: flex-start; gap: clamp(38px, calc(34.831px + 0.8451vw), 47px); padding: 0 clamp(20px, calc(25.4085px + -0.3756vw), 24px) 0 clamp(15px, calc(13.2394px + 0.4695vw), 20px); background: var(--g-stat-xl); }   /* mobile: «8160» первой (order: -1) */
+.infra-intro__ico { flex: none; display: grid; place-items: center; width: clamp(61px, calc(56.0704px + 1.3146vw), 75px); height: clamp(61px, calc(55.7183px + 1.4085vw), 76px); border-radius: 50%; background: var(--c-bg); color: var(--c-brand); }
+.infra-intro__ico .icon { width: clamp(27px, calc(24.8873px + 0.5634vw), 33px); height: clamp(27px, calc(24.5352px + 0.6573vw), 34px); }
+.infra-intro__val { white-space: pre; }      /* «5   этажей» — три пробела в макете (дословно) */
+.infra-intro__sup { font-size: .55em; line-height: 0; vertical-align: .75em; }   /* Figma: SUPS (OpenType «sups»); в шрифте ПРЕДЛОЖЕНИЕ — обычный надстрочный, F-infra-intro-3 */
+
+@media (min-width: 1050px) {
+  .infra-intro__overline, .infra-intro__statement { max-width: min(854px, 100% - 2 * var(--pad-x)); }   /* на 1280 колонка 839 — текст не прилипает к краям */
+  .infra-intro__stats { display: grid; grid-template-columns: minmax(0, 237fr) minmax(0, 423fr) minmax(0, 237fr); align-items: center; gap: 21px; max-width: 937px; padding-inline: 0; }
+  .infra-intro__stat { min-height: 72px; }
+  .infra-intro__stat--xl { order: 0; min-height: 110px; gap: clamp(16px, 19.4vw - 232px, 47px); }  /* 47 на 1440; на 1280 колонка уже — зазор меньше, чтобы «8160 м²» помещалось (ПРЕДЛОЖЕНИЕ, Q-01) */   /* desktop: порядок DOM (5 этажей · 8160 · 12 клиник) */
+}
+
+
+/* === blocks/map === */
+/* map — карта. Спецификация: spec.json. Figma: 1440 → 3272:5349 (1339×358); 375 → 3272:5889 (1386×371, по центру кадра, x −505) */
+/* Сейчас статичное изображение (скриншот Яндекс Карт с меткой и подписью); интерактивная карта — Q-map-1 (Сергей) */
+.map { position: relative; overflow: hidden; height: clamp(358px, calc(375.5775px + -1.2207vw), 371px); background: var(--c-bg-muted); }
+.map__link { display: block; height: 100%; }
+.map__link:focus-visible { box-shadow: inset 0 0 0 2px var(--c-brand); }   /* ПРЕДЛОЖЕНИЕ, Q-02: кольцо внутрь, снаружи обрежется */
+/* Заливка Figma FILL = cover по центру. На mobile изображение 1386 шириной, видна середина (метка) */
+.map__img { position: absolute; left: 50%; top: 0; width: max(100%, 1386px); max-width: none; height: 100%;
+  transform: translateX(-50%); object-fit: cover; object-position: 50% 50%; }
+@media (min-width: 1280px) { .map__img { width: 100%; } }
+
+
+/* === blocks/news === */
+/* news — «Новости». Спецификация: spec.json. Figma: 1440 → 3272:4669; 375 → 3272:5662
+   Вид и разметка — общий паттерн .media-feed (src/components/media-feed.css).
+   Здесь — только отступы блока на его месте. */
+.news { padding-bottom: 50px; }                                  /* 1440: 4858 → линия 4908; 375: 9241 → 9291 */
+
+
+/* === blocks/overlays === */
+/* overlays — Всплывающие окна (<dialog data-js="sheet">). Спецификация: spec.json.
+   Figma (кадры 375×812): меню 3272:5962 / 3272:5999, поиск 3272:6034, запись 3272:6052; кит «Хедер / Searsh» 3272:6071 (поиск desktop).
+   Mobile: лист под шапкой (верх 60), шапка видна и не перекрывается; кнопка закрытия встаёт на место кнопки меню в шапке.
+   Desktop: поиск — панель под шапкой справа от левой колонки (кит); запись/звонок/видео — окно по центру (ПРЕДЛОЖЕНИЕ, Q-overlays-3). */
+
+.overlays__sheet {
+  position: fixed; inset: 60px 0 0 0; width: 100%; max-width: none; height: auto; max-height: none; margin: 0;
+  padding: 20px 12px 111px;   /* низ 111: над нижним меню (кадры: меню 726…800, блок звонка/записи до 701) */
+  border: 0; background: var(--c-bg); color: var(--c-text); overflow-y: auto; overscroll-behavior: contain;
+}
+.overlays__sheet[open] { display: flex; flex-direction: column; }
+.overlays__sheet::backdrop { background: transparent; }   /* шапка остаётся видна (как в кадрах) */
+.overlays__sheet:focus-visible { box-shadow: none; }
+/* ВРЕМЕННО: ждёт общий файл — страница под открытым окном не прокручивается */
+html:has(.overlays__sheet[open]) { overflow: hidden; }
+
+/* Закрыть — круг 32 на месте кнопки меню шапки (в кадре записи 3272:6052 там крестик; в кадрах меню — бургер, F-overlays-1) */
+.overlays__close { position: fixed; z-index: 2; top: 14px; right: 11px; display: grid; place-items: center; width: 32px; height: 32px;
+  border-radius: 50%; background: var(--g-soft); color: var(--c-brand); }
+.overlays__close .icon { width: 18px; height: 18px; }
+@media (hover: hover) { .overlays__close { transition: color var(--t-fast); } .overlays__close:hover { color: var(--c-brand-dark); } }   /* ПРЕДЛОЖЕНИЕ, Q-overlays-2 */
+
+.overlays__title { color: var(--c-text); font-weight: 600; font-size: 24px; line-height: 38px; letter-spacing: -0.02em; }   /* роли 24/38 нет — Q-overlays-1 */
+
+/* ---------- Меню ---------- */
+.overlays__nav { margin-top: 14px; }
+.overlays__menu { display: flex; flex-direction: column; align-items: flex-start; gap: 25px; }   /* кадр 5962 (всё закрыто): 25 */
+.overlays__menu:has([aria-expanded="true"]) { gap: 22px; }   /* кадр 5999 (раздел раскрыт): 22 — так в макете, F-overlays-2 */
+.overlays__menu-item { display: flex; flex-direction: column; gap: 20px; }
+.overlays__menu-link { display: inline-flex; align-items: center; gap: 5px; min-height: 20px; color: var(--c-text); text-align: left; transition: color var(--t-fast); }
+.overlays__chevron { width: 20px; height: 20px; transition: transform var(--t) var(--ease); }
+.overlays__menu-link[aria-expanded="true"] { color: var(--c-brand); }   /* кадр 5999 #607ed8 (кит «Button menu / Variant2» — #3c549e), F-overlays-3 */
+.overlays__menu-link[aria-expanded="true"] .overlays__chevron { transform: rotate(180deg); }
+.overlays__menu-sub { display: flex; flex-direction: column; gap: 20px; }
+.overlays__menu-sub[hidden] { display: none; }
+.overlays__menu-sublink { display: block; color: var(--c-text-2); transition: color var(--t-fast); }
+@media (hover: hover) { .overlays__menu-link:hover, .overlays__menu-sublink:hover { color: var(--c-brand); } }   /* ПРЕДЛОЖЕНИЕ, Q-overlays-2 */
+.overlays__tags { display: flex; flex-direction: column; gap: 8px; width: 171px; margin-top: 25px; }
+.overlays__tag { display: flex; justify-content: center; width: 100%; min-height: 37px; padding-block: 10px; }   /* ВРЕМЕННО: тег 171×37 по центру — ждёт вариант .tag, см. NOTES */
+
+/* ---------- Звонок / запись внизу листа (кадры 5962, 5999, 6034) ---------- */
+.overlays__actions { display: flex; align-items: center; gap: 30px; margin-top: auto; padding-top: 20px; }   /* прижат к низу листа (верх 667 в кадре 812); минимум 20 от тегов */
+.overlays__action { display: flex; align-items: center; gap: 6px; text-align: left; }
+.overlays__action + .overlays__action { gap: 7px; }
+.overlays__action-icon { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; flex: none;
+  width: 34px; height: 34px; border-radius: 50%; background: var(--c-bg-soft); color: var(--c-brand); }
+.overlays__ic-phone { width: 17px; height: 17px; }
+.overlays__ic-pen { width: 14px; height: 14px; }   /* перо 13,56 + черта 13,57×1,05 */
+.overlays__action-icon--pen::after { content: ""; width: 14px; height: 1px; background: currentColor; }
+.overlays__action-text { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; }
+.overlays__action-main { color: var(--c-text); font-weight: 600; font-size: 14px; line-height: 1.05; white-space: nowrap; }   /* 14/105 % — роли нет (t-phone 12/16), Q-overlays-1 */
+.overlays__action-sub { color: var(--c-brand); font-weight: 600; font-size: 8px; line-height: normal; white-space: nowrap; }   /* 8 px — так в макете, Q-19 (мелко) */
+@media (hover: hover) { .overlays__action-sub:hover, button.overlays__action:hover .overlays__action-sub { color: var(--c-brand-dark); } }   /* ПРЕДЛОЖЕНИЕ, Q-overlays-2 */
+
+/* ---------- Поиск ---------- */
+.overlays__search { display: flex; gap: 10px; margin-top: 4px; }
+.overlays__search-box { display: flex; align-items: center; flex: 1 1 auto; min-width: 0; height: 52px; padding: 0 18px;
+  border-radius: var(--r-s); box-shadow: inset 0 0 0 var(--bw) var(--c-border); transition: box-shadow var(--t-fast); }
+.overlays__search-box:focus-within { box-shadow: inset 0 0 0 var(--bw) var(--c-brand); }   /* ПРЕДЛОЖЕНИЕ, Q-08 */
+.overlays__search-input { flex: 1 1 auto; min-width: 0; height: 100%; padding: 0; border: 0; background: none; outline: none;
+  color: var(--c-text); -webkit-appearance: none; appearance: none; }
+.overlays__search-input:focus-visible { box-shadow: none; }   /* фокус показывает рамка поля (:focus-within) */
+.overlays__search-input, .overlays__search-input::placeholder { font-weight: 500; font-size: 14px; line-height: normal; }
+.overlays__search-input::placeholder { color: var(--c-border); opacity: 1; }   /* «Язва» #d9d9d9 — так в макете, Q-19 */
+.overlays__search-input::-webkit-search-cancel-button { -webkit-appearance: none; }
+.overlays__search-icon { display: grid; place-items: center; flex: none; width: 32px; height: 32px; margin-right: -9px; border-radius: 50%; color: var(--c-brand); }
+.overlays__search-icon .icon { width: 15px; height: 15px; }   /* лупа 13 (символ i-search: рамка 22, лупа 19,5) */
+.overlays__search-btn { display: none; }
+
+/* ---------- Формы (запись, звонок) ---------- */
+.overlays__sheet--form { background: var(--g-soft); }   /* кадр 3272:6052: Back GR */
+.overlays__form { display: flex; flex-direction: column; gap: 15px; margin-top: 15px; }
+.overlays__consent { min-height: 38px; }
+/* ВРЕМЕННО: кнопка 62 высотой, текст 17/32 −3 % (кадр 6052) — ждёт размер в button.css, см. NOTES. Градиент в кадре --g-pale, здесь — кнопка кита (F-overlays-4) */
+.overlays__submit { min-height: 62px; font-size: 17px; line-height: 32px; }
+
+/* ---------- Видео (ПРЕДЛОЖЕНИЕ, Q-overlays-5) ---------- */
+.overlays__sheet--video { padding: 20px 12px; background: var(--c-text); }
+.overlays__sheet--video[open] { justify-content: center; }
+.overlays__video { display: grid; place-items: center; width: 100%; aspect-ratio: 16 / 9; border-radius: var(--r-s); background: var(--c-text-2); color: var(--c-text-inverse); }
+.overlays__video-play { width: 75px; height: 75px; border-radius: 50%; background: var(--g-brand-round); }
+
+/* ---------- Окна по центру (≥ 1050): запись, звонок, видео — ПРЕДЛОЖЕНИЕ, Q-overlays-3 ---------- */
+@media (min-width: 1050px) {
+  .overlays__sheet--form, .overlays__sheet--video {
+    inset: 0; width: min(600px, calc(100% - 48px)); max-height: calc(100% - 48px); height: fit-content; margin: auto;
+    padding: 40px; border-radius: var(--r-s); box-shadow: var(--sh-card); }
+  .overlays__sheet--video { width: min(960px, calc(100% - 48px)); padding: 56px 24px 24px; }
+  .overlays__sheet--form::backdrop, .overlays__sheet--video::backdrop { background: color-mix(in srgb, var(--c-text) 40%, transparent); }
+  .overlays__sheet--form .overlays__close, .overlays__sheet--video .overlays__close { position: absolute; top: 16px; right: 16px; }
+  .overlays__title { font-size: 32px; line-height: 38px; }   /* ПРЕДЛОЖЕНИЕ: заголовок окна как h1 mobile, Q-overlays-3 */
+  .overlays__sheet--form .overlays__submit { min-height: 60px; font-size: 17px; line-height: 30px; }   /* размер кнопки .btn--m на 1440 */
+}
+
+/* ---------- Desktop (≥ 1280): поиск — панель под шапкой (кит 3272:6071), меню не нужно ---------- */
+@media (min-width: 1280px) {
+  .overlays__sheet--search { inset: 96px 0 auto var(--rail); width: auto; height: 104px; padding: 26px 36px; overflow: visible; box-shadow: var(--sh-header); }
+  .overlays__sheet--search::backdrop { background: color-mix(in srgb, var(--c-text) 20%, transparent); }   /* ПРЕДЛОЖЕНИЕ, Q-overlays-6 */
+  .overlays__sheet--search .overlays__title, .overlays__sheet--search .overlays__actions { display: none; }
+  .overlays__sheet--search .overlays__search { margin: 0; }
+  .overlays__sheet--search .overlays__search-box { padding: 0 10px; gap: 23px; }
+  .overlays__sheet--search .overlays__search-icon { order: -1; margin: 0; }
+  .overlays__search-btn { display: inline-flex; flex: none; width: 171px; min-height: 52px; font-size: 18px; line-height: 34px; }   /* ВРЕМЕННО: «Найти» 171×52, 18/34 — ждёт размер в button.css; F-overlays-5 */
+  /* закрыть — на месте кнопки поиска левой колонки (кит «Menu left / Variant2»: крестик вместо лупы) */
+  .overlays__sheet--search .overlays__close { left: 19px; right: auto; top: 138px; width: 64px; height: 64px; background: var(--c-bg-soft); color: var(--c-brand-dark); }   /* крестик в ките — градиент Hover, здесь сплошной --c-brand-dark (F-rail-2) */
+  .overlays__sheet--search .overlays__close .icon { width: 21px; height: 21px; }   /* крестик 12 */
+}
+
+
+/* === blocks/podcasts === */
+/* podcasts — «Подкаст центра». Спецификация: spec.json. Figma: 1440 → 3272:4637; 375 → 3272:5556 */
+
+/* Отступы блока podcasts в правой колонке (первый блок колонки) */
+.podcasts { padding-bottom: 50px; }
+@media (min-width: 1280px) { .podcasts { padding-top: 39px; } }    /* 135 − 96 (низ шапки); снизу 50 до «Центров» 727 */
+
+
+/* === blocks/promos === */
+/* promos — «Акции». Спецификация: spec.json. Figma: 1440 → 3272:5094; 375 → 3272:5588
+   Карточка акции в макете — ОДНА картинка-баннер (Rectangle 4400/4401/4423 с заливкой IMAGE: фон, «−20%», текст, кнопка «Участвовать», фото).
+   Вёрстка повторяет это: баннер-ссылка с картинкой; текст баннера — в alt (Q-promos-1). */
+.promos { padding: 0 var(--pad-x) 50px; --slide-w: 306px; --slider-gap: 13px; --dots-gap: 30px; }  /* 375: 5123 → 5173; 1440: 4007 → 4057 */
+.promos__head { min-height: 37px; align-items: center; }            /* F-podcasts-2: строка заголовка 20/37 на 375 */
+.promos__slider { margin-top: 12px; }                                /* 4921 − (4872 + 37) */
+.promos__list { margin: 0; list-style: none; }
+.promos__banner { display: block; border-radius: var(--r-s); overflow: hidden; transition: opacity var(--t-fast); }
+.promos__img { width: 100%; height: auto; aspect-ratio: 306 / 163; object-fit: cover; }
+@media (hover: hover) { .promos__banner:hover { opacity: .9; } }    /* ПРЕДЛОЖЕНИЕ, Q-11: hover не нарисован */
+
+@media (min-width: 1280px) {
+  .promos { padding-inline: 0; }
+  .promos__head { min-height: 0; align-items: flex-start; gap: 9px; }
+  .promos__slider { margin-top: 22px; }
+  .promos .slider__track { flex-direction: column; gap: 22px; overflow: visible; margin-inline: 0; padding-inline: 0; scroll-snap-type: none; }
+  .promos .slider__slide { flex: none; }
+  .promos__banner { max-width: 288px; }                              /* 1440: баннер 288 (колонка 289 — F-promos-2) */
+  .promos__img { aspect-ratio: 288 / 171; }                          /* 1440: 288×171 */
+}
+
+
+/* === blocks/rail === */
+/* rail — Левая колонка desktop. Спецификация: spec.json.
+   Figma: 1440 → 3272:4631 «Menu left» (0 96 102 930); кит 3272:6134 (Default 3272:6135 / Variant2 3272:6147).
+   Только ≥ 1280. Колонка во всю высоту страницы, содержимое (.rail__inner) едет вместе с прокруткой. */
+.rail { display: none; }
+
+@media (min-width: 1280px) {
+  .rail { display: block; position: relative; z-index: 1; background: var(--c-bg); box-shadow: var(--sh-rail); }
+  /* ПРЕДЛОЖЕНИЕ, Q-rail-1: в макете колонка 930 = высота экрана под шапкой (1026 − 96);
+     делаем её «липкой» на высоту окна: поиск и ссылки — сверху, соцсети — снизу (в Figma промежуток 375 = «сколько осталось»). */
+  .rail__inner { position: sticky; top: 96px; display: flex; flex-direction: column; justify-content: space-between; align-items: center;
+    height: calc(100vh - 96px); min-height: 560px; padding: 41px 0; }
+  .rail__top { display: flex; flex-direction: column; align-items: center; gap: 17px; }
+  .rail__search { display: grid; place-items: center; width: 64px; height: 64px; border-radius: 50%; background: var(--c-bg-soft); color: var(--c-brand); transition: color var(--t-fast); }
+  .rail__search .icon { width: 22px; height: 22px; }   /* лупа 19,5 (символ i-search: рамка 22) */
+  .rail__links { display: flex; flex-direction: column; align-items: center; gap: 17px; }
+  .rail__link { display: block; color: var(--c-text); text-align: center; transition: color var(--t-fast); }
+  .rail__socials { display: flex; flex-direction: column; gap: 25px; }
+  .rail__social { position: relative; isolation: isolate; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%;
+    background: var(--g-brand-round); color: var(--c-text-inverse); }
+  /* наведение — градиент из кита «Menu left / Variant2» (3272:6147), слоем: градиент не анимируется */
+  .rail__social::before { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: 50%; background: var(--g-brand-round-hover); opacity: 0; transition: opacity var(--t) var(--ease); }
+  .rail__ic-3d { width: 17px; height: 25px; }
+  .rail__ic-vk { width: 23px; height: 12px; }
+  .rail__ic-rutube { width: 16px; height: 14px; }
+  .rail__ic-vkvideo { width: 18px; height: 18px; }
+  .rail__ic-max { width: 18px; height: 18px; }
+  @media (hover: hover) {
+    .rail__search:hover { color: var(--c-brand-dark); }   /* ПРЕДЛОЖЕНИЕ, Q-rail-2 */
+    .rail__link:hover { color: var(--c-brand); }           /* ПРЕДЛОЖЕНИЕ, Q-rail-2 (как пункт шапки в ките Hover) */
+    .rail__social:hover::before { opacity: 1; }
+  }
+}
+
+
+/* === blocks/services === */
+/* services — «Наши сервисы» (только < 1280: в кадре 1440 блока нет). Спецификация: spec.json.
+   Figma 375: заголовок 3272:5682, ссылка 3272:5683, карточки 3272:5684, 3272:5700, точки 3272:5637 */
+.services { padding: 0 var(--pad-x) 50px; --slide-w: 303px; --slider-gap: 14px; --dots-gap: 30px; }  /* 6116 → «Вопрос / Ответ» 6166 */
+.services__head { align-items: center; }
+.services__slider { margin-top: 20px; }                               /* 5671 − (5613 + 38) */
+.services__list { margin: 0; list-style: none; }
+.services__card { display: flex; flex-direction: column; height: 100%; padding: 17px 18px 17px 20px; color: var(--c-text); }  /* Figma: поля 20, содержимое 373 > 366 по центру → 16,5 сверху и снизу (F-services-2) */
+.services__media { position: relative; display: block; }
+.services__img { width: 100%; height: 195px; object-fit: cover; border-radius: var(--r-s); }
+.services__tag { position: absolute; left: 16px; bottom: 12px; }
+.services__name { display: block; margin-top: 10px; font-weight: 600; font-size: 18px; line-height: 26px; letter-spacing: -0.02em; }  /* ВРЕМЕННО: роли 18/26 на 375 нет (.t-title на 375 = 16) — Q-services-2 */
+.services__text { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 5; line-clamp: 5; overflow: hidden; margin-top: 5px; color: var(--c-text-muted); }  /* ВРЕМЕННО: .clamp-5 нет в base.css */
+.services__foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: auto; padding-top: 5px; }
+.services__place { display: flex; align-items: center; gap: 9px; min-width: 0; color: var(--c-brand); font-weight: 700; font-size: 14px; line-height: 17px; }  /* ВРЕМЕННО: Bold 14/17 — роли нет, Q-services-2 */
+.services__pin { flex: none; display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--c-bg-panel-2); }
+.services__pin .icon { width: 16px; height: 16px; }                   /* i-pin 20×20 → капля 12 в высоту, как Subtract 9×12 */
+.services__arrow { flex: none; width: 37px; height: 37px; color: var(--c-brand); transition: color var(--t-fast); }
+@media (hover: hover) { .services__card:hover .services__arrow { color: var(--c-brand-dark); } }  /* ПРЕДЛОЖЕНИЕ, Q-11 */
+
+
+/* === blocks/tab-bar === */
+/* tab-bar — Нижнее меню mobile. Спецификация: spec.json.
+   Figma: 375 → 3272:5910 (13 11484 351 74); то же меню в кадрах 3272:5912…6052 (12 726 351 74 в кадре 375×812).
+   Только < 1280. Плавает над страницей: 12 от низа экрана, по центру. */
+.tab-bar {
+  position: fixed; z-index: 45; left: 12px; right: 12px; bottom: 12px;
+  max-width: 351px; margin-inline: auto;                 /* ПРЕДЛОЖЕНИЕ, Q-tabbar-1: на широких экранах < 1280 ширина как в макете */
+  border-radius: var(--r-pill); background: var(--c-bg); box-shadow: var(--sh-card-m);   /* Figma: #3c549e 10 % 0,14,41 r31,69 */
+}
+.tab-bar__list { display: flex; justify-content: center; align-items: center; gap: 20px; height: 74px; padding: 5px 20px 4px; }
+.tab-bar__item { display: flex; flex-direction: column; align-items: center; color: var(--c-brand); }
+.tab-bar__icon { display: grid; place-items: center; width: 41px; height: 41px; border-radius: 50%; background: var(--c-bg-soft); transition: background-color var(--t-fast); }
+li:nth-child(n+4) > .tab-bar__item .tab-bar__icon { width: 42px; height: 42px; }   /* «Мнение», «Медиа» — 42 (остальные 41), F-tabbar-1 */
+.tab-bar__label { width: 100%; color: var(--c-text-2); text-align: center; white-space: nowrap;
+  font-weight: 600; font-size: 9px; line-height: 20px; letter-spacing: -0.02em; transition: color var(--t-fast); }   /* роли нет — Q-tabbar-3 */
+.tab-bar__ic-search { width: 17px; height: 17px; }    /* лупа 14,8 */
+.tab-bar__ic-centers { width: 19px; height: 18px; }   /* 18,82×17,52 */
+.tab-bar__ic-opinion { width: 25px; height: 25px; }
+.tab-bar__ic-media { width: 28px; height: 26px; }     /* символ i-megaphone: рамка 28×26, рисунок 27,1×24,09 */
+/* Центральная кнопка «Записаться»: круг 46, градиент --g-pale, перо 18 + черта 18×1 под ним */
+.tab-bar__item--main .tab-bar__icon { display: flex; flex-direction: column; justify-content: center; gap: 3px; width: 46px; height: 46px; background: var(--g-pale); color: var(--c-text-inverse); }
+.tab-bar__item--main .tab-bar__icon::after { content: ""; width: 18px; height: 1px; border-radius: 1px; background: currentColor; }
+.tab-bar__ic-pen { width: 18px; height: 18px; }
+/* Активная вкладка — в макете не выделена ни одна (Q-tabbar-2). ПРЕДЛОЖЕНИЕ: подпись --c-brand */
+.tab-bar__item[aria-current="page"] .tab-bar__label { color: var(--c-brand); }
+@media (hover: hover) {
+  .tab-bar__item:hover .tab-bar__label { color: var(--c-brand); }   /* ПРЕДЛОЖЕНИЕ, Q-tabbar-2 */
+}
+@media (min-width: 1280px) { .tab-bar { display: none; } }
+
+/* ВРЕМЕННО: ждёт правку layout.css (запас под плавающее меню внизу страницы, см. NOTES) */
+@media (max-width: 1279.98px) { body:has(.tab-bar) { padding-bottom: 98px; } }   /* 12 + 74 + 12 */
